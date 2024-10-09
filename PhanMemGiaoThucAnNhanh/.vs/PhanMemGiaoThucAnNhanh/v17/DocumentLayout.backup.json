@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "D:\\HK7\\NoSql\\QuanLyGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0A44920C-7C92-4D22-950F-0B8B02AADDA9}|DTO\\DTO.csproj|d:\\hk7\\nosql\\quanlygiaothucannhanh\\phanmemgiaothucannhanh\\dto\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0A44920C-7C92-4D22-950F-0B8B02AADDA9}|DTO\\DTO.csproj|solutionrelative:dto\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2392C2C4-3202-4AAE-B75F-4415611D95FA}|UC\\UC.csproj|d:\\hk7\\nosql\\quanlygiaothucannhanh\\phanmemgiaothucannhanh\\uc\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2392C2C4-3202-4AAE-B75F-4415611D95FA}|UC\\UC.csproj|solutionrelative:uc\\usercontrol1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -35,19 +31,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\HK7\\NoSql\\QuanLyGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\DTO\\Class1.cs",
-              "RelativeDocumentMoniker": "DTO\\Class1.cs",
-              "ToolTip": "D:\\HK7\\NoSql\\QuanLyGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\DTO\\Class1.cs",
-              "RelativeToolTip": "DTO\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-09T05:36:35.669Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "UserControl1.cs [Design]",
               "DocumentMoniker": "D:\\HK7\\NoSql\\QuanLyGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\UC\\UserControl1.cs",
               "RelativeDocumentMoniker": "UC\\UserControl1.cs",
@@ -59,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\HK7\\NoSql\\QuanLyGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\PhanMemGiaoThucAnNhanh\\Form1.cs",
               "RelativeDocumentMoniker": "PhanMemGiaoThucAnNhanh\\Form1.cs",
