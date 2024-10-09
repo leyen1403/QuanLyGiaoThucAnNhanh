@@ -4,3 +4,6 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.cspr
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.dll
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\bin\Debug\DAL.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\bin\Debug\DAL.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.csproj.Up2Date
