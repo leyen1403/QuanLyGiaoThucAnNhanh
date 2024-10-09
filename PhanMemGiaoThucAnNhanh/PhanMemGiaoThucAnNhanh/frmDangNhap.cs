@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,12 +7,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 using System.Windows.Forms;
 
 namespace PhanMemGiaoThucAnNhanh
 {
     public partial class frmDangNhap : Form
     {
+        MongoDB_BLL bll = new MongoDB_BLL();
+
         public frmDangNhap()
         {
             InitializeComponent();
@@ -26,6 +30,7 @@ namespace PhanMemGiaoThucAnNhanh
             this.cb_HienMatKhau.CheckedChanged += Cb_HienMatKhau_CheckedChanged;
             this.lbl_TaoTaiKhoan.Click += Lbl_TaoTaiKhoan_Click;
             this.btn_Xoa.Click += Btn_Xoa_Click;
+            
         }
 
         // Xoa thong tin dang nhap
@@ -76,7 +81,31 @@ namespace PhanMemGiaoThucAnNhanh
         // Dang nhap click
         private void Btn_DangNhap_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Đăng nhập thành công");
+            if (txt_TenDangNhap.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập : " + lbl_TenDangNhap.Text);
+                txt_TenDangNhap.Focus();
+                return;
+            }
+            if (txt_MatKhau.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Vui lòng nhập : " + lbl_MatKhau.Text);
+                txt_MatKhau.Focus();
+                return;
+            }
+            string tendangnhap = txt_TenDangNhap.Text;
+            string matkhau = txt_MatKhau.Text;
+
+
+            var kq = bll.GetOneCuaHang(tendangnhap, matkhau);
+            if (kq!=null)
+            {
+                MessageBox.Show("Đăng nhập thành công !!!");
+            }
+            else
+            {
+                MessageBox.Show("Đăng nhập khoong thành công !!!");
+            }
         }
 
         // Hien thi loi
@@ -84,8 +113,6 @@ namespace PhanMemGiaoThucAnNhanh
         {
             MessageBox.Show("Lỗi: " + ex.Message);
         }
-
-        // Tai su kien
 
     }
 }
