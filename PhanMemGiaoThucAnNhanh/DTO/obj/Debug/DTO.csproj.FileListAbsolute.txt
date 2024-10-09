@@ -1,0 +1,6 @@
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\bin\Debug\DTO.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\bin\Debug\DTO.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.pdb
