@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,55 +54,46 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void loadDataGridViewLoaiMon()
         {
-           List<BsonDocument> dsLoaiMonBSon = bll.GetAllLoaiMon(MaCuaHang);
-            DataTable dtDsLoaiMon = new DataTable();
-            dtDsLoaiMon = ConvertBsonDocumentListToDataTable(dsLoaiMonBSon);
-            //dtgvTTLH.AllowUserToAddRows = false;
+            // Lấy danh sách các loại món từ cơ sở dữ liệu
+            List<BsonDocument> dsLoaiMonBson = bll.GetAllLoaiMon(MaCuaHang);
+
+            // Chuyển danh sách BsonDocument thành DataTable
+            DataTable dtDsLoaiMon = ConvertBsonDocumentListToDataTable(dsLoaiMonBson);
+
+            // Gán DataTable vào DataGridView trước
             dtgvTTLH.DataSource = dtDsLoaiMon;
-            dtgvTTLH.Columns[3].Visible = false;
-            // Giả sử bạn đã tạo DataGridView tên là dataGridView1
 
-            // Thêm cột cho hình ảnh
-            DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
-            imgColumn.HeaderText = "Ảnh Loại Món";
-            imgColumn.Name = "anh_loai_mon";
-            dtgvTTLH.Columns.Add(imgColumn);
+            // Thêm cột hình ảnh vào DataGridView
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
+            imageColumn.HeaderText = "Hình Ảnh";
+            imageColumn.Name = "hinh_anh";
+            imageColumn.Width = 150;
+            imageColumn.ImageLayout = DataGridViewImageCellLayout.Stretch;  // Đặt chế độ hiển thị hình ảnh
+            dtgvTTLH.Columns.Add(imageColumn);  // Thêm cột hình ảnh
 
-            // Thêm dữ liệu vào DataGridView
-            dtgvTTLH.Rows.Add(); // Thêm hàng mới
-
-            // Đặt hình ảnh từ Resources
-            dtgvTTLH.Rows[0].Cells["anh_loai_mon"].Value = Properties.Resources.icons8_delete_35; // Thay thế "tên_hình_ảnh" bằng tên bạn đã đặt trong Resources
-
-            // Lặp lại nếu cần thêm nhiều hàng
-            dtgvTTLH.Rows.Add();
-            dtgvTTLH.Rows[1].Cells["anh_loai_mon"].Value = Properties.Resources.icons8_delete_35; // Hình ảnh khác
-
-            //loadHinhAnhDataGridView();
-        }
-        private void loadHinhAnhDataGridView()
-        {
-            // Duyệt qua từng dòng trong DataGridView
-            for (int i = 0; i < dtgvTTLH.Rows.Count; i++)
+            // Vòng lặp qua các hàng để thêm hình ảnh
+            for (int i = 0; i < dtgvTTLH.Rows.Count - 1; i++)
             {
-                // Lấy giá trị tên hình ảnh từ cột "anh_loai_mon"
-                string tenHinhAnh = dtgvTTLH.Rows[i].Cells["anh_loai_mon"].Value.ToString();
+                // Kiểm tra giá trị trong cột chứa đường dẫn hình ảnh (giả sử cột 2 chứa đường dẫn)
+                string imagePath = dtgvTTLH.Rows[i].Cells[2].Value.ToString();
+                string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
 
-                // Tạo đường dẫn hình ảnh từ Resources
-                // Giả sử hình ảnh được lưu trong Resources với tên tương ứng
-                Image img = Properties.Resources.ResourceManager.GetObject(tenHinhAnh) as Image;
-
-                // Nếu hình ảnh không null, gán vào ô của cột hình ảnh
-                if (img != null)
+                if (File.Exists(url))
                 {
-                    dtgvTTLH.Rows[i].Cells["anh_loai_mon"].Value = img; // Gán hình ảnh vào cột DataGridViewImageColumn
+                    // Nếu tệp hình ảnh tồn tại, tải và gán hình ảnh cho cột "hinh_anh"
+                    Image image = Image.FromFile(url);
+                    dtgvTTLH.Rows[i].Cells[4].Value = image;
                 }
                 else
                 {
-                    // Xử lý trường hợp không tìm thấy hình ảnh
-                    dtgvTTLH.Rows[i].Cells["anh_loai_mon"].Value = null; // Hoặc một hình ảnh mặc định
+                    // Nếu tệp hình ảnh không tồn tại, đặt hình ảnh mặc định hoặc null
+                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = null;  // Có thể thay thế bằng hình ảnh mặc định nếu muốn
                 }
             }
+        }
+
+        private void loadHinhAnhDataGridView()
+        {
 
         }
         public DataTable ConvertBsonDocumentListToDataTable(List<BsonDocument> bsonDocuments)

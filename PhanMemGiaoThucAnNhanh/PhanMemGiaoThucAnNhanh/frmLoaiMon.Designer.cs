@@ -50,7 +50,6 @@ namespace PhanMemGiaoThucAnNhanh
             this.dtgvTTLH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvTTLH.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgvTTLH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvTTLH.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dtgvTTLH.Location = new System.Drawing.Point(0, 294);
             this.dtgvTTLH.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtgvTTLH.Name = "dtgvTTLH";
