@@ -1,6 +1,6 @@
 ﻿namespace PhanMemGiaoThucAnNhanh
 {
-    partial class Form1
+    partial class frmLoaiMon
     {
         /// <summary>
         /// Required designer variable.
@@ -33,21 +33,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(291, 137);
+            this.button1.Location = new System.Drawing.Point(512, 132);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Loại món";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // frmLoaiMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 572);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmLoaiMon";
+            this.Text = "frmLoaiMon";
             this.ResumeLayout(false);
 
         }
@@ -57,4 +57,3 @@
         private System.Windows.Forms.Button button1;
     }
 }
-

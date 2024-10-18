@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PhanMemGiaoThucAnNhanh
 {
-    public partial class frmMenu : Form
+    public partial class frmDonHang : Form
     {
-        public frmMenu()
+        public frmDonHang()
         {
             InitializeComponent();
         }

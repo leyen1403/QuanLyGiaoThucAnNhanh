@@ -167,6 +167,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCuaHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCuaHang.Designer.cs">
+      <DependentUpon>frmCuaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDangKy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,17 +185,35 @@
     <Compile Include="frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDonHang.Designer.cs">
+      <DependentUpon>frmDonHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoaiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoaiMon.Designer.cs">
+      <DependentUpon>frmLoaiMon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenu.cs">
+    <Compile Include="frmMonAn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMenu.Designer.cs">
-      <DependentUpon>frmMenu.cs</DependentUpon>
+    <Compile Include="frmMonAn.Designer.cs">
+      <DependentUpon>frmMonAn.cs</DependentUpon>
     </Compile>
     <Compile Include="frmOrders.cs">
       <SubType>Form</SubType>
@@ -197,10 +221,19 @@
     <Compile Include="frmOrders.Designer.cs">
       <DependentUpon>frmOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongKe.Designer.cs">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCuaHang.resx">
+      <DependentUpon>frmCuaHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangKy.resx">
       <DependentUpon>frmDangKy.cs</DependentUpon>
@@ -208,14 +241,26 @@
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDonHang.resx">
+      <DependentUpon>frmDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoaiMon.resx">
+      <DependentUpon>frmLoaiMon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMenu.resx">
-      <DependentUpon>frmMenu.cs</DependentUpon>
+    <EmbeddedResource Include="frmMonAn.resx">
+      <DependentUpon>frmMonAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOrders.resx">
       <DependentUpon>frmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKe.resx">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
