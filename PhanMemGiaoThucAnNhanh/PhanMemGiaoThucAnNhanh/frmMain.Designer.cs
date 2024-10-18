@@ -30,9 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loaiMon_subItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monAn_subItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donHangItem = new System.Windows.Forms.ToolStripMenuItem();
             this.khachHangItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thongKeItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuaHang_Item = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_main = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +48,8 @@
             this.menuItem,
             this.donHangItem,
             this.khachHangItem,
-            this.thongKeItem});
+            this.thongKeItem,
+            this.cuaHang_Item});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1180, 29);
@@ -54,10 +58,25 @@
             // 
             // menuItem
             // 
+            this.menuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loaiMon_subItem,
+            this.monAn_subItem});
             this.menuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuItem.Name = "menuItem";
             this.menuItem.Size = new System.Drawing.Size(62, 25);
             this.menuItem.Text = "Menu";
+            // 
+            // loaiMon_subItem
+            // 
+            this.loaiMon_subItem.Name = "loaiMon_subItem";
+            this.loaiMon_subItem.Size = new System.Drawing.Size(199, 26);
+            this.loaiMon_subItem.Text = "Quản lý loại món";
+            // 
+            // monAn_subItem
+            // 
+            this.monAn_subItem.Name = "monAn_subItem";
+            this.monAn_subItem.Size = new System.Drawing.Size(199, 26);
+            this.monAn_subItem.Text = "Quản lý món ăn";
             // 
             // donHangItem
             // 
@@ -79,6 +98,13 @@
             this.thongKeItem.Name = "thongKeItem";
             this.thongKeItem.Size = new System.Drawing.Size(86, 25);
             this.thongKeItem.Text = "Thống kê";
+            // 
+            // cuaHang_Item
+            // 
+            this.cuaHang_Item.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cuaHang_Item.Name = "cuaHang_Item";
+            this.cuaHang_Item.Size = new System.Drawing.Size(88, 25);
+            this.cuaHang_Item.Text = "Cửa hàng";
             // 
             // panel_main
             // 
@@ -113,5 +139,8 @@
         private System.Windows.Forms.ToolStripMenuItem khachHangItem;
         private System.Windows.Forms.ToolStripMenuItem thongKeItem;
         private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.ToolStripMenuItem loaiMon_subItem;
+        private System.Windows.Forms.ToolStripMenuItem monAn_subItem;
+        private System.Windows.Forms.ToolStripMenuItem cuaHang_Item;
     }
 }
