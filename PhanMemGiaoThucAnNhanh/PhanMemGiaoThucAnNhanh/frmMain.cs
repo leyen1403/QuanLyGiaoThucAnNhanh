@@ -59,8 +59,10 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void LoaiMon_subItem_Click(object sender, EventArgs e)
         {
-            loadForm(new frmLoaiMon());
+ 
+            loadForm(new frmLoaiMon());           
         }
+
         void loadForm(Form form)
         {
             form.TopLevel = false;

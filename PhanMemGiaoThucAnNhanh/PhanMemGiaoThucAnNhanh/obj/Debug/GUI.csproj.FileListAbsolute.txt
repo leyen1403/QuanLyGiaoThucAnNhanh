@@ -73,6 +73,7 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmLoaiMon.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMonAn.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmThongKe.resources
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\mongocrypt.dll
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.exe.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.exe
@@ -128,6 +129,7 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\System.Text.Encoding.CodePages.xml
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.pdb
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\DAL.pdb
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\DAL.dll.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.AssemblyReference.cache
@@ -148,5 +150,3 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.CopyComplete
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.exe
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.pdb
-E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config

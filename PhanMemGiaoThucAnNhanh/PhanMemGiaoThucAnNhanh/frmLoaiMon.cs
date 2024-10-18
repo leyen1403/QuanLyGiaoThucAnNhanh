@@ -25,6 +25,30 @@ namespace PhanMemGiaoThucAnNhanh
             btnXoa.Click += BtnXoa_Click;
             btnLuuDuLieu.Click += BtnLuuDuLieu_Click;
             btnHuyThem.Click += BtnHuyThem_Click;
+            dtgvTTLH.SelectionChanged += DtgvTTLH_SelectionChanged;
+            btnTaiAnh.Click += BtnTaiAnh_Click;
+        }
+
+        private void BtnTaiAnh_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"; // Bộ lọc tệp hình ảnh
+                openFileDialog.Title = "Hãy chọn ảnh";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    pictureBoxLoaiMon.Image = Image.FromFile(filePath); // Tải ảnh vào PictureBox
+                }
+            }
+        }
+
+        private void DtgvTTLH_SelectionChanged(object sender, EventArgs e)
+        {
+            txtMALH.Text = dtgvTTLH.CurrentRow.Cells["ma_loai_mon"].Value.ToString();
+            txtTENLH.Text = dtgvTTLH.CurrentRow.Cells["ten_loai_mon"].Value.ToString();
+            pictureBoxLoaiMon.Image = (Image)dtgvTTLH.CurrentRow.Cells["hinh_anh"].Value;
         }
 
         private void BtnHuyThem_Click(object sender, EventArgs e)
@@ -44,6 +68,19 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
+            if (btnThem.Text == "Thêm")
+            {
+                btnThem.Text = "Xác nhận thêm";
+                btnHuyThem.Visible = true;
+                txtMALH.Text = String.Empty;
+                txtTENLH.Text = String.Empty;
+                pictureBoxLoaiMon.Image = null;
+            }
+            else
+            {
+                btnThem.Text = "Thêm";
+                btnHuyThem.Visible = false;
+            }
         }
 
         private void FrmLoaiMon_Load(object sender, EventArgs e)
@@ -52,7 +89,7 @@ namespace PhanMemGiaoThucAnNhanh
             loadDataGridViewLoaiMon();
         }
 
-        private void loadDataGridViewLoaiMon()
+        public void loadDataGridViewLoaiMon()
         {
             // Lấy danh sách các loại món từ cơ sở dữ liệu
             List<BsonDocument> dsLoaiMonBson = bll.GetAllLoaiMon(MaCuaHang);
@@ -60,41 +97,91 @@ namespace PhanMemGiaoThucAnNhanh
             // Chuyển danh sách BsonDocument thành DataTable
             DataTable dtDsLoaiMon = ConvertBsonDocumentListToDataTable(dsLoaiMonBson);
 
-            // Gán DataTable vào DataGridView trước
-            dtgvTTLH.DataSource = dtDsLoaiMon;
-
-            // Thêm cột hình ảnh vào DataGridView
-            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn();
-            imageColumn.HeaderText = "Hình Ảnh";
-            imageColumn.Name = "hinh_anh";
-            imageColumn.Width = 150;
-            imageColumn.ImageLayout = DataGridViewImageCellLayout.Stretch;  // Đặt chế độ hiển thị hình ảnh
-            dtgvTTLH.Columns.Add(imageColumn);  // Thêm cột hình ảnh
+            // Thêm cột hình ảnh vào DataTable
+            dtDsLoaiMon.Columns.Add("hinh_anh", typeof(Image));
 
             // Vòng lặp qua các hàng để thêm hình ảnh
-            for (int i = 0; i < dtgvTTLH.Rows.Count - 1; i++)
+            for (int i = 0; i < dtDsLoaiMon.Rows.Count; i++)
             {
-                // Kiểm tra giá trị trong cột chứa đường dẫn hình ảnh (giả sử cột 2 chứa đường dẫn)
-                string imagePath = dtgvTTLH.Rows[i].Cells[2].Value.ToString();
+                string imagePath = dtDsLoaiMon.Rows[i]["anh_loai_mon"].ToString(); // Giả sử cột chứa đường dẫn là "DuongDanHinh"
                 string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
 
                 if (File.Exists(url))
                 {
                     // Nếu tệp hình ảnh tồn tại, tải và gán hình ảnh cho cột "hinh_anh"
                     Image image = Image.FromFile(url);
-                    dtgvTTLH.Rows[i].Cells[4].Value = image;
+                    Bitmap b = new Bitmap(100, 150);
+                    using (Graphics g = Graphics.FromImage(b))
+                    {
+                        g.DrawImage(image, 0, 0, 100, 150);
+                    }
+                    dtDsLoaiMon.Rows[i]["hinh_anh"] = b;
                 }
                 else
                 {
-                    // Nếu tệp hình ảnh không tồn tại, đặt hình ảnh mặc định hoặc null
-                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = null;  // Có thể thay thế bằng hình ảnh mặc định nếu muốn
+                    // Nếu không, đặt hình ảnh mặc định
+                    dtDsLoaiMon.Rows[i]["hinh_anh"] = Properties.Resources.icons8_cart_100; // Hình ảnh mặc định
                 }
             }
+
+            // Gán DataTable vào DataGridView
+            dtgvTTLH.DataSource = dtDsLoaiMon;
+            dtgvTTLH.Columns["anh_loai_mon"].Visible = false;
+            dtgvTTLH.Columns["mon_an"].Visible = false;
+
+            // Đặt chiều cao dòng
+            dtgvTTLH.RowTemplate.Height = 150;
+
+            // Cập nhật giao diện
+            dtgvTTLH.Invalidate();
+            dtgvTTLH.Refresh();
         }
+
+
 
         private void loadHinhAnhDataGridView()
         {
+            // Thêm cột hình ảnh vào DataGridView
+            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
+            {
+                HeaderText = "Hình Ảnh",
+                Name = "hinh_anh",
+                Width = 150,
+                ImageLayout = DataGridViewImageCellLayout.Stretch
+            };
+            dtgvTTLH.Columns.Add(imageColumn); // Thêm cột hình ảnh
+            // Vòng lặp qua các hàng để thêm hình ảnh
+            for (int i = 0; i < dtgvTTLH.Rows.Count; i++)
+            {
+                // Kiểm tra giá trị trong cột chứa đường dẫn hình ảnh (giả sử cột 2 chứa đường dẫn)
+                string imagePath = dtgvTTLH.Rows[i].Cells["anh_loai_mon"].Value?.ToString(); // Kiểm tra null
+                if (string.IsNullOrEmpty(imagePath))
+                {
+                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = Properties.Resources.icons8_cart_100; // Hình ảnh mặc định
+                    continue;
+                }
 
+                string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
+
+                if (File.Exists(url))
+                {
+                    // Nếu tệp hình ảnh tồn tại, tải và gán hình ảnh cho cột "hinh_anh"
+                    try
+                    {
+                        Image image = Image.FromFile(url);
+                        dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = image; // Gán hình ảnh vào ô cụ thể
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading image: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    // Nếu tệp hình ảnh không tồn tại, đặt hình ảnh mặc định
+                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = Properties.Resources.icons8_cart_100; // Hình ảnh mặc định
+                }
+            }
         }
         public DataTable ConvertBsonDocumentListToDataTable(List<BsonDocument> bsonDocuments)
         {
@@ -125,6 +212,5 @@ namespace PhanMemGiaoThucAnNhanh
 
             return dataTable;
         }
-
     }
 }
