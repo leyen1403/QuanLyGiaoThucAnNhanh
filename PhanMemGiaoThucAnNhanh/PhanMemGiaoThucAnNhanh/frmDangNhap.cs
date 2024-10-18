@@ -97,8 +97,9 @@ namespace PhanMemGiaoThucAnNhanh
             string matkhau = txt_MatKhau.Text;
 
 
-            var kq = bll.GetOneCuaHang(tendangnhap, matkhau);
-            if (kq!=null)
+            //var kq = bll.GetOneCuaHang(tendangnhap, matkhau);
+            bool kq = bll.IsValidCuaHang(tendangnhap, matkhau);
+            if (kq == true)
             {
                 MessageBox.Show("Đăng nhập thành công !!!");
 

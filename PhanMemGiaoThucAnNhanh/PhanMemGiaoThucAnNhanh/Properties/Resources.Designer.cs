@@ -63,6 +63,26 @@ namespace PhanMemGiaoThucAnNhanh.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_35 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-add-35", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cancel_35 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cancel-35", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_cart_100 {
             get {
                 object obj = ResourceManager.GetObject("icons8-cart-100", resourceCulture);
@@ -76,6 +96,26 @@ namespace PhanMemGiaoThucAnNhanh.Properties {
         internal static System.Drawing.Bitmap icons8_cart_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-cart-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delete_35 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-delete-35", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_save_35 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-save-35", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -25,5 +25,14 @@ namespace BLL
         {            
             return dal.GetOneCuaHang(maCuaHang, matKhau);
         }
+        public bool IsValidCuaHang(string maCuaHang, string matKhauDangNhap)
+        {
+            return dal.IsValidCuaHang(maCuaHang, matKhauDangNhap);
+        }
+
+        public List<BsonDocument> GetAllLoaiMon(string maCuaHang)
+        {
+            return dal.GetLoaiMonFromCuaHang(maCuaHang);
+        }
     }
 }
