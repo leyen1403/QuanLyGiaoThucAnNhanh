@@ -66,3 +66,5 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\DAL.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\DAL.dll.config
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMain.resources
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMenu.resources
