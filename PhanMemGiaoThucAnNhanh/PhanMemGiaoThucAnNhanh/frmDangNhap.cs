@@ -101,6 +101,7 @@ namespace PhanMemGiaoThucAnNhanh
             if (kq!=null)
             {
                 MessageBox.Show("Đăng nhập thành công !!!");
+
             }
             else
             {
