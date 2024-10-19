@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,5 +35,10 @@ namespace BLL
         {
             return dal.GetLoaiMonFromCuaHang(maCuaHang);
         }
+        public bool LuuLoaiMon(DataTable dtDsLoaiMon, string maCuaHang)
+        {
+            return dal.LuuLoaiMon(dtDsLoaiMon, maCuaHang);
+        }
+
     }
 }

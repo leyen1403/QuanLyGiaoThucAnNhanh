@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using System.Data;
 
 namespace DAL
 {
-    public class MongoDB_DAL        
+    public class MongoDB_DAL
     {
         string connectionString = "mongodb://localhost:27017";
         string databaseName = "DoAnNoSQL_GiaoThucAnNhanh";
@@ -68,6 +69,64 @@ namespace DAL
             }
 
             return new List<BsonDocument>(); // Trả về danh sách rỗng nếu không tìm thấy
+        }
+        public bool LuuLoaiMon(DataTable dtDsLoaiMon, string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+            var cuaHangDocument = collection.Find(filter).FirstOrDefault();
+
+            if (cuaHangDocument == null)
+            {
+                throw new Exception("Document không tồn tại trong MongoDB.");
+            }
+
+            var menuArray = cuaHangDocument["cua_hang"]["menu"].AsBsonArray;
+            var existingMenuItems = new HashSet<string>(menuArray.Select(m => m["ma_loai_mon"].ToString()));
+            var updatedMenuItems = new HashSet<string>();
+
+            // Thêm và cập nhật bản ghi
+            foreach (DataRow row in dtDsLoaiMon.Rows)
+            {
+                var maLoaiMon = row["ma_loai_mon"].ToString();
+                updatedMenuItems.Add(maLoaiMon);
+
+                if (!existingMenuItems.Contains(maLoaiMon))
+                {
+                    // Bản ghi mới: thêm vào mảng menu
+                    var newMenuItem = new BsonDocument
+                    {
+                        { "ma_loai_mon", maLoaiMon },
+                        { "ten_loai_mon", row["ten_loai_mon"].ToString() },
+                        { "anh_loai_mon", row["anh_loai_mon"].ToString() }, // Giả định đây là hình ảnh nhị phân
+                        { "mon_an", new BsonArray() }
+                    };           
+                    menuArray.Add(newMenuItem);
+                }
+                else
+                {
+                    // Cập nhật nếu có sự thay đổi
+                    var existingMenuItem = menuArray.First(m => m["ma_loai_mon"] == maLoaiMon);
+                    existingMenuItem["ten_loai_mon"] = row["ten_loai_mon"].ToString();
+                    existingMenuItem["anh_loai_mon"] = row["anh_loai_mon"].ToString(); // Cập nhật hình ảnh
+                }
+            }
+
+            // Xóa các món không còn trong DataTable
+            var itemsToRemove = menuArray
+                .Where(m => !updatedMenuItems.Contains(m["ma_loai_mon"].ToString()))
+                .ToList();
+
+            foreach (var item in itemsToRemove)
+            {
+                menuArray.Remove(item);
+            }
+
+            // Cập nhật document trong MongoDB
+            cuaHangDocument["cua_hang"]["menu"] = menuArray;
+            collection.ReplaceOne(Builders<BsonDocument>.Filter.Eq("_id", cuaHangDocument["_id"]), cuaHangDocument);
+
+            return true; // Trả về true nếu thành công
         }
 
 
