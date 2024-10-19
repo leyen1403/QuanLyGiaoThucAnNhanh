@@ -35,5 +35,41 @@ namespace DAL
             var filter = Builders<BsonDocument>.Filter.Eq("ma_cua_hang", maCuaHang) & Builders<BsonDocument>.Filter.Eq("mat_khau_dang_nhap", matKhau);
             return collection.Find(filter).FirstOrDefault();
         }
+        public bool IsValidCuaHang(string maCuaHang, string matKhauDangNhap)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang) & Builders<BsonDocument>.Filter.Eq("cua_hang.mat_khau_dang_nhap", matKhauDangNhap);
+
+            var result = collection.Find(filter).Any(); // Kiểm tra xem có bất kỳ tài liệu nào khớp với bộ lọc không
+
+            return result; // Trả về true nếu có, false nếu không
+        }
+
+        public List<BsonDocument> GetLoaiMonFromCuaHang(string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+
+            // Tìm một cửa hàng dựa trên mã cửa hàng
+            var cuaHang = collection.Find(filter).FirstOrDefault();
+
+            // Nếu cửa hàng tồn tại và có trường menu
+            if (cuaHang != null && cuaHang.Contains("cua_hang") && cuaHang["cua_hang"].AsBsonDocument.Contains("menu"))
+            {
+                var menu = cuaHang["cua_hang"]["menu"].AsBsonArray;
+                var loaiMonList = new List<BsonDocument>();
+
+                foreach (var item in menu)
+                {
+                    loaiMonList.Add(item.AsBsonDocument);
+                }
+
+                return loaiMonList; // Trả về danh sách các loại món ăn
+            }
+
+            return new List<BsonDocument>(); // Trả về danh sách rỗng nếu không tìm thấy
+        }
+
+
     }
 }

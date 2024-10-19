@@ -7,15 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PhanMemGiaoThucAnNhanh
 {
     public partial class frmMain : Form
     {
+        public string MaCuaHang
+        {
+            get { return "kfc-store-001"; }
+            set { value = "kfc-store-001"; }
+        }
         public frmMain()
         {
             InitializeComponent();
+
             this.StartPosition = FormStartPosition.CenterScreen;
             this.loaiMon_subItem.Click += LoaiMon_subItem_Click;
             this.monAn_subItem.Click += MonAn_subItem_Click;
@@ -52,8 +59,10 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void LoaiMon_subItem_Click(object sender, EventArgs e)
         {
-            loadForm(new frmLoaiMon());
+ 
+            loadForm(new frmLoaiMon());           
         }
+
         void loadForm(Form form)
         {
             form.TopLevel = false;
