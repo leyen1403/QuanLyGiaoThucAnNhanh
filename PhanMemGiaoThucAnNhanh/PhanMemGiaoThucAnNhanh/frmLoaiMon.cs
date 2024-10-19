@@ -128,7 +128,9 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvTTLH.DataSource = dtDsLoaiMon;
             dtgvTTLH.Columns["anh_loai_mon"].Visible = false;
             dtgvTTLH.Columns["mon_an"].Visible = false;
-
+            dtgvTTLH.Columns[0].HeaderText = "Mã loại món";
+            dtgvTTLH.Columns[1].HeaderText = "Tên loại món";
+            dtgvTTLH.Columns["hinh_anh"].HeaderText = "Hình ảnh";
             // Đặt chiều cao dòng
             dtgvTTLH.RowTemplate.Height = 150;
 
@@ -136,53 +138,7 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvTTLH.Invalidate();
             dtgvTTLH.Refresh();
         }
-
-
-
-        private void loadHinhAnhDataGridView()
-        {
-            // Thêm cột hình ảnh vào DataGridView
-            DataGridViewImageColumn imageColumn = new DataGridViewImageColumn
-            {
-                HeaderText = "Hình Ảnh",
-                Name = "hinh_anh",
-                Width = 150,
-                ImageLayout = DataGridViewImageCellLayout.Stretch
-            };
-            dtgvTTLH.Columns.Add(imageColumn); // Thêm cột hình ảnh
-            // Vòng lặp qua các hàng để thêm hình ảnh
-            for (int i = 0; i < dtgvTTLH.Rows.Count; i++)
-            {
-                // Kiểm tra giá trị trong cột chứa đường dẫn hình ảnh (giả sử cột 2 chứa đường dẫn)
-                string imagePath = dtgvTTLH.Rows[i].Cells["anh_loai_mon"].Value?.ToString(); // Kiểm tra null
-                if (string.IsNullOrEmpty(imagePath))
-                {
-                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = Properties.Resources.icons8_cart_100; // Hình ảnh mặc định
-                    continue;
-                }
-
-                string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
-
-                if (File.Exists(url))
-                {
-                    // Nếu tệp hình ảnh tồn tại, tải và gán hình ảnh cho cột "hinh_anh"
-                    try
-                    {
-                        Image image = Image.FromFile(url);
-                        dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = image; // Gán hình ảnh vào ô cụ thể
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error loading image: {ex.Message}");
-                    }
-                }
-                else
-                {
-                    // Nếu tệp hình ảnh không tồn tại, đặt hình ảnh mặc định
-                    dtgvTTLH.Rows[i].Cells["hinh_anh"].Value = Properties.Resources.icons8_cart_100; // Hình ảnh mặc định
-                }
-            }
-        }
+        
         public DataTable ConvertBsonDocumentListToDataTable(List<BsonDocument> bsonDocuments)
         {
             DataTable dataTable = new DataTable();

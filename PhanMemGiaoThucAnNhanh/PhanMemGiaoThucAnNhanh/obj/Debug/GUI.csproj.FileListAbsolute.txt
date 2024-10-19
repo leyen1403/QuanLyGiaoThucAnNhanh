@@ -2,7 +2,6 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.exe
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.AssemblyReference.cache
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.Form1.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.Properties.Resources.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.GenerateResource.cache
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.CoreCompileInputs.cache
