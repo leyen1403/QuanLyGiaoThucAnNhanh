@@ -23,9 +23,9 @@ namespace BLL
         {
             dal.Insert(collectionName, document);
         }
-        public BsonDocument GetOneCuaHang(string maCuaHang, string matKhau)
+        public BsonDocument GetOneCuaHang(string maCuaHang)
         {            
-            return dal.GetOneCuaHang(maCuaHang, matKhau);
+            return dal.GetOneCuaHang(maCuaHang);
         }
         public bool IsValidCuaHang(string maCuaHang, string matKhauDangNhap)
         {
@@ -40,6 +40,10 @@ namespace BLL
         {
             return dal.LuuLoaiMon(dtDsLoaiMon, maCuaHang);
         }
+        public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
+        {
+            return dal.CapNhatCuaHang(cuaHang, maCuaHang);
+        }    
         public List<BsonDocument> GetDanhSachMonByMaLoaiMon(string maLoai)
         {
             return dal.GetDanhSachMonByMaLoaiMon(maLoai);

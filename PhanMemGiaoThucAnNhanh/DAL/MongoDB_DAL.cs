@@ -31,10 +31,10 @@ namespace DAL
             var collection = this.GetCollection(collectionName);
             collection.InsertOne(document);
         }
-        public BsonDocument GetOneCuaHang(string maCuaHang, string matKhau)
+        public BsonDocument GetOneCuaHang(string maCuaHang)
         {
             var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
-            var filter = Builders<BsonDocument>.Filter.Eq("ma_cua_hang", maCuaHang) & Builders<BsonDocument>.Filter.Eq("mat_khau_dang_nhap", matKhau);
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
             return collection.Find(filter).FirstOrDefault();
         }
         public bool IsValidCuaHang(string maCuaHang, string matKhauDangNhap)
@@ -71,6 +71,48 @@ namespace DAL
 
             return new List<BsonDocument>(); // Trả về danh sách rỗng nếu không tìm thấy
         }
+        public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+            var cuaHangDocument = collection.Find(filter).FirstOrDefault();
+
+            if (cuaHangDocument == null)
+            {
+                throw new Exception("Document không tồn tại trong MongoDB.");
+            }
+            // Cập nhật các trường mà bạn đã cung cấp
+            var cuaHangFields = cuaHang["cua_hang"].AsBsonDocument;
+
+            if (cuaHangFields.Contains("ten_cua_hang"))
+                cuaHangDocument["cua_hang"]["ten_cua_hang"] = cuaHangFields["ten_cua_hang"];
+
+            if (cuaHangFields.Contains("so_dien_thoai"))
+                cuaHangDocument["cua_hang"]["so_dien_thoai"] = cuaHangFields["so_dien_thoai"];
+
+            if (cuaHangFields.Contains("dia_chi"))
+                cuaHangDocument["cua_hang"]["dia_chi"] = cuaHangFields["dia_chi"];
+
+            if (cuaHangFields.Contains("email"))
+                cuaHangDocument["cua_hang"]["email"] = cuaHangFields["email"];
+
+            if (cuaHangFields.Contains("hinh_anh_dai_dien"))
+                cuaHangDocument["cua_hang"]["hinh_anh_dai_dien"] = cuaHangFields["hinh_anh_dai_dien"];
+
+            if (cuaHangFields.Contains("mat_khau_dang_nhap"))
+                cuaHangDocument["cua_hang"]["mat_khau_dang_nhap"] = cuaHangFields["mat_khau_dang_nhap"];
+
+            if (cuaHangFields.Contains("dang_hoat_dong"))
+                cuaHangDocument["cua_hang"]["dang_hoat_dong"] = cuaHangFields["dang_hoat_dong"];
+            // Cập nhật các trường trong document
+
+
+            // Cập nhật document trong MongoDB
+            collection.ReplaceOne(Builders<BsonDocument>.Filter.Eq("_id", cuaHangDocument["_id"]), cuaHangDocument);
+
+            return true; // Trả về true nếu thành công
+        }
+
         public bool LuuLoaiMon(DataTable dtDsLoaiMon, string maCuaHang)
         {
             var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
