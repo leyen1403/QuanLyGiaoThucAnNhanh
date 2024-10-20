@@ -30,24 +30,24 @@ namespace PhanMemGiaoThucAnNhanh
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbTrangThai = new System.Windows.Forms.ComboBox();
             this.pictureBoxMonAn = new System.Windows.Forms.PictureBox();
             this.btnLuuDuLieu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.txtMoTa = new System.Windows.Forms.TextBox();
             this.txtGiaMonAn = new System.Windows.Forms.TextBox();
+            this.txtHinhAnh = new System.Windows.Forms.TextBox();
             this.txtTenMonAn = new System.Windows.Forms.TextBox();
             this.txtMaMonAn = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dtgvMonAn = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbTrangThai = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtMoTa = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtHinhAnh = new System.Windows.Forms.TextBox();
             this.cbbLocLoaiMon = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -84,6 +84,17 @@ namespace PhanMemGiaoThucAnNhanh
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "THÔNG TIN";
+            // 
+            // cbTrangThai
+            // 
+            this.cbTrangThai.FormattingEnabled = true;
+            this.cbTrangThai.Items.AddRange(new object[] {
+            "true",
+            "false"});
+            this.cbTrangThai.Location = new System.Drawing.Point(551, 71);
+            this.cbTrangThai.Name = "cbTrangThai";
+            this.cbTrangThai.Size = new System.Drawing.Size(139, 21);
+            this.cbTrangThai.TabIndex = 31;
             // 
             // pictureBoxMonAn
             // 
@@ -147,6 +158,15 @@ namespace PhanMemGiaoThucAnNhanh
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = false;
             // 
+            // txtMoTa
+            // 
+            this.txtMoTa.Location = new System.Drawing.Point(551, 111);
+            this.txtMoTa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtMoTa.Multiline = true;
+            this.txtMoTa.Name = "txtMoTa";
+            this.txtMoTa.Size = new System.Drawing.Size(139, 82);
+            this.txtMoTa.TabIndex = 18;
+            // 
             // txtGiaMonAn
             // 
             this.txtGiaMonAn.Location = new System.Drawing.Point(551, 24);
@@ -154,6 +174,15 @@ namespace PhanMemGiaoThucAnNhanh
             this.txtGiaMonAn.Name = "txtGiaMonAn";
             this.txtGiaMonAn.Size = new System.Drawing.Size(139, 20);
             this.txtGiaMonAn.TabIndex = 18;
+            // 
+            // txtHinhAnh
+            // 
+            this.txtHinhAnh.Location = new System.Drawing.Point(278, 129);
+            this.txtHinhAnh.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtHinhAnh.Multiline = true;
+            this.txtHinhAnh.Name = "txtHinhAnh";
+            this.txtHinhAnh.Size = new System.Drawing.Size(139, 63);
+            this.txtHinhAnh.TabIndex = 18;
             // 
             // txtTenMonAn
             // 
@@ -171,6 +200,18 @@ namespace PhanMemGiaoThucAnNhanh
             this.txtMaMonAn.Size = new System.Drawing.Size(139, 20);
             this.txtMaMonAn.TabIndex = 17;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(446, 115);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Mô tả:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -182,6 +223,30 @@ namespace PhanMemGiaoThucAnNhanh
             this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Giá món ăn";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(446, 75);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Trạng thái:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(173, 141);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Tên hình ảnh:";
             // 
             // label14
             // 
@@ -229,71 +294,6 @@ namespace PhanMemGiaoThucAnNhanh
             this.dtgvMonAn.Name = "dtgvMonAn";
             this.dtgvMonAn.Size = new System.Drawing.Size(1164, 327);
             this.dtgvMonAn.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(446, 75);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Trạng thái:";
-            // 
-            // cbTrangThai
-            // 
-            this.cbTrangThai.FormattingEnabled = true;
-            this.cbTrangThai.Items.AddRange(new object[] {
-            "true",
-            "false"});
-            this.cbTrangThai.Location = new System.Drawing.Point(551, 71);
-            this.cbTrangThai.Name = "cbTrangThai";
-            this.cbTrangThai.Size = new System.Drawing.Size(139, 21);
-            this.cbTrangThai.TabIndex = 31;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(446, 115);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Mô tả:";
-            // 
-            // txtMoTa
-            // 
-            this.txtMoTa.Location = new System.Drawing.Point(551, 111);
-            this.txtMoTa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtMoTa.Multiline = true;
-            this.txtMoTa.Name = "txtMoTa";
-            this.txtMoTa.Size = new System.Drawing.Size(139, 82);
-            this.txtMoTa.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(173, 141);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Tên hình ảnh:";
-            // 
-            // txtHinhAnh
-            // 
-            this.txtHinhAnh.Location = new System.Drawing.Point(278, 129);
-            this.txtHinhAnh.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtHinhAnh.Multiline = true;
-            this.txtHinhAnh.Name = "txtHinhAnh";
-            this.txtHinhAnh.Size = new System.Drawing.Size(139, 63);
-            this.txtHinhAnh.TabIndex = 18;
             // 
             // cbbLocLoaiMon
             // 
