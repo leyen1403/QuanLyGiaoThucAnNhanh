@@ -106,3 +106,6 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.csproj.CopyComplete
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.dll
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\obj\Debug\BLL.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\bin\Debug\DTO.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\bin\Debug\DTO.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\BLL\bin\Debug\DTO.dll.config
