@@ -23,6 +23,7 @@ namespace BLL
         {
             dal.Insert(collectionName, document);
         }
+        //Cửa hàng
         public BsonDocument GetOneCuaHang(string maCuaHang)
         {            
             return dal.GetOneCuaHang(maCuaHang);
@@ -31,7 +32,11 @@ namespace BLL
         {
             return dal.IsValidCuaHang(maCuaHang, matKhauDangNhap);
         }
-
+        public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
+        {
+            return dal.CapNhatCuaHang(cuaHang, maCuaHang);
+        }    
+        //Loại món
         public List<BsonDocument> GetAllLoaiMon(string maCuaHang)
         {
             return dal.GetLoaiMonFromCuaHang(maCuaHang);
@@ -40,10 +45,7 @@ namespace BLL
         {
             return dal.LuuLoaiMon(dtDsLoaiMon, maCuaHang);
         }
-        public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
-        {
-            return dal.CapNhatCuaHang(cuaHang, maCuaHang);
-        }    
+        //Món ăn
         public List<BsonDocument> GetDanhSachMonByMaLoaiMon(string maLoai)
         {
             return dal.GetDanhSachMonByMaLoaiMon(maLoai);
@@ -81,5 +83,18 @@ namespace BLL
         {
             return dal.TimMonAnTheoTen(tenMon);
         }
+        //Thống kê
+        public DataTable GetTongTienTheoNgayHoanThanhDataTable()
+        {
+            return dal.GetTongTienTheoNgayHoanThanhDataTable();
+        }
+        public DataTable GetTongTienTheoNgayHoanThanhDataTable(string ngay_bat_dau, string ngay_ket_thuc)
+        {
+            return dal.GetTongTienTheoNgayHoanThanhDataTable(ngay_bat_dau, ngay_ket_thuc);
+        }
+        public DataTable GetMonAnBanChayDataTable()
+        {
+            return dal.GetMonAnBanChayDataTable();
+        }    
     }
 }
