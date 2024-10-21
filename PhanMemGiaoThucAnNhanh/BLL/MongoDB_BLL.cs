@@ -32,10 +32,16 @@ namespace BLL
         {
             return dal.IsValidCuaHang(maCuaHang, matKhauDangNhap);
         }
+        //Cập nhật cửa hàng
         public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
         {
             return dal.CapNhatCuaHang(cuaHang, maCuaHang);
-        }    
+        }
+        //Cập nhật khách hàng
+        public bool CapNhatKhachHang(BsonDocument khachHang, string maKhachHang, string maCuaHang)
+        {
+            return dal.CapNhatKhachHang(khachHang,maKhachHang,maCuaHang);
+        }
         //Loại món
         public List<BsonDocument> GetAllLoaiMon(string maCuaHang)
         {
@@ -114,6 +120,11 @@ namespace BLL
         public List<KhachHang> LayDanhSachKhachHang()
         {
             return dal.LayDanhSachKhachHang();
+        }
+        //Lấy một khách hàng
+        public KhachHang LayMotKhachHang(string maKH)
+        {
+            return dal.LayMotKhachHang(maKH);
         }
 
         // Kiểm tra khách hàng đăng nhập

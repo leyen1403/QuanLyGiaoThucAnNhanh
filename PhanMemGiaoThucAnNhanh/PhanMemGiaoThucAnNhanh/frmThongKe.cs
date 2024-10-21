@@ -13,6 +13,7 @@ namespace PhanMemGiaoThucAnNhanh
 {
     public partial class frmThongKe : Form
     {
+        private bool isClickedBtnSPBanChay = false;
         MongoDB_BLL bll = new   MongoDB_BLL();
         public frmThongKe()
         {
@@ -61,37 +62,72 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void DrawChart(DataTable dataTable)
         {
-            // Xóa các series cũ (nếu có)
-            chart1.Series.Clear();
-
-            // Tạo một series mới
-            Series series = new Series
+            //Nếu là đang xem doanh thu thì xử lí đồ thị cho doanh thu
+            if (isClickedBtnSPBanChay == false)
             {
-                Name = "Tổng tiền",
-                Color = System.Drawing.Color.Black,
-                ChartType = SeriesChartType.Column // Thay đổi loại biểu đồ nếu cần
-            };
+                // Xóa các series cũ (nếu có)
+                chart1.Series.Clear();
 
-            // Thêm dữ liệu từ DataTable vào series
-            foreach (DataRow row in dataTable.Rows)
-            {
-                series.Points.AddXY(row["Ngày"], row["Tổng Tiền"]);
+                // Tạo một series mới
+                Series series = new Series
+                {
+                    Name = "Tổng tiền",
+                    Color = System.Drawing.Color.ForestGreen,
+                    ChartType = SeriesChartType.Column // Thay đổi loại biểu đồ nếu cần
+                };
+
+                // Thêm dữ liệu từ DataTable vào series
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    series.Points.AddXY(row["Ngày"], row["Tổng Tiền"]);
+                }
+
+                // Thêm series vào chart
+                chart1.Series.Add(series);
+
+                // Tùy chỉnh nhãn trục (nếu cần)
+                chart1.ChartAreas[0].AxisX.Title = "Ngày";
+                chart1.ChartAreas[0].AxisY.Title = "Tổng tiền";
+
+                // Thêm tiêu đề cho biểu đồ (nếu cần)
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Biểu Đồ Dữ Liệu Thu Nhập");
             }
+            else
+            {
+                // Xóa các series cũ (nếu có)
+                chart1.Series.Clear();
 
-            // Thêm series vào chart
-            chart1.Series.Add(series);
+                // Tạo một series mới
+                Series series = new Series
+                {
+                    Name = "Số lượng món ăn",
+                    Color = System.Drawing.Color.ForestGreen,
+                    ChartType = SeriesChartType.Column // Thay đổi loại biểu đồ nếu cần
+                };
 
-            // Tùy chỉnh nhãn trục (nếu cần)
-            chart1.ChartAreas[0].AxisX.Title = "Ngày";
-            chart1.ChartAreas[0].AxisY.Title = "Tổng tiền";
+                // Thêm dữ liệu từ DataTable vào series
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    series.Points.AddXY(row["Tên món ăn"], row["Tổng số lượng"]);
+                }
 
-            // Thêm tiêu đề cho biểu đồ (nếu cần)
-            chart1.Titles.Clear();
-            chart1.Titles.Add("Biểu Đồ Dữ Liệu Thu Nhập");
+                // Thêm series vào chart
+                chart1.Series.Add(series);
+
+                // Tùy chỉnh nhãn trục (nếu cần)
+                chart1.ChartAreas[0].AxisX.Title = "Món ăn";
+                chart1.ChartAreas[0].AxisY.Title = "Tổng số lượng bán ra";
+
+                // Thêm tiêu đề cho biểu đồ (nếu cần)
+                chart1.Titles.Clear();
+                chart1.Titles.Add("Biểu Đồ Số Lượng Món Ăn Bán Ra");
+            }
+            
         }
 
 
-    private void BtnReport_Click(object sender, EventArgs e)
+        private void BtnReport_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -100,6 +136,8 @@ namespace PhanMemGiaoThucAnNhanh
         {
             try
             {
+                isClickedBtnSPBanChay = true;
+                chart1.Visible = false;
                 DataTable dt = bll.GetMonAnBanChayDataTable();
                 dtgvThongKe.DataSource = dt;
                 dtgvThongKe.Refresh();
@@ -114,6 +152,7 @@ namespace PhanMemGiaoThucAnNhanh
         {
             try
             {
+                isClickedBtnSPBanChay = false;
                 chart1.Visible = false;
                 DataTable dt = bll.GetTongTienTheoNgayHoanThanhDataTable(dtpNgayBD.Text, dtpNgayKT.Text);
                 dtgvThongKe.DataSource = dt;
