@@ -71,6 +71,173 @@ namespace DAL
 
             return new List<BsonDocument>(); // Trả về danh sách rỗng nếu không tìm thấy
         }
+        public DataTable GetTongTienTheoNgayHoanThanhDataTable()
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            var cursor = collection.Find(new BsonDocument()).ToCursor();
+
+            var result = new Dictionary<DateTime, decimal>();
+
+            foreach (var document in cursor.ToEnumerable())
+            {
+                var khachHangList = document["cua_hang"]["khach_hang"].AsBsonArray;
+
+                foreach (var khachHang in khachHangList)
+                {
+                    var donHangList = khachHang["don_hang"].AsBsonArray;
+
+                    foreach (var donHang in donHangList)
+                    {
+                        if (donHang["trang_thai"].AsString == "hoàn thành")
+                        {
+                            // Chuyển đổi từ BsonString sang DateTime
+                            DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            var ngay = thoiGianDat.Date;
+                            var tongTien = donHang["tong_tien"].ToDecimal();
+
+                            if (result.ContainsKey(ngay))
+                            {
+                                result[ngay] += tongTien;
+                            }
+                            else
+                            {
+                                result[ngay] = tongTien;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Tạo DataTable
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Ngày", typeof(DateTime));
+            dataTable.Columns.Add("Tổng tiền", typeof(decimal));
+
+            // Thêm dữ liệu vào DataTable
+            foreach (var item in result)
+            {
+                dataTable.Rows.Add(item.Key, item.Value);
+            }
+
+            return dataTable;
+        }
+        public DataTable GetTongTienTheoNgayHoanThanhDataTable(string ngay_bat_dau, string ngay_ket_thuc)
+        {
+            // Chuyển đổi chuỗi thành DateTime
+            DateTime startDate = DateTime.Parse(ngay_bat_dau);
+            DateTime endDate = DateTime.Parse(ngay_ket_thuc);
+
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            var cursor = collection.Find(new BsonDocument()).ToCursor();
+
+            var result = new Dictionary<DateTime, decimal>();
+
+            foreach (var document in cursor.ToEnumerable())
+            {
+                var khachHangList = document["cua_hang"]["khach_hang"].AsBsonArray;
+
+                foreach (var khachHang in khachHangList)
+                {
+                    var donHangList = khachHang["don_hang"].AsBsonArray;
+
+                    foreach (var donHang in donHangList)
+                    {
+                        if (donHang["trang_thai"].AsString == "hoàn thành")
+                        {
+                            // Chuyển đổi từ BsonString sang DateTime
+                            DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            var ngay = thoiGianDat.Date;
+                            var tongTien = donHang["tong_tien"].ToDecimal();
+
+                            // Kiểm tra xem ngày có nằm trong khoảng không
+                            if (ngay >= startDate && ngay <= endDate)
+                            {
+                                if (result.ContainsKey(ngay))
+                                {
+                                    result[ngay] += tongTien;
+                                }
+                                else
+                                {
+                                    result[ngay] = tongTien;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Tạo DataTable
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Ngày", typeof(DateTime));
+            dataTable.Columns.Add("Tổng tiền", typeof(decimal));
+
+            // Thêm dữ liệu vào DataTable
+            foreach (var item in result)
+            {
+                dataTable.Rows.Add(item.Key, item.Value);
+            }
+
+            return dataTable;
+        }
+        public DataTable GetMonAnBanChayDataTable()
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            var cursor = collection.Find(new BsonDocument()).ToCursor();
+
+            var monAnTongSoLuong = new Dictionary<string, (string TenMon, int TongSoLuong)>();
+
+            foreach (var document in cursor.ToEnumerable())
+            {
+                var khachHangList = document["cua_hang"]["khach_hang"].AsBsonArray;
+
+                foreach (var khachHang in khachHangList)
+                {
+                    var donHangList = khachHang["don_hang"].AsBsonArray;
+
+                    foreach (var donHang in donHangList)
+                    {
+                        var monAnDonHang = donHang["mon_an_don_hang"].AsBsonArray;
+
+                        foreach (var monAn in monAnDonHang)
+                        {
+                            var maMonAn = monAn["ma_mon_an"].AsString;
+                            var tenMonAn = monAn["ten_mon"].AsString;
+                            var soLuong = monAn["so_luong"].ToInt32();
+
+                            if (monAnTongSoLuong.ContainsKey(maMonAn))
+                            {
+                                monAnTongSoLuong[maMonAn] = (tenMonAn, monAnTongSoLuong[maMonAn].TongSoLuong + soLuong);
+                            }
+                            else
+                            {
+                                monAnTongSoLuong[maMonAn] = (tenMonAn, soLuong);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Tạo DataTable
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("Mã món ăn", typeof(string));
+            dataTable.Columns.Add("Tên món ăn", typeof(string));
+            dataTable.Columns.Add("Tổng số lượng", typeof(int));
+
+            // Thêm dữ liệu vào DataTable
+            foreach (var item in monAnTongSoLuong)
+            {
+                dataTable.Rows.Add(item.Key, item.Value.TenMon, item.Value.TongSoLuong);
+            }
+
+            // Sắp xếp DataTable theo tổng số lượng giảm dần
+            DataView view = dataTable.DefaultView;
+            view.Sort = "Tổng số lượng DESC";
+            DataTable sortedTable = view.ToTable();
+
+            return sortedTable;
+        }
+
+
         public bool CapNhatCuaHang(BsonDocument cuaHang, string maCuaHang)
         {
             var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKe));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTKSPBanNhieu = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
@@ -38,13 +41,16 @@
             this.dtpNgayBD = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grbThongKe = new System.Windows.Forms.GroupBox();
+            this.dtgvThongKe = new System.Windows.Forms.DataGridView();
+            this.btnXemDuoiDangDoThi = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.dtgvThongKe = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.grbThongKe.SuspendLayout();
-            this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongKe)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +87,7 @@
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_report_35;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(581, 101);
+            this.btnReport.Location = new System.Drawing.Point(863, 101);
             this.btnReport.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(263, 36);
@@ -146,6 +152,7 @@
             this.groupBox1.Controls.Add(this.grbThongKe);
             this.groupBox1.Controls.Add(this.dtpNgayKT);
             this.groupBox1.Controls.Add(this.dtpNgayBD);
+            this.groupBox1.Controls.Add(this.btnXemDuoiDangDoThi);
             this.groupBox1.Controls.Add(this.btnTKSPBanNhieu);
             this.groupBox1.Controls.Add(this.btnReport);
             this.groupBox1.Controls.Add(this.btnXemTKDoanhThu);
@@ -162,6 +169,7 @@
             // 
             // grbThongKe
             // 
+            this.grbThongKe.Controls.Add(this.chart1);
             this.grbThongKe.Controls.Add(this.dtgvThongKe);
             this.grbThongKe.Location = new System.Drawing.Point(37, 165);
             this.grbThongKe.Name = "grbThongKe";
@@ -169,6 +177,32 @@
             this.grbThongKe.TabIndex = 44;
             this.grbThongKe.TabStop = false;
             this.grbThongKe.Text = "Thống kê";
+            // 
+            // dtgvThongKe
+            // 
+            this.dtgvThongKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvThongKe.Location = new System.Drawing.Point(3, 16);
+            this.dtgvThongKe.Name = "dtgvThongKe";
+            this.dtgvThongKe.Size = new System.Drawing.Size(1086, 351);
+            this.dtgvThongKe.TabIndex = 0;
+            // 
+            // btnXemDuoiDangDoThi
+            // 
+            this.btnXemDuoiDangDoThi.BackColor = System.Drawing.Color.Red;
+            this.btnXemDuoiDangDoThi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnXemDuoiDangDoThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemDuoiDangDoThi.ForeColor = System.Drawing.Color.White;
+            this.btnXemDuoiDangDoThi.Image = ((System.Drawing.Image)(resources.GetObject("btnXemDuoiDangDoThi.Image")));
+            this.btnXemDuoiDangDoThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXemDuoiDangDoThi.Location = new System.Drawing.Point(586, 101);
+            this.btnXemDuoiDangDoThi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnXemDuoiDangDoThi.Name = "btnXemDuoiDangDoThi";
+            this.btnXemDuoiDangDoThi.Size = new System.Drawing.Size(263, 36);
+            this.btnXemDuoiDangDoThi.TabIndex = 6;
+            this.btnXemDuoiDangDoThi.Text = "Xem dưới dạng đồ thị";
+            this.btnXemDuoiDangDoThi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXemDuoiDangDoThi.UseVisualStyleBackColor = false;
             // 
             // label12
             // 
@@ -190,14 +224,23 @@
             this.panel11.Size = new System.Drawing.Size(1156, 568);
             this.panel11.TabIndex = 41;
             // 
-            // dtgvThongKe
+            // chart1
             // 
-            this.dtgvThongKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvThongKe.Location = new System.Drawing.Point(3, 16);
-            this.dtgvThongKe.Name = "dtgvThongKe";
-            this.dtgvThongKe.Size = new System.Drawing.Size(1086, 351);
-            this.dtgvThongKe.TabIndex = 0;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 16);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1086, 351);
+            this.chart1.TabIndex = 45;
+            this.chart1.Text = "chart1";
+            this.chart1.Visible = false;
             // 
             // frmThongKe
             // 
@@ -211,8 +254,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grbThongKe.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongKe)).EndInit();
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +276,7 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.GroupBox grbThongKe;
         private System.Windows.Forms.DataGridView dtgvThongKe;
+        private System.Windows.Forms.Button btnXemDuoiDangDoThi;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
