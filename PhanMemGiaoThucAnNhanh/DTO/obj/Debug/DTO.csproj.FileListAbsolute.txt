@@ -97,6 +97,6 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
-E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.CopyComplete
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.dll
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.pdb
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\DTO\obj\Debug\DTO.csproj.Up2Date

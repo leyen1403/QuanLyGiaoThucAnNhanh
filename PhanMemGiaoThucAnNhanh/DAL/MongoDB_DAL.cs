@@ -277,6 +277,32 @@ namespace DAL
 
             return true; // Trả về true nếu thành công
         }
+        public bool CapNhatKhachHang(BsonDocument khachHang, string maKhachHang, string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+
+            // Tạo bộ lọc để tìm cửa hàng và khách hàng
+            var filter = Builders<BsonDocument>.Filter.And(
+                Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang),
+                Builders<BsonDocument>.Filter.ElemMatch("cua_hang.khach_hang", Builders<BsonDocument>.Filter.Eq("ma_khach_hang", maKhachHang))
+            );
+
+            // Tạo cập nhật các trường cho khách hàng
+            var update = Builders<BsonDocument>.Update
+                .Set("cua_hang.khach_hang.$.ten_khach_hang", khachHang["ten_khach_hang"])
+                .Set("cua_hang.khach_hang.$.so_dien_thoai", khachHang["so_dien_thoai"])
+                .Set("cua_hang.khach_hang.$.dia_chi", khachHang["dia_chi"])
+                .Set("cua_hang.khach_hang.$.email", khachHang["email"])
+                .Set("cua_hang.khach_hang.$.mat_khau", khachHang["mat_khau"]);
+
+            // Cập nhật khách hàng
+            var result = collection.UpdateOne(filter, update);
+
+            return result.ModifiedCount > 0; // Trả về true nếu có bản ghi được cập nhật
+        }
+
+
+
 
         public bool LuuLoaiMon(DataTable dtDsLoaiMon, string maCuaHang)
         {
@@ -993,6 +1019,44 @@ namespace DAL
             // Trả về danh sách khách hàng
             return danhSachKhachHang;
         }
+        public KhachHang LayMotKhachHang(string maKhachHang)
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            List<KhachHang> danhSachKhachHang = new List<KhachHang>();
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+            foreach (var cuaHangDoc in cuaHangDocs)
+            {
+                // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+                if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+                {
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách khách hàng và chuyển đổi sang đối tượng KhachHang
+                    foreach (var khachHangDoc in khachHangList)
+                    {
+                        if (khachHangDoc["ma_khach_hang"].AsString.Equals(maKhachHang))
+                        {
+                            var khachHang = new KhachHang
+                            {
+                                MaKhachHang = khachHangDoc["ma_khach_hang"].AsString,
+                                TenKhachHang = khachHangDoc["ten_khach_hang"].AsString,
+                                SoDienThoai = khachHangDoc["so_dien_thoai"].AsString,
+                                DiaChi = khachHangDoc["dia_chi"].AsString,
+                                Email = khachHangDoc["email"].AsString,
+                                DiemTichLuyHienCo = khachHangDoc["diem_tich_luy_hien_co"].AsInt32,
+                                HoatDong = khachHangDoc["hoat_dong"].AsBoolean,
+                                MatKhau = khachHangDoc["mat_khau"].AsString
+                            };
+                            return khachHang;
+                        }
+                    }
+                }
+            }
+
+            // Trả về danh sách khách hàng
+            return null;
+        }
 
         // Kiểm tra đăng nhập
         public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
@@ -1075,9 +1139,6 @@ namespace DAL
 
             return danhSachDonHang;
         }
-
-
-
         public bool ThemDonHang(string maKH, DonHang donHang)
         {
             var collection = GetCollection("CuaHangGiaoThucAnNhanh");
@@ -1142,8 +1203,5 @@ namespace DAL
 
             return false; // Không tìm thấy khách hàng
         }
-
-
-
     }
 }

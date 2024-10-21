@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKe));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKe));
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTKSPBanNhieu = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnXemTKDoanhThu = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dtpNgayKT = new System.Windows.Forms.DateTimePicker();
             this.dtpNgayBD = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grbThongKe = new System.Windows.Forms.GroupBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtgvThongKe = new System.Windows.Forms.DataGridView();
-            this.btnXemDuoiDangDoThi = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnXemDuoiDangDoThi = new System.Windows.Forms.Button();
+            this.btnTKSPBanNhieu = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnXemTKDoanhThu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grbThongKe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongKe)).BeginInit();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -61,58 +61,6 @@
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thống kê";
-            // 
-            // btnTKSPBanNhieu
-            // 
-            this.btnTKSPBanNhieu.BackColor = System.Drawing.Color.Red;
-            this.btnTKSPBanNhieu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTKSPBanNhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTKSPBanNhieu.ForeColor = System.Drawing.Color.White;
-            this.btnTKSPBanNhieu.Image = ((System.Drawing.Image)(resources.GetObject("btnTKSPBanNhieu.Image")));
-            this.btnTKSPBanNhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTKSPBanNhieu.Location = new System.Drawing.Point(309, 101);
-            this.btnTKSPBanNhieu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnTKSPBanNhieu.Name = "btnTKSPBanNhieu";
-            this.btnTKSPBanNhieu.Size = new System.Drawing.Size(263, 36);
-            this.btnTKSPBanNhieu.TabIndex = 6;
-            this.btnTKSPBanNhieu.Text = "Xem sản phẩm bán nhiều nhất";
-            this.btnTKSPBanNhieu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTKSPBanNhieu.UseVisualStyleBackColor = false;
-            // 
-            // btnReport
-            // 
-            this.btnReport.BackColor = System.Drawing.Color.Red;
-            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_report_35;
-            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(863, 101);
-            this.btnReport.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(263, 36);
-            this.btnReport.TabIndex = 5;
-            this.btnReport.Text = "Xuất doanh thu (Report)";
-            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReport.UseVisualStyleBackColor = false;
-            // 
-            // btnXemTKDoanhThu
-            // 
-            this.btnXemTKDoanhThu.BackColor = System.Drawing.Color.Red;
-            this.btnXemTKDoanhThu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnXemTKDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemTKDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.btnXemTKDoanhThu.Image = ((System.Drawing.Image)(resources.GetObject("btnXemTKDoanhThu.Image")));
-            this.btnXemTKDoanhThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXemTKDoanhThu.Location = new System.Drawing.Point(37, 101);
-            this.btnXemTKDoanhThu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnXemTKDoanhThu.Name = "btnXemTKDoanhThu";
-            this.btnXemTKDoanhThu.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
-            this.btnXemTKDoanhThu.Size = new System.Drawing.Size(263, 36);
-            this.btnXemTKDoanhThu.TabIndex = 5;
-            this.btnXemTKDoanhThu.Text = "Xem doanh thu";
-            this.btnXemTKDoanhThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXemTKDoanhThu.UseVisualStyleBackColor = false;
             // 
             // label11
             // 
@@ -178,6 +126,24 @@
             this.grbThongKe.TabStop = false;
             this.grbThongKe.Text = "Thống kê";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(3, 16);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1086, 351);
+            this.chart1.TabIndex = 45;
+            this.chart1.Text = "chart1";
+            this.chart1.Visible = false;
+            // 
             // dtgvThongKe
             // 
             this.dtgvThongKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -186,23 +152,6 @@
             this.dtgvThongKe.Name = "dtgvThongKe";
             this.dtgvThongKe.Size = new System.Drawing.Size(1086, 351);
             this.dtgvThongKe.TabIndex = 0;
-            // 
-            // btnXemDuoiDangDoThi
-            // 
-            this.btnXemDuoiDangDoThi.BackColor = System.Drawing.Color.Red;
-            this.btnXemDuoiDangDoThi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnXemDuoiDangDoThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXemDuoiDangDoThi.ForeColor = System.Drawing.Color.White;
-            this.btnXemDuoiDangDoThi.Image = ((System.Drawing.Image)(resources.GetObject("btnXemDuoiDangDoThi.Image")));
-            this.btnXemDuoiDangDoThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXemDuoiDangDoThi.Location = new System.Drawing.Point(586, 101);
-            this.btnXemDuoiDangDoThi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnXemDuoiDangDoThi.Name = "btnXemDuoiDangDoThi";
-            this.btnXemDuoiDangDoThi.Size = new System.Drawing.Size(263, 36);
-            this.btnXemDuoiDangDoThi.TabIndex = 6;
-            this.btnXemDuoiDangDoThi.Text = "Xem dưới dạng đồ thị";
-            this.btnXemDuoiDangDoThi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXemDuoiDangDoThi.UseVisualStyleBackColor = false;
             // 
             // label12
             // 
@@ -224,23 +173,74 @@
             this.panel11.Size = new System.Drawing.Size(1156, 568);
             this.panel11.TabIndex = 41;
             // 
-            // chart1
+            // btnXemDuoiDangDoThi
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 16);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1086, 351);
-            this.chart1.TabIndex = 45;
-            this.chart1.Text = "chart1";
-            this.chart1.Visible = false;
+            this.btnXemDuoiDangDoThi.BackColor = System.Drawing.Color.Red;
+            this.btnXemDuoiDangDoThi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnXemDuoiDangDoThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemDuoiDangDoThi.ForeColor = System.Drawing.Color.White;
+            this.btnXemDuoiDangDoThi.Image = ((System.Drawing.Image)(resources.GetObject("btnXemDuoiDangDoThi.Image")));
+            this.btnXemDuoiDangDoThi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXemDuoiDangDoThi.Location = new System.Drawing.Point(586, 101);
+            this.btnXemDuoiDangDoThi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnXemDuoiDangDoThi.Name = "btnXemDuoiDangDoThi";
+            this.btnXemDuoiDangDoThi.Size = new System.Drawing.Size(263, 36);
+            this.btnXemDuoiDangDoThi.TabIndex = 6;
+            this.btnXemDuoiDangDoThi.Text = "Xem dưới dạng đồ thị";
+            this.btnXemDuoiDangDoThi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXemDuoiDangDoThi.UseVisualStyleBackColor = false;
+            // 
+            // btnTKSPBanNhieu
+            // 
+            this.btnTKSPBanNhieu.BackColor = System.Drawing.Color.Red;
+            this.btnTKSPBanNhieu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTKSPBanNhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTKSPBanNhieu.ForeColor = System.Drawing.Color.White;
+            this.btnTKSPBanNhieu.Image = ((System.Drawing.Image)(resources.GetObject("btnTKSPBanNhieu.Image")));
+            this.btnTKSPBanNhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTKSPBanNhieu.Location = new System.Drawing.Point(309, 101);
+            this.btnTKSPBanNhieu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnTKSPBanNhieu.Name = "btnTKSPBanNhieu";
+            this.btnTKSPBanNhieu.Size = new System.Drawing.Size(263, 36);
+            this.btnTKSPBanNhieu.TabIndex = 6;
+            this.btnTKSPBanNhieu.Text = "Xem sản phẩm bán nhiều nhất";
+            this.btnTKSPBanNhieu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTKSPBanNhieu.UseVisualStyleBackColor = false;
+            // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.Red;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_report_35;
+            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.Location = new System.Drawing.Point(863, 101);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(263, 36);
+            this.btnReport.TabIndex = 5;
+            this.btnReport.Text = "Xuất doanh thu (Report)";
+            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReport.UseVisualStyleBackColor = false;
+            // 
+            // btnXemTKDoanhThu
+            // 
+            this.btnXemTKDoanhThu.BackColor = System.Drawing.Color.Red;
+            this.btnXemTKDoanhThu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnXemTKDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXemTKDoanhThu.ForeColor = System.Drawing.Color.White;
+            this.btnXemTKDoanhThu.Image = ((System.Drawing.Image)(resources.GetObject("btnXemTKDoanhThu.Image")));
+            this.btnXemTKDoanhThu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXemTKDoanhThu.Location = new System.Drawing.Point(37, 101);
+            this.btnXemTKDoanhThu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnXemTKDoanhThu.Name = "btnXemTKDoanhThu";
+            this.btnXemTKDoanhThu.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
+            this.btnXemTKDoanhThu.Size = new System.Drawing.Size(263, 36);
+            this.btnXemTKDoanhThu.TabIndex = 5;
+            this.btnXemTKDoanhThu.Text = "Xem doanh thu";
+            this.btnXemTKDoanhThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXemTKDoanhThu.UseVisualStyleBackColor = false;
             // 
             // frmThongKe
             // 
@@ -254,9 +254,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grbThongKe.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongKe)).EndInit();
             this.panel11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

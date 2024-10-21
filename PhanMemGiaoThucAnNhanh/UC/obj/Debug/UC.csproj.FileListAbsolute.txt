@@ -55,7 +55,6 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.UC_MonAn.resources
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.GenerateResource.cache
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.CoreCompileInputs.cache
-E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.CopyComplete
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.dll
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\mongocrypt.dll
@@ -115,3 +114,13 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.dll.config
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.dll.config
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.dll
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.dll
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.pdb
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.dll.config
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.pdb
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.dll.config
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.pdb
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll.config
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.Up2Date
