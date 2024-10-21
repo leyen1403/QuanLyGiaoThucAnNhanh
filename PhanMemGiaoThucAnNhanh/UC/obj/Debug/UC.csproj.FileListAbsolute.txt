@@ -106,12 +106,12 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.Proper
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.UC_MonAn.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.GenerateResource.cache
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\obj\Debug\UC.csproj.Up2Date
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll.config
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.dll
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.dll
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\BLL.dll.config
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DAL.dll.config
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.pdb
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\UC\bin\Debug\DTO.dll.config

@@ -96,11 +96,48 @@ namespace BLL
         public DataTable GetMonAnBanChayDataTable()
         {
             return dal.GetMonAnBanChayDataTable();
-        }    
+        }
 
-        public List<MonAn> GetDanhSachMonAn(string maCuaHang)//Lấy toàn bộ món ăn từ cửa hàng
+        //Lấy toàn bộ món ăn từ cửa hàng
+        public List<MonAn> GetDanhSachMonAn(string maCuaHang)
         {
             return dal.GetDanhSachMonAn(maCuaHang);
+        }
+
+        // Lấy danh sách món ăn theo tên
+        public List<MonAn> GetDanhSachMonAnTheoTen(string maCuaHang, string tenMon)
+        {
+            return dal.GetDanhSachMonAnTheoTen(maCuaHang, tenMon);
+        }
+
+        // Lấy danh sách khách hàng
+        public List<KhachHang> LayDanhSachKhachHang()
+        {
+            return dal.LayDanhSachKhachHang();
+        }
+
+        // Kiểm tra khách hàng đăng nhập
+        public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
+        {
+            return dal.KiemTraDangNhapKhachHang(maKH, matKhau);
+        }
+
+        // Lấy danh sách đơn hàng của khách hàng
+        public List<DonHang> LayDanhSachDonHangCuaKhachHang(string maKH)
+        {
+            return dal.LayDanhSachDonHangCuaKhachHang(maKH);
+        }
+
+        // Lấy số lượng đơn hàng của khách hàng
+        public int SoLuongDonHangCuaKhachHang(string maKH)
+        {
+            return LayDanhSachDonHangCuaKhachHang(maKH).Count;
+        }
+
+        // Thêm đơn hàng
+        public bool ThemDonHang(string maKH, DonHang donHang)
+        {
+            return dal.ThemDonHang(maKH, donHang);
         }
     }
 }
