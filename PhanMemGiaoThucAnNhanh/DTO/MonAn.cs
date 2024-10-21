@@ -9,6 +9,7 @@ namespace DTO
 {
     public class MonAn
     {
+        public string MaLoai { get; set; }
         public string MaMon { get; set; }
         public string TenMon { get; set; }
         public string HinhAnh { get; set; }

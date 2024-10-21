@@ -51,6 +51,7 @@ namespace BLL
             return dal.GetDanhSachMonByMaLoaiMon(maLoai);
         }
 
+        //Lấy toàn bộ món ăn bao gồm mã loại món
         public List<BsonDocument> GetDanhSachMon()
         {
             return dal.GetDanhSachMon();
@@ -96,5 +97,10 @@ namespace BLL
         {
             return dal.GetMonAnBanChayDataTable();
         }    
+
+        public List<MonAn> GetDanhSachMonAn(string maCuaHang)//Lấy toàn bộ món ăn từ cửa hàng
+        {
+            return dal.GetDanhSachMonAn(maCuaHang);
+        }
     }
 }

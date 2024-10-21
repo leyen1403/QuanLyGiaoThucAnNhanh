@@ -8,10 +8,8 @@ namespace DTO
 {
     public class CuaHang
     {
-        string maCuaHang;
-        string tenCuaHang;
-
-        public string MaCuaHang { get => maCuaHang; set => maCuaHang = value; }
-        public string TenCuaHang { get => tenCuaHang; set => tenCuaHang = value; }
+        public string MaCuaHang { get; set; }
+        public string TenCuaHang { get; set; }
+        public List<LoaiMonAn> Menu { get; set; } = new List<LoaiMonAn>(); // Khởi tạo danh sách
     }
 }

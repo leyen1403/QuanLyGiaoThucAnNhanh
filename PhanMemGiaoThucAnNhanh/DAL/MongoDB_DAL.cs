@@ -769,6 +769,141 @@ namespace DAL
             return danhSachMonAn; // Trả về danh sách món ăn tìm được
         }
 
+        // Lấy danh sách món ăn từ MongoDB
+        public List<MonAn> GetDanhSachMonAn(string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+            var cuaHangDoc = collection.Find(filter).FirstOrDefault();
+
+            if (cuaHangDoc != null && cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("menu"))
+            {
+                var menuArray = cuaHangDoc["cua_hang"]["menu"].AsBsonArray;
+                List<MonAn> danhSachMonAn = new List<MonAn>();
+
+                foreach (var loaiMon in menuArray)
+                {
+                    if (loaiMon.AsBsonDocument.Contains("mon_an"))
+                    {
+                        var monAnArray = loaiMon["mon_an"].AsBsonArray;
+
+                        foreach (var monAnDoc in monAnArray)
+                        {
+                            var monAn = monAnDoc.AsBsonDocument;
+                            if (monAn["hien_thi"].AsBoolean) // Kiểm tra xem món ăn có được hiển thị không
+                            {
+                                double giaMonDouble = 0;
+                                var giaMonValue = monAn["gia_mon"];
+
+                                if (giaMonValue.IsDecimal128)
+                                {
+                                    giaMonDouble = (double)giaMonValue.AsDecimal128;
+                                }
+                                else if (giaMonValue.IsDouble)
+                                {
+                                    giaMonDouble = giaMonValue.AsDouble;
+                                }
+                                else if (giaMonValue.IsInt32)
+                                {
+                                    giaMonDouble = giaMonValue.AsInt32;
+                                }
+
+                                var newMonAn = new MonAn(
+                                    monAn["ma_mon_an"].AsString,
+                                    monAn["ten_mon"].AsString,
+                                    monAn["hinh_anh"].AsString,
+                                    giaMonDouble,
+                                    monAn["mo_ta"].AsString,
+                                    monAn["hien_thi"].AsBoolean
+                                );
+
+                                danhSachMonAn.Add(newMonAn);
+                            }
+                        }
+                    }
+                }
+
+                return danhSachMonAn;
+            }
+
+            return new List<MonAn>(); // Trả về danh sách rỗng nếu không tìm thấy món ăn
+        }
+
+        // Lấy danh sách menu từ MongoDB
+        public List<LoaiMonAn> GetDanhSachMenu(string maCuaHang)
+        {
+            var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
+            var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+            var cuaHangDoc = collection.Find(filter).FirstOrDefault();
+
+            if (cuaHangDoc != null && cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("menu"))
+            {
+                var menuArray = cuaHangDoc["cua_hang"]["menu"].AsBsonArray;
+                List<LoaiMonAn> danhSachMenu = new List<LoaiMonAn>();
+
+                foreach (var loaiMon in menuArray)
+                {
+                    var loaiMonDoc = loaiMon.AsBsonDocument;
+                    var monAnList = new List<MonAn>();
+
+                    if (loaiMonDoc.Contains("mon_an"))
+                    {
+                        var monAnArray = loaiMonDoc["mon_an"].AsBsonArray;
+
+                        foreach (var monAnDoc in monAnArray)
+                        {
+                            var monAn = monAnDoc.AsBsonDocument;
+
+                            // Chỉ thêm món ăn nếu nó được hiển thị
+                            if (monAn["hien_thi"].AsBoolean)
+                            {
+                                double giaMonDouble = 0;
+                                var giaMonValue = monAn["gia_mon"];
+
+                                if (giaMonValue.IsDecimal128)
+                                {
+                                    giaMonDouble = (double)giaMonValue.AsDecimal128;
+                                }
+                                else if (giaMonValue.IsDouble)
+                                {
+                                    giaMonDouble = giaMonValue.AsDouble;
+                                }
+                                else if (giaMonValue.IsInt32)
+                                {
+                                    giaMonDouble = giaMonValue.AsInt32;
+                                }
+
+                                var newMonAn = new MonAn(
+                                    monAn["ma_mon_an"].AsString,
+                                    monAn["ten_mon"].AsString,
+                                    monAn["hinh_anh"].AsString,
+                                    giaMonDouble,
+                                    monAn["mo_ta"].AsString,
+                                    monAn["hien_thi"].AsBoolean
+                                );
+
+                                monAnList.Add(newMonAn);
+                            }
+                        }
+                    }
+
+                    // Khởi tạo Loại Món
+                    var newLoaiMonAn = new LoaiMonAn
+                    {
+                        MaLoaiMon = loaiMonDoc["ma_loai_mon"].AsString,
+                        TenLoaiMon = loaiMonDoc["ten_loai_mon"].AsString,
+                        AnhLoaiMon = loaiMonDoc["anh_loai_mon"].AsString,
+                        MonAn = monAnList
+                    };
+
+                    danhSachMenu.Add(newLoaiMonAn);
+                }
+
+                return danhSachMenu;
+            }
+
+            return new List<LoaiMonAn>(); // Trả về danh sách rỗng nếu không tìm thấy menu
+        }
 
 
     }

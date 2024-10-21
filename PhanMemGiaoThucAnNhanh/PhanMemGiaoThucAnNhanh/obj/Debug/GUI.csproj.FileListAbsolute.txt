@@ -8,9 +8,7 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.exe
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\BLL.dll
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\BLL.pdb
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.pdb
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.Up2Date
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmDangNhap.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmDangKy.resources
@@ -72,7 +70,6 @@ D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmLoaiMon.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMonAn.resources
 D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmThongKe.resources
-D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\mongocrypt.dll
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.exe.config
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\PhanMemGiaoThucAnNhanh.exe
@@ -145,6 +142,10 @@ E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNh
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.Properties.Resources.resources
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.GenerateResource.cache
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.CopyComplete
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.exe
 E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.pdb
-E:\Code Sinh Vien Nam 4\NoSQL_LyThuyet\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.Up2Date
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.pdb
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\bin\Debug\UC.dll.config
+D:\HK7\NoSql\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmDatMon.resources
