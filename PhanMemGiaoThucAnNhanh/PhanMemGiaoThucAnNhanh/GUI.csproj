@@ -190,11 +190,23 @@
     <Compile Include="frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDangNhapKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDangNhapKH.Designer.cs">
+      <DependentUpon>frmDangNhapKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDatMon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDatMon.Designer.cs">
       <DependentUpon>frmDatMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDonDatHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDonDatHang.Designer.cs">
+      <DependentUpon>frmDonDatHang.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDonHang.cs">
       <SubType>Form</SubType>
@@ -207,6 +219,12 @@
     </Compile>
     <Compile Include="frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLichSuDonHangKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLichSuDonHangKH.Designer.cs">
+      <DependentUpon>frmLichSuDonHangKH.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLoaiMon.cs">
       <SubType>Form</SubType>
@@ -249,14 +267,23 @@
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDangNhapKH.resx">
+      <DependentUpon>frmDangNhapKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDatMon.resx">
       <DependentUpon>frmDatMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDonDatHang.resx">
+      <DependentUpon>frmDonDatHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDonHang.resx">
       <DependentUpon>frmDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLichSuDonHangKH.resx">
+      <DependentUpon>frmLichSuDonHangKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoaiMon.resx">
       <DependentUpon>frmLoaiMon.cs</DependentUpon>
@@ -304,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\icons8-history-48.png" />
     <None Include="Resources\icons8-report-35.png" />
     <None Include="Resources\icons8-search-35.png" />
     <None Include="Resources\icons8-folder-35.png" />

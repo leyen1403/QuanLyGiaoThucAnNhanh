@@ -11,5 +11,6 @@ namespace DTO
         public string MaCuaHang { get; set; }
         public string TenCuaHang { get; set; }
         public List<LoaiMonAn> Menu { get; set; } = new List<LoaiMonAn>(); // Khởi tạo danh sách
+        public CuaHang () { }
     }
 }

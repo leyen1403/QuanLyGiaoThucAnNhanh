@@ -16,6 +16,7 @@ namespace DTO
         public double GiaMon { get; set; }
         public string MoTa { get; set; }
         public bool HienThi { get; set; }
+        public double SoLuong { get; set; }
         public MonAn(string maMon, string tenMon, string hinhAnh, double giaMon, string moTa, bool hienThi)
         {
             MaMon = maMon;
@@ -24,6 +25,10 @@ namespace DTO
             GiaMon = giaMon;
             MoTa = moTa;
             HienThi = hienThi;
+        }
+        public MonAn()
+        {
+
         }
     }
 }

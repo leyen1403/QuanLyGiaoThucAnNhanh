@@ -148,8 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CuaHang.cs" />
+    <Compile Include="DonHang.cs" />
+    <Compile Include="KhachHang.cs" />
     <Compile Include="LoaiMonAn.cs" />
     <Compile Include="MonAn.cs" />
+    <Compile Include="MonAnDonHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
