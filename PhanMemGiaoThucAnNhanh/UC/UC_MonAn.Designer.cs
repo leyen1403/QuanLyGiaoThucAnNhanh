@@ -29,49 +29,49 @@ namespace UC
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_TenMonAn = new System.Windows.Forms.Label();
-            this.lbl_MoTaMonAn = new System.Windows.Forms.Label();
-            this.lbl_GiaMonAn = new System.Windows.Forms.Label();
+            this.lblTenMonAn = new System.Windows.Forms.Label();
+            this.lblMoTa = new System.Windows.Forms.Label();
+            this.lblGiaMonAn = new System.Windows.Forms.Label();
             this.lblSelected = new System.Windows.Forms.Label();
             this.btnGiam = new System.Windows.Forms.Button();
             this.btnTang = new System.Windows.Forms.Button();
-            this.pictureBoxAnhMonAn = new System.Windows.Forms.PictureBox();
+            this.ptbHinhAnh = new System.Windows.Forms.PictureBox();
             this.lbl_SoLuongDaChon = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhMonAn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_TenMonAn
+            // lblTenMonAn
             // 
-            this.lbl_TenMonAn.AutoSize = true;
-            this.lbl_TenMonAn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TenMonAn.ForeColor = System.Drawing.Color.Black;
-            this.lbl_TenMonAn.Location = new System.Drawing.Point(3, 150);
-            this.lbl_TenMonAn.Name = "lbl_TenMonAn";
-            this.lbl_TenMonAn.Size = new System.Drawing.Size(127, 16);
-            this.lbl_TenMonAn.TabIndex = 1;
-            this.lbl_TenMonAn.Text = "Bánh mỳ tuấn mập";
+            this.lblTenMonAn.AutoSize = true;
+            this.lblTenMonAn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenMonAn.ForeColor = System.Drawing.Color.Black;
+            this.lblTenMonAn.Location = new System.Drawing.Point(3, 150);
+            this.lblTenMonAn.Name = "lblTenMonAn";
+            this.lblTenMonAn.Size = new System.Drawing.Size(81, 16);
+            this.lblTenMonAn.TabIndex = 1;
+            this.lblTenMonAn.Text = "Tên món ăn";
             // 
-            // lbl_MoTaMonAn
+            // lblMoTa
             // 
-            this.lbl_MoTaMonAn.AutoSize = true;
-            this.lbl_MoTaMonAn.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_MoTaMonAn.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_MoTaMonAn.Location = new System.Drawing.Point(3, 174);
-            this.lbl_MoTaMonAn.Name = "lbl_MoTaMonAn";
-            this.lbl_MoTaMonAn.Size = new System.Drawing.Size(112, 14);
-            this.lbl_MoTaMonAn.TabIndex = 2;
-            this.lbl_MoTaMonAn.Text = "Write description...";
+            this.lblMoTa.AutoSize = true;
+            this.lblMoTa.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMoTa.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lblMoTa.Location = new System.Drawing.Point(3, 174);
+            this.lblMoTa.Name = "lblMoTa";
+            this.lblMoTa.Size = new System.Drawing.Size(38, 14);
+            this.lblMoTa.TabIndex = 2;
+            this.lblMoTa.Text = "Mô tả";
             // 
-            // lbl_GiaMonAn
+            // lblGiaMonAn
             // 
-            this.lbl_GiaMonAn.AutoSize = true;
-            this.lbl_GiaMonAn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_GiaMonAn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbl_GiaMonAn.Location = new System.Drawing.Point(4, 238);
-            this.lbl_GiaMonAn.Name = "lbl_GiaMonAn";
-            this.lbl_GiaMonAn.Size = new System.Drawing.Size(59, 16);
-            this.lbl_GiaMonAn.TabIndex = 3;
-            this.lbl_GiaMonAn.Text = "₫15,000";
+            this.lblGiaMonAn.AutoSize = true;
+            this.lblGiaMonAn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGiaMonAn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblGiaMonAn.Location = new System.Drawing.Point(4, 238);
+            this.lblGiaMonAn.Name = "lblGiaMonAn";
+            this.lblGiaMonAn.Size = new System.Drawing.Size(59, 16);
+            this.lblGiaMonAn.TabIndex = 3;
+            this.lblGiaMonAn.Text = "₫15,000";
             // 
             // lblSelected
             // 
@@ -103,13 +103,13 @@ namespace UC
             this.btnTang.TabIndex = 5;
             this.btnTang.UseVisualStyleBackColor = true;
             // 
-            // pictureBoxAnhMonAn
+            // ptbHinhAnh
             // 
-            this.pictureBoxAnhMonAn.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxAnhMonAn.Name = "pictureBoxAnhMonAn";
-            this.pictureBoxAnhMonAn.Size = new System.Drawing.Size(210, 147);
-            this.pictureBoxAnhMonAn.TabIndex = 4;
-            this.pictureBoxAnhMonAn.TabStop = false;
+            this.ptbHinhAnh.Location = new System.Drawing.Point(0, 0);
+            this.ptbHinhAnh.Name = "ptbHinhAnh";
+            this.ptbHinhAnh.Size = new System.Drawing.Size(210, 147);
+            this.ptbHinhAnh.TabIndex = 4;
+            this.ptbHinhAnh.TabStop = false;
             // 
             // lbl_SoLuongDaChon
             // 
@@ -130,14 +130,13 @@ namespace UC
             this.Controls.Add(this.lbl_SoLuongDaChon);
             this.Controls.Add(this.btnGiam);
             this.Controls.Add(this.btnTang);
-            this.Controls.Add(this.pictureBoxAnhMonAn);
-            this.Controls.Add(this.lbl_GiaMonAn);
-            this.Controls.Add(this.lbl_MoTaMonAn);
-            this.Controls.Add(this.lbl_TenMonAn);
+            this.Controls.Add(this.ptbHinhAnh);
+            this.Controls.Add(this.lblGiaMonAn);
+            this.Controls.Add(this.lblMoTa);
+            this.Controls.Add(this.lblTenMonAn);
             this.Name = "UC_MonAn";
             this.Size = new System.Drawing.Size(210, 288);
-            this.Load += new System.EventHandler(this.UC_MonAn_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnhMonAn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,11 +144,11 @@ namespace UC
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_GiaMonAn;
-        private System.Windows.Forms.Label lbl_MoTaMonAn;
-        private System.Windows.Forms.Label lbl_TenMonAn;
+        private System.Windows.Forms.Label lblGiaMonAn;
+        private System.Windows.Forms.Label lblMoTa;
+        private System.Windows.Forms.Label lblTenMonAn;
         private System.Windows.Forms.Label lblSelected;
-        private System.Windows.Forms.PictureBox pictureBoxAnhMonAn;
+        private System.Windows.Forms.PictureBox ptbHinhAnh;
         private System.Windows.Forms.Button btnTang;
         private System.Windows.Forms.Button btnGiam;
         private System.Windows.Forms.Label lbl_SoLuongDaChon;

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnDanhSachMonAn = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -44,13 +44,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // pnDanhSachMonAn
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 116);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1077, 482);
-            this.panel2.TabIndex = 24;
+            this.pnDanhSachMonAn.AutoSize = true;
+            this.pnDanhSachMonAn.Location = new System.Drawing.Point(0, 116);
+            this.pnDanhSachMonAn.Name = "pnDanhSachMonAn";
+            this.pnDanhSachMonAn.Size = new System.Drawing.Size(1077, 482);
+            this.pnDanhSachMonAn.TabIndex = 24;
             // 
             // panel1
             // 
@@ -177,7 +177,7 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1077, 598);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnDanhSachMonAn);
             this.Name = "frmOrders";
             this.Text = "frmOrders";
             this.panel1.ResumeLayout(false);
@@ -186,11 +186,12 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnDanhSachMonAn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel3;

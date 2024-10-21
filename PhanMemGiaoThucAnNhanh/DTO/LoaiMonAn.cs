@@ -10,5 +10,7 @@ namespace DTO
     {
         public string MaLoaiMon { get; set; }
         public string TenLoaiMon { get; set; }
+        public string AnhLoaiMon { get; set; }
+        public List<MonAn> MonAn { get; set; }
     }
 }
