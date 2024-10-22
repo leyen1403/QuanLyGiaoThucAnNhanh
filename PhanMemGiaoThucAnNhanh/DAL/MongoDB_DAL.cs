@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Data;
 using DTO;
+using ZstdSharp.Unsafe;
 
 namespace DAL
 {
@@ -560,174 +561,6 @@ namespace DAL
                 return false; // Trả về false nếu có lỗi xảy ra
             }
         }
-
-        // Them mon an vao loai mon
-        public bool ThemMonAnVaoLoaiMon(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            try
-            {
-                // Lấy collection CuaHangGiaoThucAnNhanh
-                var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
-                var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
-                var cuaHangDocument = collection.Find(filter).FirstOrDefault();
-
-                if (cuaHangDocument == null)
-                {
-                    throw new Exception("Document cửa hàng không tồn tại trong MongoDB.");
-                }
-
-                var menuArray = cuaHangDocument["cua_hang"]["menu"].AsBsonArray;
-                var loaiMon = menuArray.FirstOrDefault(m => m["ma_loai_mon"] == maLoai);
-
-                if (loaiMon == null)
-                {
-                    throw new Exception("Loại món không tồn tại trong menu.");
-                }
-
-                var monAnArray = loaiMon["mon_an"].AsBsonArray;
-
-                // Kiểm tra xem món ăn đã tồn tại hay chưa
-                var existingMonAn = monAnArray.FirstOrDefault(m => m["ma_mon_an"] == monAn.MaMon);
-                if (existingMonAn != null)
-                {
-                    throw new Exception("Món ăn đã tồn tại trong loại món này.");
-                }
-
-                // Thêm món ăn mới vào danh sách món ăn
-                var newMonAn = new BsonDocument
-        {
-            { "ma_mon_an", monAn.MaMon },
-            { "ten_mon", monAn.TenMon },
-            { "gia_mon", monAn.GiaMon },
-            { "hien_thi", monAn.HienThi },
-            { "mo_ta", monAn.MoTa },
-            { "hinh_anh", monAn.HinhAnh }
-        };
-
-                monAnArray.Add(newMonAn);
-
-                // Cập nhật lại danh sách món ăn vào loại món
-                loaiMon["mon_an"] = monAnArray;
-
-                // Cập nhật document cửa hàng vào collection
-                collection.ReplaceOne(Builders<BsonDocument>.Filter.Eq("_id", cuaHangDocument["_id"]), cuaHangDocument);
-
-                return true; // Trả về true nếu thành công
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi (log lỗi nếu cần)
-                Console.WriteLine($"Lỗi: {ex.Message}");
-                return false; // Trả về false nếu có lỗi xảy ra
-            }
-        }
-
-        // xoa mon an
-        public bool XoaMonAn(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            try
-            {
-                var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
-                var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
-                var cuaHangDocument = collection.Find(filter).FirstOrDefault();
-
-                if (cuaHangDocument == null)
-                {
-                    throw new Exception("Document cửa hàng không tồn tại trong MongoDB.");
-                }
-
-                var menuArray = cuaHangDocument["cua_hang"]["menu"].AsBsonArray;
-                var loaiMon = menuArray.FirstOrDefault(m => m["ma_loai_mon"] == maLoai);
-
-                if (loaiMon == null)
-                {
-                    throw new Exception("Loại món không tồn tại trong menu.");
-                }
-
-                var monAnArray = loaiMon["mon_an"].AsBsonArray;
-                var monAnToRemove = monAnArray.FirstOrDefault(m => m["ma_mon_an"] == monAn.MaMon);
-
-                if (monAnToRemove != null)
-                {
-                    // Xóa món ăn
-                    monAnArray.Remove(monAnToRemove);
-
-                    // Cập nhật lại danh sách món ăn vào loại món
-                    loaiMon["mon_an"] = monAnArray;
-
-                    // Cập nhật document cửa hàng vào collection
-                    collection.ReplaceOne(Builders<BsonDocument>.Filter.Eq("_id", cuaHangDocument["_id"]), cuaHangDocument);
-
-                    return true; // Trả về true nếu xóa thành công
-                }
-                else
-                {
-                    throw new Exception("Món ăn không tồn tại trong loại món.");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi (log lỗi nếu cần)
-                Console.WriteLine($"Lỗi: {ex.Message}");
-                return false; // Trả về false nếu có lỗi xảy ra
-            }
-        }
-
-        // Cap nhat thong tin mon an
-        public bool CapNhatThongTinMonAn(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            try
-            {
-                var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
-                var filter = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
-                var cuaHangDocument = collection.Find(filter).FirstOrDefault();
-
-                if (cuaHangDocument == null)
-                {
-                    throw new Exception("Document cửa hàng không tồn tại trong MongoDB.");
-                }
-
-                var menuArray = cuaHangDocument["cua_hang"]["menu"].AsBsonArray;
-                var loaiMon = menuArray.FirstOrDefault(m => m["ma_loai_mon"] == maLoai);
-
-                if (loaiMon == null)
-                {
-                    throw new Exception("Loại món không tồn tại trong menu.");
-                }
-
-                var monAnArray = loaiMon["mon_an"].AsBsonArray;
-                var existingMonAn = monAnArray.FirstOrDefault(m => m["ma_mon_an"] == monAn.MaMon);
-
-                if (existingMonAn != null)
-                {
-                    // Cập nhật thông tin món ăn
-                    existingMonAn["ten_mon"] = monAn.TenMon;
-                    existingMonAn["gia_mon"] = monAn.GiaMon;
-                    existingMonAn["hien_thi"] = monAn.HienThi;
-                    existingMonAn["mo_ta"] = monAn.MoTa;
-                    existingMonAn["hinh_anh"] = monAn.HinhAnh;
-
-                    // Cập nhật lại danh sách món ăn vào loại món
-                    loaiMon["mon_an"] = monAnArray;
-
-                    // Cập nhật document cửa hàng vào collection
-                    collection.ReplaceOne(Builders<BsonDocument>.Filter.Eq("_id", cuaHangDocument["_id"]), cuaHangDocument);
-
-                    return true; // Trả về true nếu cập nhật thành công
-                }
-                else
-                {
-                    throw new Exception("Món ăn không tồn tại trong loại món.");
-                }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi (log lỗi nếu cần)
-                Console.WriteLine($"Lỗi: {ex.Message}");
-                return false; // Trả về false nếu có lỗi xảy ra
-            }
-        }
-
         public List<MonAn> TimMonAnTheoTen(string tenMon)
         {
             var collection = this.GetCollection("CuaHangGiaoThucAnNhanh");
@@ -1203,5 +1036,259 @@ namespace DAL
 
             return false; // Không tìm thấy khách hàng
         }
+
+        // Lấy danh sách loại món ăn của cửa hàng
+        public List<LoaiMonAn> LayDanhSachLoaiMon()
+        {
+            List<LoaiMonAn> danhSachLoaiMon = new List<LoaiMonAn>();
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+            // Duyệt qua từng cửa hàng
+            foreach (var cuaDoc in cuaHangDocs)
+            {
+                // lấy toàn bộ menu có trong cửa hàng đó
+                var menuArray = cuaDoc["cua_hang"]["menu"].AsBsonArray;
+                //Duyệt qua từng loại món trong menu
+                foreach (var menu in menuArray)
+                {
+                    LoaiMonAn loaiMon = new LoaiMonAn();
+                    loaiMon.MaLoaiMon = menu["ma_loai_mon"].AsString;
+                    loaiMon.TenLoaiMon = menu["ten_loai_mon"].AsString;
+                    loaiMon.AnhLoaiMon = menu["anh_loai_mon"].AsString;
+                    danhSachLoaiMon.Add(loaiMon);
+                }
+
+            }
+            return danhSachLoaiMon;
+        }
+
+        // Lấy danh sách món ăn từ cửa hàng
+        public List<MonAnCuaHang> LayDanhSachMonAn()
+        {
+            List<MonAnCuaHang> dsMonAn = new List<MonAnCuaHang>();
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+            // Duyệt qua từng cửa hàng
+            foreach (var cuaDoc in cuaHangDocs)
+            {
+                // lấy toàn bộ menu có trong cửa hàng đó
+                var menuArray = cuaDoc["cua_hang"]["menu"].AsBsonArray;
+                foreach (var menu in menuArray)
+                {
+                    foreach(var MonAn in menu["mon_an"].AsBsonArray)
+                    {
+                        MonAnCuaHang monAn = new MonAnCuaHang();
+                        monAn.MaLoaiMonAn = menu["ma_loai_mon"].AsString;
+                        monAn.MaMonAn = MonAn["ma_mon_an"].AsString;
+                        monAn.TenMon = MonAn["ten_mon"].AsString;
+                        monAn.GiaMon = MonAn["gia_mon"].IsDouble ? MonAn["gia_mon"].AsDouble: MonAn["gia_mon"].AsInt32;
+                        monAn.HienThi = MonAn["hien_thi"].AsBoolean;
+                        monAn.MoTa = MonAn["mo_ta"].AsString;
+                        monAn.HinhAnh = MonAn["hinh_anh"].AsString;
+                        dsMonAn.Add(monAn);
+                    }
+                }
+
+            }
+            return dsMonAn;
+        }
+
+        // Lấy danh sách món ăn từ tên
+        public List<MonAnCuaHang> LayDanhSachMonTheoTenMon(string tenMon)
+        {
+            List<MonAnCuaHang> dsMonAn = new List<MonAnCuaHang>();
+            List<MonAnCuaHang> dsMonAnNew = new List<MonAnCuaHang>();
+            dsMonAn = LayDanhSachMonAn();
+            foreach(MonAnCuaHang item in dsMonAn)
+            {
+                if (item.TenMon.IndexOf(tenMon, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    dsMonAnNew.Add(item);
+                }
+            }
+            return dsMonAnNew;
+        }
+
+        // Thêm mới món ăn
+        public bool ThemMonAnVaoMenu(string maCuaHang, string maLoaiMon, MonAnCuaHang monAnMoi)
+        {
+            try
+            {
+                // Lấy collection từ MongoDB
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng theo mã cửa hàng và loại món theo mã loại món
+                var filter = Builders<BsonDocument>.Filter.And(
+                    Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang),
+                    Builders<BsonDocument>.Filter.Eq("cua_hang.menu.ma_loai_mon", maLoaiMon)
+                );
+
+                // Tạo đối tượng món ăn mới
+                var monAnMoiBson = new BsonDocument
+        {
+            { "ma_mon_an", monAnMoi.MaMonAn },
+            { "ten_mon", monAnMoi.TenMon },
+            { "hinh_anh", monAnMoi.HinhAnh },
+            { "gia_mon", monAnMoi.GiaMon },
+            { "mo_ta", monAnMoi.MoTa },
+            { "hien_thi", monAnMoi.HienThi }
+        };
+
+                // Update để thêm món ăn mới vào menu của loại món đó
+                var update = Builders<BsonDocument>.Update.Push("cua_hang.menu.$.mon_an", monAnMoiBson);
+
+                // Thực hiện cập nhật
+                var result = collection.UpdateOne(filter, update);
+
+                // Kiểm tra kết quả cập nhật
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu có lỗi
+                Console.WriteLine("Lỗi khi thêm món ăn: " + ex.Message);
+                return false;
+            }
+        }
+
+        // Xoá món ăn
+        public bool XoaMonAn(string maCuaHang, string maMonAn, string maLoai)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc != null)
+                {
+                    // Tìm loại món ăn trong menu
+                    var menu = cuaHangDoc["cua_hang"]["menu"].AsBsonArray;
+
+                    foreach (var loaiMon in menu)
+                    {
+                        if (loaiMon["ma_loai_mon"] == maLoai)
+                        {
+                            // Tìm món ăn trong loại món
+                            var monAnList = loaiMon["mon_an"].AsBsonArray;
+                            var monAnToRemove = monAnList.FirstOrDefault(m => m["ma_mon_an"] == maMonAn);
+
+                            if (monAnToRemove != null)
+                            {
+                                // Xóa món ăn
+                                monAnList.Remove(monAnToRemove);
+
+                                // Cập nhật lại cửa hàng trong cơ sở dữ liệu
+                                var update = Builders<BsonDocument>.Update.Set("cua_hang.menu", menu);
+                                collection.UpdateOne(filterCuaHang, update);
+                                return true; // Trả về true nếu xóa thành công
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ (nếu cần)
+                Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
+            }
+            return false; // Trả về false nếu không tìm thấy hoặc xóa không thành công
+        }
+
+        //Cập nhật món ăn
+        public bool CapNhatMonAn(string maCuahang, string maLoai, MonAnCuaHang monAn)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuahang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc != null)
+                {
+                    // Tìm loại món ăn trong menu
+                    var menu = cuaHangDoc["cua_hang"]["menu"].AsBsonArray;
+
+                    foreach (var loaiMon in menu)
+                    {
+                        if (loaiMon["ma_loai_mon"] == maLoai)
+                        {
+                            // Tìm món ăn trong loại món
+                            var monAnList = loaiMon["mon_an"].AsBsonArray;
+                            var monAnToUpdate = monAnList.FirstOrDefault(m => m["ma_mon_an"] == monAn.MaMonAn);
+
+                            if (monAnToUpdate != null)
+                            {
+                                // Cập nhật thông tin món ăn
+                                monAnToUpdate["ten_mon"] = monAn.TenMon;
+                                monAnToUpdate["hinh_anh"] = monAn.HinhAnh;
+                                monAnToUpdate["gia_mon"] = monAn.GiaMon;
+                                monAnToUpdate["mo_ta"] = monAn.MoTa;
+                                monAnToUpdate["hien_thi"] = monAn.HienThi;
+
+                                // Cập nhật lại cửa hàng trong cơ sở dữ liệu
+                                var update = Builders<BsonDocument>.Update.Set("cua_hang.menu", menu);
+                                collection.UpdateOne(filterCuaHang, update);
+                                return true; // Trả về true nếu cập nhật thành công
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ (nếu cần)
+                Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
+            }
+            return false; // Trả về false nếu không tìm thấy hoặc cập nhật không thành công
+        }
+
+        // Tạo tài khoản khách hàng
+        public bool TaoTaiKhoanKhachHang(string maCuaHang, KhachHang kh)
+        {
+            try
+            {
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc != null)
+                {
+                    // Tạo tài khoản khách hàng mới
+                    var khachHangDoc = new BsonDocument
+            {
+                { "ma_khach_hang", kh.MaKhachHang },
+                { "ten_khach_hang", kh.TenKhachHang },
+                { "so_dien_thoai", kh.SoDienThoai },
+                { "dia_chi", kh.DiaChi },
+                { "email", kh.Email },
+                { "diem_tich_luy_hien_co", kh.DiemTichLuyHienCo },
+                { "hoat_dong", kh.HoatDong },
+                { "mat_khau", kh.MatKhau },
+                { "don_hang", new BsonArray() }
+            };
+
+                    // Thêm khách hàng vào danh sách khách hàng của cửa hàng
+                    var update = Builders<BsonDocument>.Update.Push("cua_hang.khach_hang", khachHangDoc);
+                    collection.UpdateOne(filterCuaHang, update);
+                    return true; // Trả về true nếu thêm thành công
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
+            }
+            return false; // Trả về false nếu có lỗi xảy ra
+        }
+
+
     }
 }

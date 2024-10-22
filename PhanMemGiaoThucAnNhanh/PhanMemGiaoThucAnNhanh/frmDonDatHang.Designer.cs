@@ -63,7 +63,7 @@
             this.label1.Location = new System.Drawing.Point(12, 375);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 24);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Tổng tiền:";
             // 
             // lblTongTien
@@ -84,7 +84,7 @@
             this.btnThanhToan.Location = new System.Drawing.Point(610, 359);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(153, 57);
-            this.btnThanhToan.TabIndex = 2;
+            this.btnThanhToan.TabIndex = 0;
             this.btnThanhToan.Text = "THANH TOÁN";
             this.btnThanhToan.UseVisualStyleBackColor = false;
             // 

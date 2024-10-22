@@ -29,20 +29,24 @@ namespace PhanMemGiaoThucAnNhanh
             this.btn_DangNhap.Click += Btn_DangNhap_Click;
             this.cb_HienMatKhau.CheckedChanged += Cb_HienMatKhau_CheckedChanged;
             this.lbl_TaoTaiKhoan.Click += Lbl_TaoTaiKhoan_Click;
-            this.btn_Xoa.Click += Btn_Xoa_Click;
+            this.btnDangNhapKhachHang.Click += BtnDangNhapKhachHang_Click;
             
         }
 
-        // Xoa thong tin dang nhap
-        private void Btn_Xoa_Click(object sender, EventArgs e)
+        private void BtnDangNhapKhachHang_Click(object sender, EventArgs e)
         {
-            try
+            string matKhau = txt_MatKhau.Text;
+            string tenDN = txt_TenDangNhap.Text;
+            if (bll.KiemTraDangNhapKhachHang(tenDN, matKhau))
             {
-
+                frmDatMon f = new frmDatMon(tenDN);
+                this.Hide();
+                f.Show();
             }
-            catch (Exception ex)
+            else
             {
-                HienThiLoi(ex);
+                MessageBox.Show("Tên đăng nhập hoặc tài khoản không chính xác");
+                return;
             }
         }
 
@@ -51,7 +55,8 @@ namespace PhanMemGiaoThucAnNhanh
         {
             try
             {
-
+                frmDangKy f = new frmDangKy();
+                f.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -78,7 +83,7 @@ namespace PhanMemGiaoThucAnNhanh
 
         }
 
-        // Dang nhap click
+        // Dang nhap cua hang click
         private void Btn_DangNhap_Click(object sender, EventArgs e)
         {
             if (txt_TenDangNhap.Text.Trim().Length == 0)
@@ -95,18 +100,18 @@ namespace PhanMemGiaoThucAnNhanh
             }
             string tendangnhap = txt_TenDangNhap.Text;
             string matkhau = txt_MatKhau.Text;
-
-
-            //var kq = bll.GetOneCuaHang(tendangnhap, matkhau);
             bool kq = bll.IsValidCuaHang(tendangnhap, matkhau);
             if (kq == true)
             {
                 MessageBox.Show("Đăng nhập thành công !!!");
-
+                frmMain f = new frmMain();
+                this.Hide();
+                f.Show();
             }
             else
             {
-                MessageBox.Show("Đăng nhập khoong thành công !!!");
+                MessageBox.Show("Tên đăng nhập hoặc tài khoản không chính xác");
+                return;
             }
         }
 
@@ -115,6 +120,7 @@ namespace PhanMemGiaoThucAnNhanh
         {
             MessageBox.Show("Lỗi: " + ex.Message);
         }
+
 
     }
 }

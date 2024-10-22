@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,80 +14,74 @@ namespace PhanMemGiaoThucAnNhanh
 {
     public partial class frmDangKy : Form
     {
+        string maCuaHang = "kfc-store-001";
+        MongoDB_BLL bll = new MongoDB_BLL();
         public frmDangKy()
         {
             InitializeComponent();
-            loadSuKien();
-        }
-
-        private void loadSuKien()
-        {
-            this.Text = "Đăng ký tài khoản";
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.Load += FrmDangKy_Load;
-            this.cb_HienMatKhau.CheckedChanged += Cb_HienMatKhau_CheckedChanged;
-            this.btn_DangKy.Click += Btn_DangKy_Click;
-            this.btn_Xoa.Click += Btn_Xoa_Click;
+            this.cbHienMatKhau.CheckedChanged += CbHienMatKhau_CheckedChanged;
+            btnDangKy.Click += BtnDangKy_Click;
         }
 
-        // Xoa thong tin nhap
-        private void Btn_Xoa_Click(object sender, EventArgs e)
+        private void BtnDangKy_Click(object sender, EventArgs e)
         {
-            txt_TenDangNhap.Text = "";
-            txt_MatKhau.Text = "";
-            txt_NhapLaiMatKhau.Text = "";
-            txt_TenDangNhap.Focus();
-        }
-
-        // Dang ky tai khoan
-        private void Btn_DangKy_Click(object sender, EventArgs e)
-        {
-            if (txt_TenDangNhap.Text == "" || txt_MatKhau.Text == "" || txt_NhapLaiMatKhau.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txt_MatKhau.Text != txt_NhapLaiMatKhau.Text)
+            string tenDN = txt_TenDangNhap.Text;
+            string matKhau = txtMatKhau.Text;
+            string nhapLaiMK = txtNhapLaiMK.Text;
+            if (matKhau != nhapLaiMK)
             {
                 MessageBox.Show("Mật khẩu không trùng khớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            try
+            string HoTen = txtHoTen.Text;
+            string std = txtSDT.Text;
+            string email = txtEmail.Text;
+            string diaChi = txtDiaChi.Text;
+            if (tenDN == "" || matKhau == "" || HoTen == "" || std == "" || email == "" || diaChi == "")
             {
-                // Kiem tra ten dang nhap da ton tai chua                 
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+            KhachHang kh = new KhachHang();
+            kh.MaKhachHang = tenDN;
+            kh.MatKhau = matKhau;
+            kh.TenKhachHang = HoTen;
+            kh.DiaChi = diaChi;
+            kh.Email = email;
+            kh.HoatDong = true;
+            kh.DiemTichLuyHienCo = 0;
+            kh.SoDienThoai = txtSDT.Text;
+            if (bll.TaoTaiKhoanKhachHang(maCuaHang, kh))
             {
-                HienThiLoi(ex);
-            }
-        }
-
-        //Hien thi loi khi xay ra exception
-        private void HienThiLoi(Exception ex)
-        {
-            MessageBox.Show("Lỗi\n" + ex.Message);
-        }
-
-        // An/Hien mat khau
-        private void Cb_HienMatKhau_CheckedChanged(object sender, EventArgs e)
-        {
-            if(cb_HienMatKhau.Checked)
-            {
-                txt_MatKhau.PasswordChar = '\0';
-                txt_NhapLaiMatKhau.PasswordChar = '\0';
+                MessageBox.Show("Đăng ký thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-                txt_MatKhau.PasswordChar = '*';
-                txt_NhapLaiMatKhau.PasswordChar = '*';
+                MessageBox.Show("Đăng ký thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        // Load form
+        private void CbHienMatKhau_CheckedChanged(object sender, EventArgs e)
+        {
+            if(txtMatKhau.UseSystemPasswordChar == true)
+            {
+                txtMatKhau.UseSystemPasswordChar = false;
+                txtNhapLaiMK.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtMatKhau.UseSystemPasswordChar = true;
+                txtNhapLaiMK.UseSystemPasswordChar = true;
+            }
+        }
+
         private void FrmDangKy_Load(object sender, EventArgs e)
         {
-            
+            // Thiết lập hiển thị mật khẩu trong TextBox
+            txtMatKhau.UseSystemPasswordChar = true;
+            txtNhapLaiMK.UseSystemPasswordChar = true;
         }
     }
 }

@@ -42,10 +42,7 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void FrmDatMon_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Mở lại form đã đóng là form DangNhapKhachHang
-            frmDangNhapKH f = new frmDangNhapKH();
-            f.ShowDialog();
-            FrmDatMon_Load(sender, e);
+            
         }
 
         private void PictureBox1_Click(object sender, EventArgs e)
