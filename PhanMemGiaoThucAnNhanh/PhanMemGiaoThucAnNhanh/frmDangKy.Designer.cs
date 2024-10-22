@@ -28,198 +28,236 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_QuayLaiDangNhap = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_Xoa = new System.Windows.Forms.Button();
-            this.btn_DangKy = new System.Windows.Forms.Button();
-            this.cb_HienMatKhau = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.txt_NhapLaiMatKhau = new System.Windows.Forms.TextBox();
-            this.txt_MatKhau = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lbl_NhapLaiMatKhau = new System.Windows.Forms.Label();
-            this.lbl_MatKhau = new System.Windows.Forms.Label();
+            this.cbHienMatKhau = new System.Windows.Forms.CheckBox();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.btnDangKy = new System.Windows.Forms.Button();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txt_TenDangNhap = new System.Windows.Forms.TextBox();
+            this.lbl_MatKhau = new System.Windows.Forms.Label();
             this.lbl_TenDangNhap = new System.Windows.Forms.Label();
-            this.lbl_DangKy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNhapLaiMK = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_QuayLaiDangNhap
+            // cbHienMatKhau
             // 
-            this.lbl_QuayLaiDangNhap.AutoSize = true;
-            this.lbl_QuayLaiDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_QuayLaiDangNhap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(78)))), ((int)(((byte)(165)))));
-            this.lbl_QuayLaiDangNhap.Location = new System.Drawing.Point(84, 463);
-            this.lbl_QuayLaiDangNhap.Name = "lbl_QuayLaiDangNhap";
-            this.lbl_QuayLaiDangNhap.Size = new System.Drawing.Size(100, 13);
-            this.lbl_QuayLaiDangNhap.TabIndex = 18;
-            this.lbl_QuayLaiDangNhap.Text = "Quay lại đăng nhập";
+            this.cbHienMatKhau.AutoSize = true;
+            this.cbHienMatKhau.Location = new System.Drawing.Point(831, 608);
+            this.cbHienMatKhau.Name = "cbHienMatKhau";
+            this.cbHienMatKhau.Size = new System.Drawing.Size(109, 17);
+            this.cbHienMatKhau.TabIndex = 7;
+            this.cbHienMatKhau.Text = "Hiển thị mật khẩu";
+            this.cbHienMatKhau.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // btnThoat
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(57, 437);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 13);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Bạn đã có tài khoản";
+            this.btnThoat.BackColor = System.Drawing.Color.Black;
+            this.btnThoat.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Location = new System.Drawing.Point(623, 669);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(317, 32);
+            this.btnThoat.TabIndex = 9;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
             // 
-            // btn_Xoa
+            // btnDangKy
             // 
-            this.btn_Xoa.BackColor = System.Drawing.Color.White;
-            this.btn_Xoa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Xoa.Enabled = false;
-            this.btn_Xoa.FlatAppearance.BorderSize = 2;
-            this.btn_Xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Xoa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.btn_Xoa.Location = new System.Drawing.Point(28, 397);
-            this.btn_Xoa.Name = "btn_Xoa";
-            this.btn_Xoa.Size = new System.Drawing.Size(218, 28);
-            this.btn_Xoa.TabIndex = 16;
-            this.btn_Xoa.Text = "XOÁ";
-            this.btn_Xoa.UseVisualStyleBackColor = false;
+            this.btnDangKy.BackColor = System.Drawing.Color.Lime;
+            this.btnDangKy.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangKy.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDangKy.Location = new System.Drawing.Point(623, 631);
+            this.btnDangKy.Name = "btnDangKy";
+            this.btnDangKy.Size = new System.Drawing.Size(317, 32);
+            this.btnDangKy.TabIndex = 8;
+            this.btnDangKy.Text = "Đăng ký";
+            this.btnDangKy.UseVisualStyleBackColor = false;
             // 
-            // btn_DangKy
+            // txtMatKhau
             // 
-            this.btn_DangKy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.btn_DangKy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_DangKy.FlatAppearance.BorderSize = 0;
-            this.btn_DangKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_DangKy.ForeColor = System.Drawing.Color.White;
-            this.btn_DangKy.Location = new System.Drawing.Point(28, 350);
-            this.btn_DangKy.Name = "btn_DangKy";
-            this.btn_DangKy.Size = new System.Drawing.Size(218, 28);
-            this.btn_DangKy.TabIndex = 17;
-            this.btn_DangKy.Text = "ĐĂNG KÝ";
-            this.btn_DangKy.UseVisualStyleBackColor = false;
+            this.txtMatKhau.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhau.Location = new System.Drawing.Point(623, 194);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Size = new System.Drawing.Size(317, 32);
+            this.txtMatKhau.TabIndex = 2;
             // 
-            // cb_HienMatKhau
+            // txt_TenDangNhap
             // 
-            this.cb_HienMatKhau.AutoSize = true;
-            this.cb_HienMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cb_HienMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_HienMatKhau.Location = new System.Drawing.Point(124, 295);
-            this.cb_HienMatKhau.Name = "cb_HienMatKhau";
-            this.cb_HienMatKhau.Size = new System.Drawing.Size(95, 17);
-            this.cb_HienMatKhau.TabIndex = 14;
-            this.cb_HienMatKhau.Text = "Hiện mật khẩu:";
-            this.cb_HienMatKhau.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(124, 295);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 17);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Show Password";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // txt_NhapLaiMatKhau
-            // 
-            this.txt_NhapLaiMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.txt_NhapLaiMatKhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_NhapLaiMatKhau.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NhapLaiMatKhau.Location = new System.Drawing.Point(28, 261);
-            this.txt_NhapLaiMatKhau.Multiline = true;
-            this.txt_NhapLaiMatKhau.Name = "txt_NhapLaiMatKhau";
-            this.txt_NhapLaiMatKhau.PasswordChar = '*';
-            this.txt_NhapLaiMatKhau.Size = new System.Drawing.Size(218, 28);
-            this.txt_NhapLaiMatKhau.TabIndex = 12;
-            // 
-            // txt_MatKhau
-            // 
-            this.txt_MatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.txt_MatKhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_MatKhau.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MatKhau.Location = new System.Drawing.Point(28, 188);
-            this.txt_MatKhau.Multiline = true;
-            this.txt_MatKhau.Name = "txt_MatKhau";
-            this.txt_MatKhau.PasswordChar = '*';
-            this.txt_MatKhau.Size = new System.Drawing.Size(218, 28);
-            this.txt_MatKhau.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(28, 188);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 28);
-            this.textBox2.TabIndex = 13;
-            // 
-            // lbl_NhapLaiMatKhau
-            // 
-            this.lbl_NhapLaiMatKhau.AutoSize = true;
-            this.lbl_NhapLaiMatKhau.Location = new System.Drawing.Point(25, 231);
-            this.lbl_NhapLaiMatKhau.Name = "lbl_NhapLaiMatKhau";
-            this.lbl_NhapLaiMatKhau.Size = new System.Drawing.Size(96, 13);
-            this.lbl_NhapLaiMatKhau.TabIndex = 9;
-            this.lbl_NhapLaiMatKhau.Text = "Nhập lại mật khẩu:";
+            this.txt_TenDangNhap.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_TenDangNhap.Location = new System.Drawing.Point(623, 117);
+            this.txt_TenDangNhap.Name = "txt_TenDangNhap";
+            this.txt_TenDangNhap.Size = new System.Drawing.Size(317, 32);
+            this.txt_TenDangNhap.TabIndex = 1;
             // 
             // lbl_MatKhau
             // 
             this.lbl_MatKhau.AutoSize = true;
-            this.lbl_MatKhau.Location = new System.Drawing.Point(25, 158);
+            this.lbl_MatKhau.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_MatKhau.Location = new System.Drawing.Point(618, 159);
             this.lbl_MatKhau.Name = "lbl_MatKhau";
-            this.lbl_MatKhau.Size = new System.Drawing.Size(55, 13);
-            this.lbl_MatKhau.TabIndex = 10;
+            this.lbl_MatKhau.Size = new System.Drawing.Size(95, 25);
+            this.lbl_MatKhau.TabIndex = 14;
             this.lbl_MatKhau.Text = "Mật khẩu:";
-            // 
-            // txt_TenDangNhap
-            // 
-            this.txt_TenDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(231)))), ((int)(((byte)(233)))));
-            this.txt_TenDangNhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_TenDangNhap.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_TenDangNhap.Location = new System.Drawing.Point(28, 112);
-            this.txt_TenDangNhap.Multiline = true;
-            this.txt_TenDangNhap.Name = "txt_TenDangNhap";
-            this.txt_TenDangNhap.Size = new System.Drawing.Size(218, 28);
-            this.txt_TenDangNhap.TabIndex = 6;
             // 
             // lbl_TenDangNhap
             // 
             this.lbl_TenDangNhap.AutoSize = true;
-            this.lbl_TenDangNhap.Location = new System.Drawing.Point(25, 82);
+            this.lbl_TenDangNhap.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TenDangNhap.Location = new System.Drawing.Point(618, 82);
             this.lbl_TenDangNhap.Name = "lbl_TenDangNhap";
-            this.lbl_TenDangNhap.Size = new System.Drawing.Size(84, 13);
-            this.lbl_TenDangNhap.TabIndex = 11;
-            this.lbl_TenDangNhap.Text = "Tên đăng nhập:";
+            this.lbl_TenDangNhap.Size = new System.Drawing.Size(128, 25);
+            this.lbl_TenDangNhap.TabIndex = 15;
+            this.lbl_TenDangNhap.Text = "Tên tài khoản:";
             // 
-            // lbl_DangKy
+            // label1
             // 
-            this.lbl_DangKy.AutoSize = true;
-            this.lbl_DangKy.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DangKy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.lbl_DangKy.Location = new System.Drawing.Point(23, 29);
-            this.lbl_DangKy.Name = "lbl_DangKy";
-            this.lbl_DangKy.Size = new System.Drawing.Size(129, 27);
-            this.lbl_DangKy.TabIndex = 7;
-            this.lbl_DangKy.Text = "ĐĂNG KÝ";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(615, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(260, 44);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tạo tài khoản";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.signin;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(574, 702);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(618, 236);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 25);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Nhập lại mật khẩu:";
+            // 
+            // txtNhapLaiMK
+            // 
+            this.txtNhapLaiMK.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNhapLaiMK.Location = new System.Drawing.Point(623, 271);
+            this.txtNhapLaiMK.Name = "txtNhapLaiMK";
+            this.txtNhapLaiMK.Size = new System.Drawing.Size(317, 32);
+            this.txtNhapLaiMK.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(618, 313);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 25);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Họ và tên:";
+            // 
+            // txtHoTen
+            // 
+            this.txtHoTen.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoTen.Location = new System.Drawing.Point(623, 348);
+            this.txtHoTen.Name = "txtHoTen";
+            this.txtHoTen.Size = new System.Drawing.Size(317, 32);
+            this.txtHoTen.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(618, 390);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(127, 25);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Số điện thoại:";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSDT.Location = new System.Drawing.Point(623, 425);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(317, 32);
+            this.txtSDT.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(618, 467);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 25);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Địa chỉ:";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Location = new System.Drawing.Point(623, 502);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(317, 32);
+            this.txtDiaChi.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(618, 537);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 25);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Địa chỉ email:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(623, 572);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(317, 32);
+            this.txtEmail.TabIndex = 6;
             // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 505);
-            this.Controls.Add(this.lbl_QuayLaiDangNhap);
+            this.ClientSize = new System.Drawing.Size(966, 702);
+            this.Controls.Add(this.cbHienMatKhau);
+            this.Controls.Add(this.btnThoat);
+            this.Controls.Add(this.btnDangKy);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtDiaChi);
+            this.Controls.Add(this.txtSDT);
+            this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btn_Xoa);
-            this.Controls.Add(this.btn_DangKy);
-            this.Controls.Add(this.cb_HienMatKhau);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.txt_NhapLaiMatKhau);
-            this.Controls.Add(this.txt_MatKhau);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.lbl_NhapLaiMatKhau);
-            this.Controls.Add(this.lbl_MatKhau);
+            this.Controls.Add(this.txtNhapLaiMK);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtMatKhau);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_TenDangNhap);
+            this.Controls.Add(this.lbl_MatKhau);
             this.Controls.Add(this.lbl_TenDangNhap);
-            this.Controls.Add(this.lbl_DangKy);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "frmDangKy";
             this.Text = "frmDangKy";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,19 +265,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_QuayLaiDangNhap;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_Xoa;
-        private System.Windows.Forms.Button btn_DangKy;
-        private System.Windows.Forms.CheckBox cb_HienMatKhau;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox txt_NhapLaiMatKhau;
-        private System.Windows.Forms.TextBox txt_MatKhau;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label lbl_NhapLaiMatKhau;
-        private System.Windows.Forms.Label lbl_MatKhau;
+        private System.Windows.Forms.CheckBox cbHienMatKhau;
+        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnDangKy;
+        private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txt_TenDangNhap;
+        private System.Windows.Forms.Label lbl_MatKhau;
         private System.Windows.Forms.Label lbl_TenDangNhap;
-        private System.Windows.Forms.Label lbl_DangKy;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNhapLaiMK;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDiaChi;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }

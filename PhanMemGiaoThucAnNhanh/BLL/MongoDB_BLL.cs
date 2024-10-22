@@ -8,6 +8,7 @@ using DAL;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using DTO;
+using System.ComponentModel.Design.Serialization;
 
 namespace BLL
 {
@@ -25,7 +26,7 @@ namespace BLL
         }
         //Cửa hàng
         public BsonDocument GetOneCuaHang(string maCuaHang)
-        {            
+        {
             return dal.GetOneCuaHang(maCuaHang);
         }
         public bool IsValidCuaHang(string maCuaHang, string matKhauDangNhap)
@@ -40,7 +41,7 @@ namespace BLL
         //Cập nhật khách hàng
         public bool CapNhatKhachHang(BsonDocument khachHang, string maKhachHang, string maCuaHang)
         {
-            return dal.CapNhatKhachHang(khachHang,maKhachHang,maCuaHang);
+            return dal.CapNhatKhachHang(khachHang, maKhachHang, maCuaHang);
         }
         //Loại món
         public List<BsonDocument> GetAllLoaiMon(string maCuaHang)
@@ -74,18 +75,7 @@ namespace BLL
         {
             return dal.LayDanhSachLoaiMonAn(maCuaHang);
         }
-        public bool ThemMonAnVaoLoaiMon(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            return dal.ThemMonAnVaoLoaiMon(maCuaHang, maLoai, monAn);
-        }
-        public bool XoaMonAn(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            return dal.XoaMonAn(maCuaHang, maLoai, monAn);
-        }
-        public bool CapNhatThongTinMonAn(string maCuaHang, string maLoai, MonAn monAn)
-        {
-            return dal.CapNhatThongTinMonAn(maCuaHang, maLoai, monAn);
-        }
+
         public List<MonAn> TimMonAnTheoTen(string tenMon)
         {
             return dal.TimMonAnTheoTen(tenMon);
@@ -149,6 +139,56 @@ namespace BLL
         public bool ThemDonHang(string maKH, DonHang donHang)
         {
             return dal.ThemDonHang(maKH, donHang);
+        }
+
+        // Lấy danh sách loại món ăn từ MongoDB
+        public List<LoaiMonAn> LayDanhSachLoaiMon()
+        {
+            return dal.LayDanhSachLoaiMon();
+        }
+
+        // Lấy danh sách món ăn từ cửa hàng
+        public List<MonAnCuaHang> LayDanhSachMonAn()
+        {
+            return dal.LayDanhSachMonAn();
+        }
+
+        // Lấy danh sách món ăn từ cửa hàng theo tên món
+        public List<MonAnCuaHang> LayDanhSachMonTheoTenMon(string tenMon)
+        {
+            return dal.LayDanhSachMonTheoTenMon(tenMon);
+        }
+
+        //Thêm mới món ăn vào menu
+        public bool ThemMonAnVaoMenu(string maCuaHang, string maLoaiMon, MonAnCuaHang monAnMoi)
+        {
+            return dal.ThemMonAnVaoMenu(maCuaHang, maLoaiMon, monAnMoi);
+        }
+
+        //Xoá món ăn
+        public bool XoaMonAn(string maCuaHang, string maMonAn, string maLoai)
+        {
+            return dal.XoaMonAn(maCuaHang, maMonAn, maLoai);
+        }
+
+        //Cập nhật món ăn
+        public bool CapNhatMonAn(string maCuahang, string maLoai, MonAnCuaHang monAn)
+        {
+            return dal.CapNhatMonAn(maCuahang, maLoai, monAn);
+        }
+
+        //Lấy danh sách món ăn từ cửa hàng theo mã loại món
+        public List<MonAnCuaHang> LayDanhSachMonAnTheoLoaiMon(string maLoai)
+        {
+            List<MonAnCuaHang> dsMonAn = LayDanhSachMonAn();
+            
+            return dsMonAn.Where(m=>m.MaLoaiMonAn == maLoai).ToList();
+        }
+
+        // Tạo tài khoản khách hàng
+        public bool TaoTaiKhoanKhachHang(string maCuaHang, KhachHang kh)
+        {
+            return dal.TaoTaiKhoanKhachHang(maCuaHang, kh);
         }
     }
 }
