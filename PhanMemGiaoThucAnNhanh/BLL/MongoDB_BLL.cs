@@ -116,6 +116,10 @@ namespace BLL
         {
             return dal.LayMotKhachHang(maKH);
         }
+        public List<KhachHang> LayKhachHangTheoTenHoacMa(string maHoacTenKhachHang)
+        {
+            return dal.LayKhachHangTheoTenHoacMa(maHoacTenKhachHang);
+        }
 
         // Kiểm tra khách hàng đăng nhập
         public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
@@ -134,6 +138,8 @@ namespace BLL
         {
             return LayDanhSachDonHangCuaKhachHang(maKH).Count;
         }
+
+       
 
         // Thêm đơn hàng
         public bool ThemDonHang(string maKH, DonHang donHang)
@@ -190,5 +196,49 @@ namespace BLL
         {
             return dal.TaoTaiKhoanKhachHang(maCuaHang, kh);
         }
+        
+        //Xóa khách hàng
+        public bool XoaKhachHang(string maCuaHang, string maKhachHang)
+        {
+            return dal.XoaKhachHang(maCuaHang, maKhachHang);
+        }
+
+        //Cập nhật khách hàng
+        public bool CapNhatKhachHang(string maCuahang, KhachHang khachHang)
+        {
+            return dal.CapNhatKhachHang(maCuahang, khachHang);
+        }
+        
+        public List<DonHang> LayToanBoDanhSachDonHang()
+        {
+            return dal.LayToanBoDanhSachDonHang();
+        }
+        
+        //TÌm thông tin đơn hàng theo mã khách hàng
+        public List<DonHang> TimDonHangTheoMaKhachHang(string maKH)
+        {
+            return dal.TimDonHangTheoMaKhachHang(maKH);
+        }
+
+
+        // Tìm đơn hàng theo tình trạng
+        public List<DonHang> TimDonHangTheoTinhTrang(string tinhTrang)
+        {
+            return dal.TimDonHangTheoTinhTrang(tinhTrang);
+        }
+
+
+
+        // Cập nhật trạng thái món ăn
+        public bool CapNhatTrangThaiDonHang(string maCuaHang, string maKhachHang, string maDonHang, string trangThaiMoi)
+        {
+            return dal.CapNhatTrangThaiDonHang(maCuaHang, maKhachHang, maDonHang, trangThaiMoi);
+        }
+
+        public string TimMaKhachHangTheoMaDonHang(string maCuaHang, string maDonHang)
+        {
+            return dal.TimMaKhachHangTheoMaDonHang(maCuaHang, maDonHang);
+        }
+
     }
 }

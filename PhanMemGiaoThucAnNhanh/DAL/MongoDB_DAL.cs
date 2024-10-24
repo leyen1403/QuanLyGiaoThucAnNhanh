@@ -890,6 +890,50 @@ namespace DAL
             // Trả về danh sách khách hàng
             return null;
         }
+        public List<KhachHang> LayKhachHangTheoTenHoacMa(string maHoacTenKhachHang)
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            List<KhachHang> danhSachKhachHang = new List<KhachHang>();
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+            foreach (var cuaHangDoc in cuaHangDocs)
+            {
+                // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+                if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+                {
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách khách hàng và chuyển đổi sang đối tượng KhachHang
+                    foreach (var khachHangDoc in khachHangList)
+                    {
+                        // Kiểm tra xem mã hoặc tên khách hàng có khớp với thông tin đầu vào
+                        if (khachHangDoc["ma_khach_hang"].AsString.Equals(maHoacTenKhachHang) ||
+                            khachHangDoc["ten_khach_hang"].AsString.Equals(maHoacTenKhachHang, StringComparison.OrdinalIgnoreCase))
+                        {
+                            var khachHang = new KhachHang
+                            {
+                                MaKhachHang = khachHangDoc["ma_khach_hang"].AsString,
+                                TenKhachHang = khachHangDoc["ten_khach_hang"].AsString,
+                                SoDienThoai = khachHangDoc["so_dien_thoai"].AsString,
+                                DiaChi = khachHangDoc["dia_chi"].AsString,
+                                Email = khachHangDoc["email"].AsString,
+                                DiemTichLuyHienCo = khachHangDoc["diem_tich_luy_hien_co"].AsInt32,
+                                HoatDong = khachHangDoc["hoat_dong"].AsBoolean,
+                                MatKhau = khachHangDoc["mat_khau"].AsString
+                            };
+
+                            // Thêm khách hàng vào danh sách
+                            danhSachKhachHang.Add(khachHang);
+                        }
+                    }
+                }
+            }
+
+            // Trả về danh sách khách hàng
+            return danhSachKhachHang;
+        }
+
+
 
         // Kiểm tra đăng nhập
         public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
@@ -1290,5 +1334,437 @@ namespace DAL
         }
 
 
+        // xóa khách hàng
+        public bool XoaKhachHang(string maCuaHang, string maKhachHang)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm tất cả các document cửa hàng
+                var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+                foreach (var cuaHangDoc in cuaHangDocs)
+                {
+                    // Kiểm tra xem mã cửa hàng có khớp với cửa hàng cần xử lý
+                    if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"]["ma_cua_hang"].AsString.Equals(maCuaHang))
+                    {
+                        // Lấy danh sách khách hàng
+                        var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                        // Tìm kiếm khách hàng theo mã
+                        var khachHangDoc = khachHangList.FirstOrDefault(kh => kh["ma_khach_hang"].AsString.Equals(maKhachHang));
+
+                        if (khachHangDoc != null)
+                        {
+                            // Lấy danh sách đơn hàng của khách hàng
+                            var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                            // Kiểm tra xem khách hàng có đơn hàng hay không
+                            if (donHangList.Count > 0)
+                            {
+                                return false; // Không thể xóa vì khách hàng có đơn hàng
+                            }
+
+                            // Nếu không có đơn hàng, xóa khách hàng khỏi danh sách
+                            khachHangList.Remove(khachHangDoc);
+
+                            // Cập nhật lại document cửa hàng với danh sách khách hàng mới
+                            var filter = Builders<BsonDocument>.Filter.Eq("_id", cuaHangDoc["_id"]);
+                            var update = Builders<BsonDocument>.Update.Set("cua_hang.khach_hang", khachHangList);
+                            collection.UpdateOne(filter, update);
+
+                            return true; // Khách hàng đã được xóa
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Không tìm thấy khách hàng với mã: {maKhachHang}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Có lỗi xảy ra: {ex.Message}");
+            }
+
+            return false; // Không tìm thấy khách hàng hoặc cửa hàng
+        }
+
+
+
+
+        //Cập nhật khách hàng
+        public bool CapNhatKhachHang(string maCuaHang, KhachHang khachHang)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc != null)
+                {
+                    // Tìm danh sách khách hàng trong cửa hàng
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Tìm khách hàng trong danh sách dựa trên mã khách hàng
+                    var khachHangToUpdate = khachHangList.FirstOrDefault(k => k["ma_khach_hang"].AsString == khachHang.MaKhachHang);
+
+                    if (khachHangToUpdate != null)
+                    {
+                        // Cập nhật thông tin khách hàng
+                        khachHangToUpdate["ten_khach_hang"] = khachHang.TenKhachHang;
+                        khachHangToUpdate["so_dien_thoai"] = khachHang.SoDienThoai;
+                        khachHangToUpdate["dia_chi"] = khachHang.DiaChi;
+                        khachHangToUpdate["email"] = khachHang.Email;
+                        khachHangToUpdate["diem_tich_luy_hien_co"] = khachHang.DiemTichLuyHienCo;
+                        khachHangToUpdate["hoat_dong"] = khachHang.HoatDong;
+                        khachHangToUpdate["mat_khau"] = khachHang.MatKhau;
+
+                        // Cập nhật lại danh sách khách hàng trong cơ sở dữ liệu
+                        var update = Builders<BsonDocument>.Update.Set("cua_hang.khach_hang", khachHangList);
+                        collection.UpdateOne(filterCuaHang, update);
+                        return true; // Trả về true nếu cập nhật thành công
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Có lỗi xảy ra: " + ex.Message);
+            }
+
+            return false; // Trả về false nếu không tìm thấy khách hàng hoặc có lỗi
+        }
+
+
+        // Lấy toàn bộ đơn hàng
+        public List<DonHang> LayToanBoDanhSachDonHang()
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            List<DonHang> danhSachDonHang = new List<DonHang>();
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+            foreach (var cuaHangDoc in cuaHangDocs)
+            {
+                // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+                if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+                {
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách khách hàng
+                    foreach (var khachHangDoc in khachHangList)
+                    {
+                        // Kiểm tra nếu khách hàng có danh sách đơn hàng
+                        if (khachHangDoc.AsBsonDocument.Contains("don_hang"))
+                        {
+                            var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                            // Duyệt qua danh sách đơn hàng và chuyển đổi sang đối tượng DonHang
+                            foreach (var donHangDoc in donHangList)
+                            {
+                                var donHang = new DonHang
+                                {
+                                    MaDonHang = donHangDoc["ma_don_hang"].AsString,
+
+                                    // Kiểm tra xem thoi_gian_dat có phải là BsonDateTime hay không
+                                    ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
+                                     ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
+                                     : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+
+                                    // Kiểm tra xem thoi_gian_giao có phải là BsonDateTime hay không
+                                    ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
+                                                                                                : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+
+                                    GiamGia = donHangDoc["giam_gia"].AsInt32,
+                                    DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
+                                    TongTien = donHangDoc["tong_tien"].AsInt32,
+                                    SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                    TrangThai = donHangDoc["trang_thai"].AsString
+                                };
+
+
+
+                                danhSachDonHang.Add(donHang); // Thêm đơn hàng vào danh sách tổng
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Trả về danh sách toàn bộ đơn hàng
+            return danhSachDonHang;
+        }
+
+
+        // Tìm đơn hàng theo mã khách hàng
+        public List<DonHang> TimDonHangTheoMaKhachHang(string maKhachHangTimKiem)
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            List<DonHang> danhSachDonHang = new List<DonHang>();
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+            // Duyệt qua tất cả các cửa hàng
+            foreach (var cuaHangDoc in cuaHangDocs)
+            {
+                // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+                if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+                {
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách khách hàng
+                    foreach (var khachHangDoc in khachHangList)
+                    {
+                        // Kiểm tra mã khách hàng
+                        if (khachHangDoc["ma_khach_hang"].AsString == maKhachHangTimKiem)
+                        {
+                            // Kiểm tra nếu khách hàng có danh sách đơn hàng
+                            if (khachHangDoc.AsBsonDocument.Contains("don_hang"))
+                            {
+                                var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                                // Duyệt qua danh sách đơn hàng và chuyển đổi sang đối tượng DonHang
+                                foreach (var donHangDoc in donHangList)
+                                {
+                                    var donHang = new DonHang
+                                    {
+                                        MaDonHang = donHangDoc["ma_don_hang"].AsString,
+
+                                        ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
+                                            ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
+                                            : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+
+                                        ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime
+                                            ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
+                                            : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+
+                                        GiamGia = donHangDoc["giam_gia"].AsInt32,
+                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
+                                        TongTien = donHangDoc["tong_tien"].AsInt32,
+                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                        TrangThai = donHangDoc["trang_thai"].AsString
+                                    };
+
+                                    // Thêm đơn hàng vào danh sách
+                                    danhSachDonHang.Add(donHang);
+                                }
+                            }
+
+                            // Trả về danh sách đơn hàng sau khi tìm thấy mã khách hàng (không cần tìm tiếp)
+                            return danhSachDonHang;
+                        }
+                    }
+                }
+            }
+
+            // Trả về danh sách rỗng nếu không tìm thấy khách hàng với mã đã cho
+            return danhSachDonHang;
+        }
+
+
+
+
+
+        // Lọc đơn hàng theo tình trạng
+        public List<DonHang> TimDonHangTheoTinhTrang(string tinhTrangTimKiem)
+        {
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+            List<DonHang> danhSachDonHang = new List<DonHang>();
+            var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+            // Duyệt qua tất cả các cửa hàng
+            foreach (var cuaHangDoc in cuaHangDocs)
+            {
+                // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+                if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+                {
+                    var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách khách hàng
+                    foreach (var khachHangDoc in khachHangList)
+                    {
+                        // Kiểm tra nếu khách hàng có danh sách đơn hàng
+                        if (khachHangDoc.AsBsonDocument.Contains("don_hang"))
+                        {
+                            var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                            // Duyệt qua danh sách đơn hàng và kiểm tra tình trạng đơn hàng
+                            foreach (var donHangDoc in donHangList)
+                            {
+                                if (donHangDoc["trang_thai"].AsString == tinhTrangTimKiem)
+                                {
+                                    var donHang = new DonHang
+                                    {
+                                        MaDonHang = donHangDoc["ma_don_hang"].AsString,
+
+                                        ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
+                                            ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
+                                            : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+
+                                        ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime
+                                            ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
+                                            : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+
+                                        GiamGia = donHangDoc["giam_gia"].AsInt32,
+                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
+                                        TongTien = donHangDoc["tong_tien"].AsInt32,
+                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                        TrangThai = donHangDoc["trang_thai"].AsString
+                                    };
+
+                                    // Thêm đơn hàng vào danh sách nếu tình trạng khớp
+                                    danhSachDonHang.Add(donHang);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Trả về danh sách các đơn hàng theo tình trạng
+            return danhSachDonHang;
+        }
+
+
+
+
+        // Cập nhật trạng thái đơn hàng 
+        public bool CapNhatTrangThaiDonHang(string maCuaHang, string maKhachHang, string maDonHang, string trangThaiMoi)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc == null)
+                {
+                    Console.WriteLine("Cửa hàng không tồn tại.");
+                    return false;
+                }
+
+                // Tìm danh sách khách hàng trong cửa hàng
+                var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                // Tìm khách hàng dựa vào mã khách hàng
+                var khachHangDoc = khachHangList.FirstOrDefault(kh => kh["ma_khach_hang"].AsString == maKhachHang);
+
+                if (khachHangDoc == null)
+                {
+                    Console.WriteLine("Khách hàng không tồn tại.");
+                    return false;
+                }
+
+                // Tìm danh sách đơn hàng trong khách hàng
+                var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                if (donHangList.Count == 0)
+                {
+                    Console.WriteLine("Không có đơn hàng nào trong khách hàng.");
+                    return false;
+                }
+
+                // Tìm đơn hàng trong danh sách dựa trên mã đơn hàng
+                var donHangToUpdate = donHangList.FirstOrDefault(d => d["ma_don_hang"].AsString == maDonHang);
+
+                if (donHangToUpdate == null)
+                {
+                    Console.WriteLine("Đơn hàng không tồn tại.");
+                    return false;
+                }
+
+                // Cập nhật trạng thái đơn hàng
+                donHangToUpdate["trang_thai"] = trangThaiMoi;
+
+                // Cập nhật lại trạng thái trong cơ sở dữ liệu
+                var update = Builders<BsonDocument>.Update.Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].trang_thai", trangThaiMoi);
+                var arrayFilters = new List<ArrayFilterDefinition>
+        {
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("khach.ma_khach_hang", maKhachHang)),
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("donHang.ma_don_hang", maDonHang))
+        };
+
+                // Thực hiện cập nhật
+                var updateResult = collection.UpdateOne(filterCuaHang, update, new UpdateOptions { ArrayFilters = arrayFilters });
+
+                return updateResult.ModifiedCount > 0; // Trả về true nếu có tài liệu đã được cập nhật
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Có lỗi xảy ra: " + ex.Message);
+                return false; // Trả về false nếu có lỗi
+            }
+        }
+
+
+
+
+        // Tim mã khách hàng theo mã đơn
+        public string TimMaKhachHangTheoMaDonHang(string maCuaHang, string maDonHang)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
+
+                if (cuaHangDoc == null)
+                {
+                    Console.WriteLine("Cửa hàng không tồn tại.");
+                    return null; // Trả về null nếu không tìm thấy cửa hàng
+                }
+
+                // Tìm danh sách khách hàng trong cửa hàng
+                var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                // Duyệt qua danh sách khách hàng
+                foreach (var khach in khachHangList)
+                {
+                    // Tìm danh sách đơn hàng của khách hàng
+                    var donHangList = khach["don_hang"].AsBsonArray;
+
+                    // Duyệt qua danh sách đơn hàng
+                    foreach (var donHang in donHangList)
+                    {
+                        // Kiểm tra mã đơn hàng
+                        if (donHang["ma_don_hang"].AsString == maDonHang)
+                        {
+                            // Trả về mã khách hàng
+                            return khach["ten_khach_hang"].AsString;
+                        }
+                    }
+                }
+
+                // Nếu không tìm thấy mã khách hàng cho mã đơn hàng
+                Console.WriteLine("Không tìm thấy mã khách hàng cho mã đơn hàng.");
+                return null; // Trả về null nếu không tìm thấy
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Có lỗi xảy ra: " + ex.Message);
+                return null; // Trả về null nếu có lỗi
+            }
+        }
+
+
+
+
+
+
+
     }
+
+
+
 }
+
