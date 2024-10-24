@@ -40,13 +40,13 @@ namespace PhanMemGiaoThucAnNhanh
             DonHang donHangMoi = new DonHang
             {
                 MaDonHang = maDonHang,
-                ThoiGianDat = DateTime.UtcNow, // Hoặc thời gian hiện tại
-                ThoiGianGiao = DateTime.UtcNow.AddHours(1),
+                ThoiGianDat = DateTime.Now.AddHours(7), // Hoặc thời gian hiện tại
+                ThoiGianGiao = DateTime.Now.AddHours(8),
                 GiamGia = 0,
                 DiemTichLuySuDung = 0,
                 TongTien = tongTien,
                 SoTienThanhToan = tongTien,
-                TrangThai = "Đang xử lý",
+                TrangThai = "đang xử lý",
                 MonAnDonHang = new List<MonAnDonHang>()
             };
             foreach (var monAn in dsMonAn)
