@@ -46,7 +46,7 @@ namespace PhanMemGiaoThucAnNhanh
                 DiemTichLuySuDung = 0,
                 TongTien = tongTien,
                 SoTienThanhToan = tongTien,
-                TrangThai = "hoàn thành",
+                TrangThai = "Đang xử lý",
                 MonAnDonHang = new List<MonAnDonHang>()
             };
             foreach (var monAn in dsMonAn)
