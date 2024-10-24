@@ -143,7 +143,15 @@ namespace PhanMemGiaoThucAnNhanh
             txtHinhAnh.Text = dtgvMonAn.CurrentRow.Cells["HinhAnh"].Value.ToString();
             string imagePath = txtHinhAnh.Text;
             string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
-            Image img = Image.FromFile(url);
+            Image img;
+            if (File.Exists(url))
+            {
+                img = Image.FromFile(url);
+            }
+            else
+            {
+                img = Properties.Resources.icons8_folder_35; // Hình ảnh mặc định
+            }
             pictureBoxMonAn.Image = img;
             pictureBoxMonAn.SizeMode = PictureBoxSizeMode.StretchImage;
             cbbLoaiMon.SelectedValue = dtgvMonAn.CurrentRow.Cells["MaLoai"].Value.ToString();
@@ -196,7 +204,15 @@ namespace PhanMemGiaoThucAnNhanh
             {
                 string imagePath = item.HinhAnh;
                 string url = Path.Combine(Application.StartupPath, @"Resources\" + imagePath);
-                Image img = Image.FromFile(url);
+                Image img;
+                if (File.Exists(url))
+                {
+                    img = Image.FromFile(url);
+                }
+                else
+                {
+                    img = Properties.Resources.icons8_folder_35; // Hình ảnh mặc định
+                }
                 dtgvMonAn.Rows.Add(img, item.MaMonAn, item.TenMon, item.GiaMon, item.MoTa, item.HienThi, item.HinhAnh, item.MaLoaiMonAn);
             }
         }

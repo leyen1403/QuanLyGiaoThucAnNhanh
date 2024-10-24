@@ -18,6 +18,7 @@ namespace PhanMemGiaoThucAnNhanh
         {
             InitializeComponent();
             this.dsDonHang = dsDonHang;
+            this.dtgvLichSu.ReadOnly = true;
             dtgvLichSu.DataSource = dsDonHang;
             dtgvLichSu.Columns["MaDonHang"].HeaderText = "Mã đơn hàng";
             dtgvLichSu.Columns["ThoiGianDat"].HeaderText = "Thời gian đặt";

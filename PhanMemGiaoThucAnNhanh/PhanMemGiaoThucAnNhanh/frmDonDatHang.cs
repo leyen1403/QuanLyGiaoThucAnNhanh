@@ -23,6 +23,7 @@ namespace PhanMemGiaoThucAnNhanh
         public frmDonDatHang(List<MonAn> dsMonAn, double tongTien, string maKH)
         {
             InitializeComponent();
+            this.dtgvDonDatHang.ReadOnly = true;
             this.dsMonAn = dsMonAn;
             this.tongTien = tongTien;
             this.maKH = maKH;
@@ -45,7 +46,7 @@ namespace PhanMemGiaoThucAnNhanh
                 DiemTichLuySuDung = 0,
                 TongTien = tongTien,
                 SoTienThanhToan = tongTien,
-                TrangThai = "đang xử lý",
+                TrangThai = "Đang xử lý",
                 MonAnDonHang = new List<MonAnDonHang>()
             };
             foreach (var monAn in dsMonAn)
@@ -60,6 +61,11 @@ namespace PhanMemGiaoThucAnNhanh
                     MoTa = monAn.MoTa,
                     HinhAnh = monAn.HinhAnh
                 });
+            }
+            if(donHangMoi.MonAnDonHang.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn món ăn");
+                return;
             }
             if (bll.ThemDonHang(maKH, donHangMoi))
             {

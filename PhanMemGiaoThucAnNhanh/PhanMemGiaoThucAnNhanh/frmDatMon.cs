@@ -25,7 +25,7 @@ namespace PhanMemGiaoThucAnNhanh
         public frmDatMon(string maKH)
         {
             InitializeComponent();
-            this.dsDonHang = bll.LayDanhSachDonHangCuaKhachHang(maKH);
+            
             this.maKH = maKH;            
             this.Load += FrmDatMon_Load;
             this.btnTim.Click += BtnTim_Click;     
@@ -36,6 +36,7 @@ namespace PhanMemGiaoThucAnNhanh
 
         private void PtbLichSu_Click(object sender, EventArgs e)
         {
+            this.dsDonHang = bll.LayDanhSachDonHangCuaKhachHang(maKH);
             frmLichSuDonHangKH f = new frmLichSuDonHangKH(dsDonHang,maKH);
             f.ShowDialog();
         }
