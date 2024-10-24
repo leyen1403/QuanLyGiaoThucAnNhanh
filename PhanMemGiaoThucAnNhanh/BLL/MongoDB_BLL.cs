@@ -239,6 +239,10 @@ namespace BLL
         {
             return dal.TimMaKhachHangTheoMaDonHang(maCuaHang, maDonHang);
         }
+        public List<PHIEUBAOCAO> LayPhieuBaoCao(string maCuaHang, string ngayBatDau, string ngayKetThuc)
+        {
+            return dal.LayPhieuBaoCao(maCuaHang,ngayBatDau,ngayKetThuc);
+        }
 
     }
 }

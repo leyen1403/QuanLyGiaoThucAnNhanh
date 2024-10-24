@@ -154,6 +154,7 @@
     <Compile Include="MonAn.cs" />
     <Compile Include="MonAnCuaHang.cs" />
     <Compile Include="MonAnDonHang.cs" />
+    <Compile Include="PHIEUBAOCAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
