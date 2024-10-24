@@ -122,7 +122,7 @@ namespace BLL
         }
 
         // Kiểm tra khách hàng đăng nhập
-        public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
+        public int KiemTraDangNhapKhachHang(string maKH, string matKhau)
         {
             return dal.KiemTraDangNhapKhachHang(maKH, matKhau);
         }

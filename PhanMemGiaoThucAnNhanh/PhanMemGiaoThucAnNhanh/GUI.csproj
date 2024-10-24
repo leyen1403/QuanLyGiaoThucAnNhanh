@@ -244,12 +244,6 @@
     <Compile Include="frmMonAn.Designer.cs">
       <DependentUpon>frmMonAn.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmOrders.Designer.cs">
-      <DependentUpon>frmOrders.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,9 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMonAn.resx">
       <DependentUpon>frmMonAn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmOrders.resx">
-      <DependentUpon>frmOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKe.resx">
       <DependentUpon>frmThongKe.cs</DependentUpon>

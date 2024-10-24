@@ -92,7 +92,16 @@ namespace DAL
                         if (donHang["trang_thai"].AsString == "hoàn thành")
                         {
                             // Chuyển đổi từ BsonString sang DateTime
-                            DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            //DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            DateTime thoiGianDat;
+                            if (donHang["thoi_gian_dat"].IsBsonDateTime)
+                            {
+                                thoiGianDat = donHang["thoi_gian_dat"].ToUniversalTime();
+                            }
+                            else
+                            {
+                                thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            }
                             var ngay = thoiGianDat.Date;
                             var tongTien = donHang["tong_tien"].ToDecimal();
 
@@ -146,7 +155,16 @@ namespace DAL
                         if (donHang["trang_thai"].AsString == "hoàn thành")
                         {
                             // Chuyển đổi từ BsonString sang DateTime
-                            DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            //DateTime thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            DateTime thoiGianDat;
+                            if (donHang["thoi_gian_dat"].IsBsonDateTime)
+                            {
+                                thoiGianDat = donHang["thoi_gian_dat"].ToUniversalTime();
+                            }
+                            else
+                            {
+                                thoiGianDat = DateTime.Parse(donHang["thoi_gian_dat"].AsString);
+                            }
                             var ngay = thoiGianDat.Date;
                             var tongTien = donHang["tong_tien"].ToDecimal();
 
@@ -936,17 +954,20 @@ namespace DAL
 
 
         // Kiểm tra đăng nhập
-        public bool KiemTraDangNhapKhachHang(string maKH, string matKhau)
+        public int KiemTraDangNhapKhachHang(string maKH, string matKhau)
         {
             List<KhachHang> danhSachKhachHang = LayDanhSachKhachHang();
             KhachHang khachHang = danhSachKhachHang.FirstOrDefault(kh => kh.MaKhachHang == maKH);
-
+            if(khachHang.HoatDong != true)
+            {
+                return 0;//Tai khoan bi khoa
+            }
             if (khachHang != null && khachHang.MatKhau == matKhau)
             {
-                return true;
+                return 1;//Dang nhap thanh cong
             }
 
-            return false;
+            return 2;//Sai tai khoan mat khau
         }
 
         public List<DonHang> LayDanhSachDonHangCuaKhachHang(string maKH)
@@ -1480,10 +1501,10 @@ namespace DAL
                                     ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
                                                                                                 : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
 
-                                    GiamGia = donHangDoc["giam_gia"].AsInt32,
-                                    DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
-                                    TongTien = donHangDoc["tong_tien"].AsInt32,
-                                    SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                    GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble,                                    
+                                    DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
+                                    TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble,
+                                    SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble,
                                     TrangThai = donHangDoc["trang_thai"].AsString
                                 };
 

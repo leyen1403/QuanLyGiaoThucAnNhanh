@@ -19,6 +19,7 @@ namespace PhanMemGiaoThucAnNhanh
         public frmDangNhap()
         {
             InitializeComponent();
+            this.txt_MatKhau.UseSystemPasswordChar = true;
             loadSuKien();
         }
         private void loadSuKien()
@@ -37,15 +38,20 @@ namespace PhanMemGiaoThucAnNhanh
         {
             string matKhau = txt_MatKhau.Text;
             string tenDN = txt_TenDangNhap.Text;
-            if (bll.KiemTraDangNhapKhachHang(tenDN, matKhau))
+            if (bll.KiemTraDangNhapKhachHang(tenDN, matKhau) == 1)
             {
                 frmDatMon f = new frmDatMon(tenDN);
                 this.Hide();
                 f.Show();
             }
-            else
+            else if(bll.KiemTraDangNhapKhachHang(tenDN, matKhau) == 2)
             {
                 MessageBox.Show("Tên đăng nhập hoặc tài khoản không chính xác");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản đã bị khoá, hãy liên hệ cửa hàng để được hỗ trợ");
                 return;
             }
         }
@@ -67,13 +73,13 @@ namespace PhanMemGiaoThucAnNhanh
         // An/hien mat khau
         private void Cb_HienMatKhau_CheckedChanged(object sender, EventArgs e)
         {
-            if (cb_HienMatKhau.Checked)
+            if (txt_MatKhau.UseSystemPasswordChar == true)
             {
-                txt_MatKhau.PasswordChar = '\0';
+                txt_MatKhau.UseSystemPasswordChar = false;
             }
             else
             {
-                txt_MatKhau.PasswordChar = '*';
+                txt_MatKhau.UseSystemPasswordChar = true;
             }
         }
 
