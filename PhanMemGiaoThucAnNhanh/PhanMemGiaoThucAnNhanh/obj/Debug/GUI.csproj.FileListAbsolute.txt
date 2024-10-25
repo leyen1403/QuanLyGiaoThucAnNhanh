@@ -227,7 +227,6 @@ B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGi
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmLoaiMon.resources
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMain.resources
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmMonAn.resources
-B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmOrders.resources
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.frmThongKe.resources
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\PhanMemGiaoThucAnNhanh.Properties.Resources.resources
 B:\Hoc tap\HK7\NoSQL\DoAn\QuanLyGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\PhanMemGiaoThucAnNhanh\obj\Debug\GUI.csproj.GenerateResource.cache

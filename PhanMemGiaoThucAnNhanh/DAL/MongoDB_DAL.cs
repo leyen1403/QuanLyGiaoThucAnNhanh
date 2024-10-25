@@ -1463,7 +1463,64 @@ namespace DAL
         }
 
 
-        // Lấy toàn bộ đơn hàng
+        //Lấy toàn bộ đơn hàng
+        //public List<DonHang> LayToanBoDanhSachDonHang()
+        //{
+        //    var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+        //    List<DonHang> danhSachDonHang = new List<DonHang>();
+        //    var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+        //    foreach (var cuaHangDoc in cuaHangDocs)
+        //    {
+        //        // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+        //        if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
+        //        {
+        //            var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+        //            // Duyệt qua danh sách khách hàng
+        //            foreach (var khachHangDoc in khachHangList)
+        //            {
+        //                // Kiểm tra nếu khách hàng có danh sách đơn hàng
+        //                if (khachHangDoc.AsBsonDocument.Contains("don_hang"))
+        //                {
+        //                    var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+        //                    // Duyệt qua danh sách đơn hàng và chuyển đổi sang đối tượng DonHang
+        //                    foreach (var donHangDoc in donHangList)
+        //                    {
+        //                        var donHang = new DonHang
+        //                        {
+        //                            MaDonHang = donHangDoc["ma_don_hang"].AsString,
+
+        //                            // Kiểm tra xem thoi_gian_dat có phải là BsonDateTime hay không
+        //                            ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
+        //                             ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
+        //                             : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+
+        //                            // Kiểm tra xem thoi_gian_giao có phải là BsonDateTime hay không
+        //                            ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
+        //                                                                                        : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+
+        //                            GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble,
+        //                            DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
+        //                            TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble,
+        //                            SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble,
+        //                            TrangThai = donHangDoc["trang_thai"].AsString
+        //                        };
+
+
+
+        //                        danhSachDonHang.Add(donHang); // Thêm đơn hàng vào danh sách tổng
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    // Trả về danh sách toàn bộ đơn hàng
+        //    return danhSachDonHang;
+        //}
+
         public List<DonHang> LayToanBoDanhSachDonHang()
         {
             var collection = GetCollection("CuaHangGiaoThucAnNhanh");
@@ -1488,29 +1545,39 @@ namespace DAL
                             // Duyệt qua danh sách đơn hàng và chuyển đổi sang đối tượng DonHang
                             foreach (var donHangDoc in donHangList)
                             {
-                                var donHang = new DonHang
-                                {
-                                    MaDonHang = donHangDoc["ma_don_hang"].AsString,
+                                var donHang = new DonHang();
 
-                                    // Kiểm tra xem thoi_gian_dat có phải là BsonDateTime hay không
-                                    ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
-                                     ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
-                                     : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+                                // Kiểm tra và gán giá trị cho các trường của DonHang
+                                if (donHangDoc.AsBsonDocument.Contains("ma_don_hang") && donHangDoc["ma_don_hang"].IsString)
+                                    donHang.MaDonHang = donHangDoc["ma_don_hang"].AsString;
 
-                                    // Kiểm tra xem thoi_gian_giao có phải là BsonDateTime hay không
-                                    ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
-                                                                                                : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+                                if (donHangDoc.AsBsonDocument.Contains("thoi_gian_dat") && donHangDoc["thoi_gian_dat"].IsValidDateTime)
+                                    donHang.ThoiGianDat = donHangDoc["thoi_gian_dat"].ToUniversalTime();
+                                else
+                                    donHang.ThoiGianDat = DateTime.MinValue; // Giá trị mặc định nếu không có
 
-                                    GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble,                                    
-                                    DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
-                                    TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble,
-                                    SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble,
-                                    TrangThai = donHangDoc["trang_thai"].AsString
-                                };
+                                if (donHangDoc.AsBsonDocument.Contains("thoi_gian_giao") && donHangDoc["thoi_gian_giao"].IsValidDateTime)
+                                    donHang.ThoiGianGiao = donHangDoc["thoi_gian_giao"].ToUniversalTime();
+                                else
+                                    donHang.ThoiGianGiao = DateTime.MinValue; // Giá trị mặc định nếu không có
 
+                                if (donHangDoc.AsBsonDocument.Contains("giam_gia"))
+                                    donHang.GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : 0;
 
+                                if (donHangDoc.AsBsonDocument.Contains("diem_tich_luy_su_dung"))
+                                    donHang.DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : 0;
 
-                                danhSachDonHang.Add(donHang); // Thêm đơn hàng vào danh sách tổng
+                                if (donHangDoc.AsBsonDocument.Contains("tong_tien"))
+                                    donHang.TongTien = donHangDoc["tong_tien"].IsDouble ? donHangDoc["tong_tien"].AsDouble : 0.0;
+
+                                if (donHangDoc.AsBsonDocument.Contains("so_tien_thanh_toan"))
+                                    donHang.SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsDouble ? donHangDoc["so_tien_thanh_toan"].AsDouble : 0.0;
+
+                                if (donHangDoc.AsBsonDocument.Contains("trang_thai") && donHangDoc["trang_thai"].IsString)
+                                    donHang.TrangThai = donHangDoc["trang_thai"].AsString;
+
+                                // Thêm đơn hàng vào danh sách
+                                danhSachDonHang.Add(donHang);
                             }
                         }
                     }
@@ -1520,6 +1587,89 @@ namespace DAL
             // Trả về danh sách toàn bộ đơn hàng
             return danhSachDonHang;
         }
+
+
+
+
+        //public List<DonHang> LayToanBoDanhSachDonHang()
+        //{
+        //    var collection = GetCollection("CuaHangGiaoThucAnNhanh");
+        //    List<DonHang> danhSachDonHang = new List<DonHang>();
+        //    var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+
+        //    foreach (var cuaHangDoc in cuaHangDocs)
+        //    {
+        //        // Kiểm tra xem tài liệu có chứa trường cửa hàng không
+        //        if (cuaHangDoc.Contains("cua_hang"))
+        //        {
+        //            var cuaHang = cuaHangDoc["cua_hang"].AsBsonDocument;
+
+        //            // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
+        //            if (cuaHang.Contains("khach_hang"))
+        //            {
+        //                var khachHangList = cuaHang["khach_hang"].AsBsonArray;
+
+        //                // Duyệt qua danh sách khách hàng
+        //                foreach (var khachHangDoc in khachHangList)
+        //                {
+        //                    var khachHang = khachHangDoc.AsBsonDocument;
+
+        //                    // Kiểm tra xem khách hàng có chứa danh sách đơn hàng không
+        //                    if (khachHang.Contains("don_hang"))
+        //                    {
+        //                        var donHangList = khachHang["don_hang"].AsBsonArray;
+
+        //                        // Duyệt qua danh sách đơn hàng
+        //                        foreach (var donHangDoc in donHangList)
+        //                        {
+        //                            var donHang = new DonHang();
+
+        //                            // Kiểm tra sự tồn tại của từng trường và gán giá trị nếu có
+        //                            if (donHangDoc.AsBsonDocument.Contains("ma_don_hang"))
+        //                                donHang.MaDonHang = donHangDoc["ma_don_hang"].AsString;
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("thoi_gian_dat"))
+        //                                donHang.ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
+        //                                    ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
+        //                                    : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString);
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("thoi_gian_giao"))
+        //                                donHang.ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime
+        //                                    ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
+        //                                    : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString);
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("giam_gia"))
+        //                                donHang.GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble;
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("diem_tich_luy_su_dung"))
+        //                                donHang.DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble;
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("tong_tien"))
+        //                                donHang.TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble;
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("so_tien_thanh_toan"))
+        //                                donHang.SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble;
+
+        //                            if (donHangDoc.AsBsonDocument.Contains("trang_thai"))
+        //                                donHang.TrangThai = donHangDoc["trang_thai"].AsString;
+
+        //                            // Thêm đơn hàng vào danh sách
+        //                            danhSachDonHang.Add(donHang);
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    // Trả về danh sách toàn bộ đơn hàng
+        //    return danhSachDonHang;
+        //}
+
+
+
+
+
 
 
         // Tìm đơn hàng theo mã khách hàng
@@ -1563,10 +1713,23 @@ namespace DAL
                                             ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
                                             : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
 
-                                        GiamGia = donHangDoc["giam_gia"].AsInt32,
-                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
-                                        TongTien = donHangDoc["tong_tien"].AsInt32,
-                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                        GiamGia = donHangDoc["giam_gia"].IsInt32
+                                            ? donHangDoc["giam_gia"].AsInt32
+                                            : (int)donHangDoc["giam_gia"].AsDouble,
+
+                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32
+                                            ? donHangDoc["diem_tich_luy_su_dung"].AsInt32
+                                            : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
+
+                                        // Handle TongTien and SoTienThanhToan as double
+                                        TongTien = donHangDoc["tong_tien"].IsInt32
+                                            ? donHangDoc["tong_tien"].AsInt32
+                                            : (double)donHangDoc["tong_tien"].AsDouble,
+
+                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32
+                                            ? donHangDoc["so_tien_thanh_toan"].AsInt32
+                                            : (double)donHangDoc["so_tien_thanh_toan"].AsDouble,
+
                                         TrangThai = donHangDoc["trang_thai"].AsString
                                     };
 
@@ -1585,7 +1748,6 @@ namespace DAL
             // Trả về danh sách rỗng nếu không tìm thấy khách hàng với mã đã cho
             return danhSachDonHang;
         }
-
 
 
 
@@ -1630,10 +1792,15 @@ namespace DAL
                                             ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
                                             : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
 
-                                        GiamGia = donHangDoc["giam_gia"].AsInt32,
-                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].AsInt32,
-                                        TongTien = donHangDoc["tong_tien"].AsInt32,
-                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].AsInt32,
+                                        GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble,
+
+                                        DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
+
+                                        // Fix for TongTien and SoTienThanhToan being double
+                                        TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble,
+
+                                        SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble,
+
                                         TrangThai = donHangDoc["trang_thai"].AsString
                                     };
 
@@ -1649,6 +1816,7 @@ namespace DAL
             // Trả về danh sách các đơn hàng theo tình trạng
             return danhSachDonHang;
         }
+
 
 
 
@@ -1778,8 +1946,82 @@ namespace DAL
         }
 
 
+        // cập nhật đơn hàng
+        public bool CapNhatDonHang(string maCuaHang, string maKhachHang, string maDonHang, DonHang donHangMoi)
+        {
+            try
+            {
+                // Lấy collection từ cơ sở dữ liệu
+                var collection = GetCollection("CuaHangGiaoThucAnNhanh");
 
+                // Tìm cửa hàng dựa vào mã cửa hàng
+                var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+                var cuaHangDoc = collection.Find(filterCuaHang).FirstOrDefault();
 
+                if (cuaHangDoc == null)
+                {
+                    Console.WriteLine("Cửa hàng không tồn tại.");
+                    return false;
+                }
+
+                // Tìm danh sách khách hàng trong cửa hàng
+                var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+
+                // Tìm khách hàng dựa vào mã khách hàng
+                var khachHangDoc = khachHangList.FirstOrDefault(kh => kh["ma_khach_hang"].AsString == maKhachHang);
+
+                if (khachHangDoc == null)
+                {
+                    Console.WriteLine("Khách hàng không tồn tại.");
+                    return false;
+                }
+
+                // Tìm danh sách đơn hàng trong khách hàng
+                var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+
+                if (donHangList.Count == 0)
+                {
+                    Console.WriteLine("Không có đơn hàng nào trong khách hàng.");
+                    return false;
+                }
+
+                // Tìm đơn hàng trong danh sách dựa trên mã đơn hàng
+                var donHangToUpdate = donHangList.FirstOrDefault(d => d["ma_don_hang"].AsString == maDonHang);
+
+                if (donHangToUpdate == null)
+                {
+                    Console.WriteLine("Đơn hàng không tồn tại.");
+                    return false;
+                }
+
+                // Tạo đối tượng cập nhật từ đối tượng DonHang
+                var update = Builders<BsonDocument>.Update
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].thoi_gian_dat", donHangMoi.ThoiGianDat)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].thoi_gian_giao", donHangMoi.ThoiGianGiao)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].giam_gia", donHangMoi.GiamGia)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].diem_tich_luy_su_dung", donHangMoi.DiemTichLuySuDung)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].tong_tien", donHangMoi.TongTien)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].so_tien_thanh_toan", donHangMoi.SoTienThanhToan)
+                    .Set("cua_hang.khach_hang.$[khach].don_hang.$[donHang].trang_thai", donHangMoi.TrangThai);
+
+                // Cấu hình ArrayFilters
+                var arrayFilters = new List<ArrayFilterDefinition>
+        {
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("khach.ma_khach_hang", maKhachHang)),
+            new BsonDocumentArrayFilterDefinition<BsonDocument>(new BsonDocument("donHang.ma_don_hang", maDonHang))
+        };
+
+                // Thực hiện cập nhật
+                var updateResult = collection.UpdateOne(filterCuaHang, update, new UpdateOptions { ArrayFilters = arrayFilters });
+
+                return updateResult.ModifiedCount > 0; // Trả về true nếu có tài liệu đã được cập nhật
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Có lỗi xảy ra: " + ex.Message);
+                return false; // Trả về false nếu có lỗi
+            }
+        }
 
 
 

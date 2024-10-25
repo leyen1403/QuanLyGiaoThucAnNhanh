@@ -240,5 +240,11 @@ namespace BLL
             return dal.TimMaKhachHangTheoMaDonHang(maCuaHang, maDonHang);
         }
 
+        // cập nhật đơn hàng
+        public bool CapNhatDonHang(string maCuaHang, string maKhachHang, string maDonHang, DonHang donHangMoi)
+        {
+            return dal.CapNhatDonHang(maCuaHang, maKhachHang, maDonHang, donHangMoi);
+        }
+
     }
 }
