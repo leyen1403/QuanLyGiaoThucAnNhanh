@@ -220,7 +220,7 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvDsDonHang.Columns.Add("TongTien", "Tổng tiền");
             dtgvDsDonHang.Columns.Add("SoTienThanhToan", "Số tiền thanh toán");
             dtgvDsDonHang.Columns.Add("TrangThai", "Trạng thái");
-             var dsDonHang = bll.LayToanBoDanhSachDonHang().OrderBy(m => m.TrangThai);
+            var dsDonHang = bll.LayToanBoDanhSachDonHang().OrderBy(m => m.TrangThai);
 
             foreach (var item in dsDonHang)
             {

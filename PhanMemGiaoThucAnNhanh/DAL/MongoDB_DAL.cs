@@ -1566,13 +1566,13 @@ namespace DAL
                                     donHang.GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : 0;
 
                                 if (donHangDoc.AsBsonDocument.Contains("diem_tich_luy_su_dung"))
-                                    donHang.DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : 0;
+                                    donHang.DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble;
 
                                 if (donHangDoc.AsBsonDocument.Contains("tong_tien"))
-                                    donHang.TongTien = donHangDoc["tong_tien"].IsDouble ? donHangDoc["tong_tien"].AsDouble : 0.0;
+                                    donHang.TongTien = donHangDoc["tong_tien"].IsDouble ? donHangDoc["tong_tien"].AsDouble : (double)donHangDoc["tong_tien"].AsInt32;
 
                                 if (donHangDoc.AsBsonDocument.Contains("so_tien_thanh_toan"))
-                                    donHang.SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsDouble ? donHangDoc["so_tien_thanh_toan"].AsDouble : 0.0;
+                                    donHang.SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsDouble ? donHangDoc["so_tien_thanh_toan"].AsDouble : (double)donHangDoc["so_tien_thanh_toan"].AsInt32;
 
                                 if (donHangDoc.AsBsonDocument.Contains("trang_thai") && donHangDoc["trang_thai"].IsString)
                                     donHang.TrangThai = donHangDoc["trang_thai"].AsString;
