@@ -91,6 +91,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // cbbLoaiMon
             // 
+            this.cbbLoaiMon.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbLoaiMon.FormattingEnabled = true;
             this.cbbLoaiMon.Items.AddRange(new object[] {
             "True",
@@ -103,6 +104,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // cbTrangThai
             // 
+            this.cbTrangThai.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbTrangThai.FormattingEnabled = true;
             this.cbTrangThai.Items.AddRange(new object[] {
             "True",
@@ -115,6 +117,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // pictureBoxMonAn
             // 
+            this.pictureBoxMonAn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBoxMonAn.Location = new System.Drawing.Point(961, 31);
             this.pictureBoxMonAn.Name = "pictureBoxMonAn";
             this.pictureBoxMonAn.Size = new System.Drawing.Size(191, 144);
@@ -123,6 +126,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // btnLuuDuLieu
             // 
+            this.btnLuuDuLieu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLuuDuLieu.BackColor = System.Drawing.Color.Red;
             this.btnLuuDuLieu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLuuDuLieu.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,6 +144,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // btnXoa
             // 
+            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnXoa.BackColor = System.Drawing.Color.Red;
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnXoa.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,6 +163,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // btnThem
             // 
+            this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnThem.BackColor = System.Drawing.Color.Red;
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -177,6 +183,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtMoTa
             // 
+            this.txtMoTa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtMoTa.Location = new System.Drawing.Point(551, 111);
             this.txtMoTa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtMoTa.Multiline = true;
@@ -186,6 +193,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtGiaMonAn
             // 
+            this.txtGiaMonAn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtGiaMonAn.Location = new System.Drawing.Point(551, 24);
             this.txtGiaMonAn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtGiaMonAn.Name = "txtGiaMonAn";
@@ -194,6 +202,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtHinhAnh
             // 
+            this.txtHinhAnh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtHinhAnh.Location = new System.Drawing.Point(278, 129);
             this.txtHinhAnh.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtHinhAnh.Multiline = true;
@@ -203,6 +212,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtTenMonAn
             // 
+            this.txtTenMonAn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTenMonAn.Location = new System.Drawing.Point(278, 83);
             this.txtTenMonAn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTenMonAn.Name = "txtTenMonAn";
@@ -211,6 +221,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtMaMonAn
             // 
+            this.txtMaMonAn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtMaMonAn.Location = new System.Drawing.Point(278, 28);
             this.txtMaMonAn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtMaMonAn.Name = "txtMaMonAn";
@@ -219,6 +230,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
@@ -231,6 +243,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
@@ -243,6 +256,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
@@ -255,6 +269,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
@@ -267,6 +282,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
@@ -279,6 +295,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
@@ -291,6 +308,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
@@ -303,6 +321,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // label12
             // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
@@ -316,7 +335,9 @@ namespace PhanMemGiaoThucAnNhanh
             // dtgvMonAn
             // 
             this.dtgvMonAn.AllowUserToAddRows = false;
-            this.dtgvMonAn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dtgvMonAn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgvMonAn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvMonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvMonAn.Location = new System.Drawing.Point(0, 245);
@@ -326,6 +347,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // cbbLocLoaiMon
             // 
+            this.cbbLocLoaiMon.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbbLocLoaiMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbLocLoaiMon.FormattingEnabled = true;
             this.cbbLocLoaiMon.Location = new System.Drawing.Point(0, 203);
@@ -335,6 +357,7 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // txtSearch
             // 
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(148, 204);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -344,16 +367,17 @@ namespace PhanMemGiaoThucAnNhanh
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSearch.BackColor = System.Drawing.Color.Red;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_search_35;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(464, 205);
+            this.btnSearch.Location = new System.Drawing.Point(464, 198);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(52, 25);
+            this.btnSearch.Size = new System.Drawing.Size(59, 36);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.UseVisualStyleBackColor = false;

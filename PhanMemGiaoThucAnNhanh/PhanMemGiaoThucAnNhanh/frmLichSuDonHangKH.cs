@@ -29,7 +29,12 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvLichSu.Columns["ThoiGianGiao"].Visible = false;
             dtgvLichSu.Columns["DiemTichLuySuDung"].Visible = false;
             dtgvLichSu.Columns["GiamGia"].Visible = false;
+            dtgvLichSu.DefaultCellStyle.Font = new Font("Arial", 13);
+            this.dtgvLichSu.RowTemplate.Height = 80;
 
+            // Format the "TongTien" and "SoTienThanhToan" columns to display thousands separator
+            dtgvLichSu.Columns["TongTien"].DefaultCellStyle.Format = "#,##0";
+            dtgvLichSu.Columns["SoTienThanhToan"].DefaultCellStyle.Format = "#,##0";
         }
     }
 }

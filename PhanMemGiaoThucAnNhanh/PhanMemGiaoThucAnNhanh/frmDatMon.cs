@@ -25,7 +25,9 @@ namespace PhanMemGiaoThucAnNhanh
         public frmDatMon(string maKH)
         {
             InitializeComponent();
-            
+            this.WindowState = FormWindowState.Maximized; // Display the form in full screen
+            this.MaximizeBox = false;
+
             this.maKH = maKH;            
             this.Load += FrmDatMon_Load;
             this.btnTim.Click += BtnTim_Click;     
@@ -73,7 +75,7 @@ namespace PhanMemGiaoThucAnNhanh
             // Khởi tạo và truyền dữ liệu sang frmDonDatHang
             frmDonDatHang form = new frmDonDatHang(dsMonAnNew, tongTien, maKH);
             form.DonHangThanhToan += Form_DonHangThanhToan;
-            form.Show(); // Hiển thị form mới
+            form.ShowDialog(); // Hiển thị form mới
         }
 
         private void Form_DonHangThanhToan()

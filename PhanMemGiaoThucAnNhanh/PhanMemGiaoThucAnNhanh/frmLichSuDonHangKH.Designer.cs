@@ -39,14 +39,14 @@
             this.dtgvLichSu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvLichSu.Location = new System.Drawing.Point(0, 0);
             this.dtgvLichSu.Name = "dtgvLichSu";
-            this.dtgvLichSu.Size = new System.Drawing.Size(705, 394);
+            this.dtgvLichSu.Size = new System.Drawing.Size(1179, 557);
             this.dtgvLichSu.TabIndex = 0;
             // 
             // frmLichSuDonHangKH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 394);
+            this.ClientSize = new System.Drawing.Size(1179, 557);
             this.Controls.Add(this.dtgvLichSu);
             this.Name = "frmLichSuDonHangKH";
             this.Text = "frmLichSuDonHangKH";

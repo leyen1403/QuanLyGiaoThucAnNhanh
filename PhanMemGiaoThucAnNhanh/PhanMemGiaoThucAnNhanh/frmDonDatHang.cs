@@ -23,6 +23,9 @@ namespace PhanMemGiaoThucAnNhanh
         public frmDonDatHang(List<MonAn> dsMonAn, double tongTien, string maKH)
         {
             InitializeComponent();
+            // Inside the FrmDonDatHang_Load method
+            dtgvDonDatHang.DefaultCellStyle.Font = new Font("Arial", 13);
+            this.dtgvDonDatHang.RowTemplate.Height = 80;
             this.dtgvDonDatHang.ReadOnly = true;
             this.dsMonAn = dsMonAn;
             this.tongTien = tongTien;
@@ -30,6 +33,7 @@ namespace PhanMemGiaoThucAnNhanh
             lblTongTien.Text = tongTien.ToString("N0") + " đồng";
             this.Load += FrmDonDatHang_Load;
             this.btnThanhToan.Click += BtnThanhToan_Click;
+            
         }
 
         private void BtnThanhToan_Click(object sender, EventArgs e)
@@ -105,6 +109,7 @@ namespace PhanMemGiaoThucAnNhanh
                 double thanhTien = giaMon * soLuong;
                 row.Cells["ThanhTien"].Value = thanhTien.ToString("N0"); // Định dạng phân cách hàng nghìn
             }
+            dtgvDonDatHang.Columns["GiaMon"].DefaultCellStyle.Format = "#,##0";
         }
     }
 }

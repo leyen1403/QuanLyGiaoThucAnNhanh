@@ -23,6 +23,8 @@ namespace PhanMemGiaoThucAnNhanh
         {
             InitializeComponent();
 
+            this.WindowState = FormWindowState.Maximized; // Display the form in full screen
+            this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.loaiMon_subItem.Click += LoaiMon_subItem_Click;
             this.monAn_subItem.Click += MonAn_subItem_Click;
@@ -30,6 +32,8 @@ namespace PhanMemGiaoThucAnNhanh
             this.khachHangItem.Click += KhachHangItem_Click;
             this.thongKeItem.Click += ThongKeItem_Click;
             this.cuaHang_Item.Click += CuaHang_Item_Click;
+
+            panel_main.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         }
 
         private void CuaHang_Item_Click(object sender, EventArgs e)

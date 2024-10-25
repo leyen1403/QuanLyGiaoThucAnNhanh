@@ -40,12 +40,12 @@
             this.grbThongKe = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtgvThongKe = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.btnXemDuoiDangDoThi = new System.Windows.Forms.Button();
             this.btnTKSPBanNhieu = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.btnXemTKDoanhThu = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.grbThongKe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -106,17 +106,20 @@
             this.groupBox1.Controls.Add(this.btnXemTKDoanhThu);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Location = new System.Drawing.Point(16, 16);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox1.Size = new System.Drawing.Size(1134, 541);
+            this.groupBox1.Size = new System.Drawing.Size(1164, 572);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê dịch vụ doanh thu";
             // 
             // grbThongKe
             // 
+            this.grbThongKe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grbThongKe.Controls.Add(this.chart1);
             this.grbThongKe.Controls.Add(this.dtgvThongKe);
             this.grbThongKe.Location = new System.Drawing.Point(37, 165);
@@ -153,28 +156,9 @@
             this.dtgvThongKe.Size = new System.Drawing.Size(1086, 351);
             this.dtgvThongKe.TabIndex = 0;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(34, 69);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(138, 17);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Chọn ngày kết thúc :";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.groupBox1);
-            this.panel11.Location = new System.Drawing.Point(3, 3);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1156, 568);
-            this.panel11.TabIndex = 41;
-            // 
             // btnXemDuoiDangDoThi
             // 
+            this.btnXemDuoiDangDoThi.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnXemDuoiDangDoThi.BackColor = System.Drawing.Color.Red;
             this.btnXemDuoiDangDoThi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnXemDuoiDangDoThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,6 +176,7 @@
             // 
             // btnTKSPBanNhieu
             // 
+            this.btnTKSPBanNhieu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnTKSPBanNhieu.BackColor = System.Drawing.Color.Red;
             this.btnTKSPBanNhieu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTKSPBanNhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,6 +194,7 @@
             // 
             // btnReport
             // 
+            this.btnReport.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnReport.BackColor = System.Drawing.Color.Red;
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,6 +212,7 @@
             // 
             // btnXemTKDoanhThu
             // 
+            this.btnXemTKDoanhThu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnXemTKDoanhThu.BackColor = System.Drawing.Color.Red;
             this.btnXemTKDoanhThu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnXemTKDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,6 +228,27 @@
             this.btnXemTKDoanhThu.Text = "Xem doanh thu";
             this.btnXemTKDoanhThu.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXemTKDoanhThu.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(34, 69);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(138, 17);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Chọn ngày kết thúc :";
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.groupBox1);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1164, 572);
+            this.panel11.TabIndex = 41;
             // 
             // frmThongKe
             // 

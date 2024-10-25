@@ -47,6 +47,8 @@
             // 
             // pnTitle
             // 
+            this.pnTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnTitle.BackColor = System.Drawing.Color.DimGray;
             this.pnTitle.Controls.Add(this.ptbLichSu);
             this.pnTitle.Controls.Add(this.pictureBox1);
@@ -58,7 +60,6 @@
             this.pnTitle.Controls.Add(this.label4);
             this.pnTitle.Controls.Add(this.label2);
             this.pnTitle.Controls.Add(this.label1);
-            this.pnTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTitle.Location = new System.Drawing.Point(0, 0);
             this.pnTitle.Name = "pnTitle";
             this.pnTitle.Size = new System.Drawing.Size(1164, 78);
@@ -163,8 +164,10 @@
             // 
             // pnDanhSachMonAn
             // 
+            this.pnDanhSachMonAn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnDanhSachMonAn.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnDanhSachMonAn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnDanhSachMonAn.Location = new System.Drawing.Point(0, 78);
             this.pnDanhSachMonAn.Name = "pnDanhSachMonAn";
             this.pnDanhSachMonAn.Size = new System.Drawing.Size(1164, 494);

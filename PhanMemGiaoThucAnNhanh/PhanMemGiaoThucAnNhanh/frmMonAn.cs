@@ -199,7 +199,8 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvMonAn.Columns.Add("HienThi", "Hiển thị");
             dtgvMonAn.Columns.Add("HinhAnh", "Hình ảnh");
             dtgvMonAn.Columns.Add("MaLoai", "Mã loại");
-
+            dtgvMonAn.Columns["MaLoai"].Visible = false;
+            dtgvMonAn.RowTemplate.Height = 50;
             foreach (var item in dsMonAn)
             {
                 string imagePath = item.HinhAnh;

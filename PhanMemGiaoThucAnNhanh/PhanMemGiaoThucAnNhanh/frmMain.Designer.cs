@@ -108,7 +108,7 @@
             // 
             // panel_main
             // 
-            this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_main.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_main.Location = new System.Drawing.Point(0, 29);
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(1180, 611);
