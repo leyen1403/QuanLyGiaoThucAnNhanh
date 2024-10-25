@@ -10,6 +10,9 @@ namespace DTO
     {
         public string MaCuaHang { get; set; }
         public string TenCuaHang { get; set; }
+        public string DiaChi { get; set; }
+        public string SoDienThoai { get; set; }
+
         public List<LoaiMonAn> Menu { get; set; } = new List<LoaiMonAn>(); // Khởi tạo danh sách
         public CuaHang () { }
     }

@@ -958,6 +958,10 @@ namespace DAL
         {
             List<KhachHang> danhSachKhachHang = LayDanhSachKhachHang();
             KhachHang khachHang = danhSachKhachHang.FirstOrDefault(kh => kh.MaKhachHang == maKH);
+            if (khachHang == null)
+            {
+                return 2;
+            }
             if(khachHang.HoatDong != true)
             {
                 return 0;//Tai khoan bi khoa
@@ -1058,25 +1062,25 @@ namespace DAL
 
                         // Chuyển đổi đối tượng DonHang thành BsonDocument
                         var donHangDoc = new BsonDocument
-                {
-                    { "ma_don_hang", donHang.MaDonHang },
-                    { "thoi_gian_dat", donHang.ThoiGianDat },
-                    { "thoi_gian_giao", donHang.ThoiGianGiao },
-                    { "giam_gia", donHang.GiamGia },
-                    { "diem_tich_luy_su_dung", donHang.DiemTichLuySuDung },
-                    { "tong_tien", donHang.TongTien },
-                    { "so_tien_thanh_toan", donHang.SoTienThanhToan },
-                    { "trang_thai", donHang.TrangThai },
-                    { "mon_an_don_hang", new BsonArray(donHang.MonAnDonHang.Select(m => new BsonDocument
                         {
-                            { "ma_mon_an", m.MaMonAn },
-                            { "ten_mon", m.TenMon },
-                            { "gia", m.Gia },
-                            { "so_luong", m.SoLuong },
-                            { "thanh_tien", m.ThanhTien }
-                        }))
-                    }
-                };
+                            { "ma_don_hang", donHang.MaDonHang },
+                            { "thoi_gian_dat", donHang.ThoiGianDat },
+                            { "thoi_gian_giao", donHang.ThoiGianGiao },
+                            { "giam_gia", donHang.GiamGia },
+                            { "diem_tich_luy_su_dung", donHang.DiemTichLuySuDung },
+                            { "tong_tien", donHang.TongTien },
+                            { "so_tien_thanh_toan", donHang.SoTienThanhToan },
+                            { "trang_thai", donHang.TrangThai },
+                            { "mon_an_don_hang", new BsonArray(donHang.MonAnDonHang.Select(m => new BsonDocument
+                                {
+                                    { "ma_mon_an", m.MaMonAn },
+                                    { "ten_mon", m.TenMon },
+                                    { "gia", m.Gia },
+                                    { "so_luong", m.SoLuong },
+                                    { "thanh_tien", m.ThanhTien }
+                                }))
+                            }
+                        };
 
                         // Thêm đơn hàng vào danh sách đơn hàng
                         donHangList.Add(donHangDoc);
@@ -1462,65 +1466,62 @@ namespace DAL
             return false; // Trả về false nếu không tìm thấy khách hàng hoặc có lỗi
         }
 
+        public List<PHIEUBAOCAO> LayPhieuBaoCao(string maCuaHang, string ngayBatDau, string ngayKetThuc)
+        {
+            // Giả sử bạn đã có kết nối đến MongoDB và truy cập vào collection chứa dữ liệu.
+            var collection = GetCollection("CuaHangGiaoThucAnNhanh");
 
-        //Lấy toàn bộ đơn hàng
-        //public List<DonHang> LayToanBoDanhSachDonHang()
-        //{
-        //    var collection = GetCollection("CuaHangGiaoThucAnNhanh");
-        //    List<DonHang> danhSachDonHang = new List<DonHang>();
-        //    var cuaHangDocs = collection.Find(new BsonDocument()).ToList();
+            // Tìm cửa hàng dựa trên mã cửa hàng.
+            var filterCuaHang = Builders<BsonDocument>.Filter.Eq("cua_hang.ma_cua_hang", maCuaHang);
+            var cuaHangData = collection.Find(filterCuaHang).FirstOrDefault();
 
-        //    foreach (var cuaHangDoc in cuaHangDocs)
-        //    {
-        //        // Kiểm tra xem cửa hàng có chứa danh sách khách hàng không
-        //        if (cuaHangDoc.Contains("cua_hang") && cuaHangDoc["cua_hang"].AsBsonDocument.Contains("khach_hang"))
-        //        {
-        //            var khachHangList = cuaHangDoc["cua_hang"]["khach_hang"].AsBsonArray;
+            if (cuaHangData == null)
+            {
+                return null; // Không tìm thấy cửa hàng.
+            }
 
-        //            // Duyệt qua danh sách khách hàng
-        //            foreach (var khachHangDoc in khachHangList)
-        //            {
-        //                // Kiểm tra nếu khách hàng có danh sách đơn hàng
-        //                if (khachHangDoc.AsBsonDocument.Contains("don_hang"))
-        //                {
-        //                    var donHangList = khachHangDoc["don_hang"].AsBsonArray;
+            var khachHangList = cuaHangData["cua_hang"]["khach_hang"].AsBsonArray;
+            List<PHIEUBAOCAO> danhSachPhieuBaoCao = new List<PHIEUBAOCAO>();
+            int i = 1;
 
-        //                    // Duyệt qua danh sách đơn hàng và chuyển đổi sang đối tượng DonHang
-        //                    foreach (var donHangDoc in donHangList)
-        //                    {
-        //                        var donHang = new DonHang
-        //                        {
-        //                            MaDonHang = donHangDoc["ma_don_hang"].AsString,
+            foreach (var khachHang in khachHangList)
+            {
+                var donHangList = khachHang["don_hang"].AsBsonArray;
 
-        //                            // Kiểm tra xem thoi_gian_dat có phải là BsonDateTime hay không
-        //                            ThoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime
-        //                             ? donHangDoc["thoi_gian_dat"].ToUniversalTime()
-        //                             : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString),
+                foreach (var donHangDoc in donHangList)
+                {
+                    DateTime thoiGianDat = donHangDoc["thoi_gian_dat"].IsBsonDateTime ? donHangDoc["thoi_gian_dat"].AsBsonDateTime.ToUniversalTime()
+                                                                                        : DateTime.Parse(donHangDoc["thoi_gian_dat"].AsString);
+                    thoiGianDat = new DateTime(thoiGianDat.Year,thoiGianDat.Month, thoiGianDat.Day,0,0,0);
+                    if (thoiGianDat >= DateTime.Parse(ngayBatDau) && thoiGianDat <= DateTime.Parse(ngayKetThuc))
+                    {
+                        var monAnList = donHangDoc["mon_an_don_hang"].AsBsonArray;
 
-        //                            // Kiểm tra xem thoi_gian_giao có phải là BsonDateTime hay không
-        //                            ThoiGianGiao = donHangDoc["thoi_gian_giao"].IsBsonDateTime ? donHangDoc["thoi_gian_giao"].ToUniversalTime()
-        //                                                                                        : DateTime.Parse(donHangDoc["thoi_gian_giao"].AsString),
+                        foreach (var monAn in monAnList)
+                        {
+                            PHIEUBAOCAO pbc = new PHIEUBAOCAO
+                            {
+                                STT = i.ToString(),
+                                MAMONAN = monAn["ma_mon_an"].AsString,
+                                TENMONAN = monAn["ten_mon"].AsString,
+                                SOLUONG = monAn["so_luong"].ToInt32(),
+                                DONGIA = monAn["gia"].ToDouble(),
+                                THANHTIEN = monAn["thanh_tien"].ToDouble(),
+                                NGAY = thoiGianDat
+                            };
+                            danhSachPhieuBaoCao.Add(pbc);
+                            i++;
+                        }
+                    }
+                }
+            }
 
-        //                            GiamGia = donHangDoc["giam_gia"].IsInt32 ? donHangDoc["giam_gia"].AsInt32 : (int)donHangDoc["giam_gia"].AsDouble,
-        //                            DiemTichLuySuDung = donHangDoc["diem_tich_luy_su_dung"].IsInt32 ? donHangDoc["diem_tich_luy_su_dung"].AsInt32 : (int)donHangDoc["diem_tich_luy_su_dung"].AsDouble,
-        //                            TongTien = donHangDoc["tong_tien"].IsInt32 ? donHangDoc["tong_tien"].AsInt32 : (int)donHangDoc["tong_tien"].AsDouble,
-        //                            SoTienThanhToan = donHangDoc["so_tien_thanh_toan"].IsInt32 ? donHangDoc["so_tien_thanh_toan"].AsInt32 : (int)donHangDoc["so_tien_thanh_toan"].AsDouble,
-        //                            TrangThai = donHangDoc["trang_thai"].AsString
-        //                        };
+            // Chuyển danh sách PHIEUBAOCAO thành đối tượng PHIEUBAOCAO duy nhất
+            // Ví dụ: Có thể sử dụng danh sách hoặc kết hợp chúng lại thành một đối tượng khác tùy theo yêu cầu của bạn.
 
-
-
-        //                        danhSachDonHang.Add(donHang); // Thêm đơn hàng vào danh sách tổng
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    // Trả về danh sách toàn bộ đơn hàng
-        //    return danhSachDonHang;
-        //}
-
+            return danhSachPhieuBaoCao; // Hoặc có thể trả về danh sách nếu cần.
+        }
+        // Lấy toàn bộ đơn hàng
         public List<DonHang> LayToanBoDanhSachDonHang()
         {
             var collection = GetCollection("CuaHangGiaoThucAnNhanh");
