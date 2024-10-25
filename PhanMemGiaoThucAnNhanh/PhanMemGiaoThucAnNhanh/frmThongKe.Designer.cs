@@ -258,7 +258,7 @@
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.label1);
             this.Name = "frmThongKe";
-            this.Text = "frmThongKe";
+            this.Text = "Thống kê";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grbThongKe.ResumeLayout(false);

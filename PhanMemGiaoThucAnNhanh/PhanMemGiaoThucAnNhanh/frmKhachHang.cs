@@ -25,14 +25,23 @@ namespace PhanMemGiaoThucAnNhanh
         {
             InitializeComponent();
             dsKhachHang = bll.LayDanhSachKhachHang();
-           // dtgvDsKhachHang.ReadOnly = true;
+            // dtgvDsKhachHang.ReadOnly = true;
             this.Load += FrmKhachHang_Load;
             this.dtgvDsKhachHang.SelectionChanged += DtgvDsKhacHang_SelectionChanged;
             this.btnTim.Click += BtnTim_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
             this.btnLuu.Click += BtnLuu_Click;
-            this.btnHuyThem.Click += BtnHuyThem_Click;           
+            this.btnHuyThem.Click += BtnHuyThem_Click;
+            this.dtgvDsKhachHang.CellClick += DtgvDsKhachHang_CellClick;
+
+        }
+        private void DtgvDsKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Check if a valid row index is clicked
+            {
+                dtgvDsKhachHang.Rows[e.RowIndex].Selected = true; // Select the entire row
+            }
         }
 
         private void BtnHuyThem_Click(object sender, EventArgs e)
@@ -46,7 +55,7 @@ namespace PhanMemGiaoThucAnNhanh
             txtMatKhau.Text = "";
             cbbHoatDong.Text = "";
             txtMaKH.Focus();
-           
+
         }
 
         private void BtnLuu_Click(object sender, EventArgs e)
@@ -77,7 +86,7 @@ namespace PhanMemGiaoThucAnNhanh
         private void BtnXoa_Click(object sender, EventArgs e)
         {
             string maKhacHang = txtMaKH.Text;
-           
+
             if (bll.XoaKhachHang(maCuaHang, maKhacHang))
             {
                 MessageBox.Show("Xóa thành công!");
@@ -137,7 +146,7 @@ namespace PhanMemGiaoThucAnNhanh
                 cbbHoatDong.Text = dtgvDsKhachHang.CurrentRow.Cells["HoatDong"].Value.ToString();
                 txtMatKhau.Text = dtgvDsKhachHang.CurrentRow.Cells["MatKhau"].Value.ToString();
 
-                if(dtgvDsKhachHang.SelectedRows.Count > 0)
+                if (dtgvDsKhachHang.SelectedRows.Count > 0)
                 {
                     // lấy giá trị dòng đầu
                     DataGridViewRow selectedRow = dtgvDsKhachHang.SelectedRows[0];
@@ -145,7 +154,7 @@ namespace PhanMemGiaoThucAnNhanh
                     var txtMaPhieuNhap = selectedRow.Cells[0].Value.ToString();
                     loadDataGridViewLichSu(txtMaPhieuNhap);
                 }
-               
+
             }
         }
 
@@ -169,7 +178,7 @@ namespace PhanMemGiaoThucAnNhanh
             dtgvDsKhachHang.Columns.Add("MatKhau", "Mật khẩu");
 
             foreach (var item in dsKhachHang)
-            { 
+            {
                 dtgvDsKhachHang.Rows.Add(item.MaKhachHang, item.TenKhachHang, item.SoDienThoai, item.DiaChi, item.Email, item.DiemTichLuyHienCo, item.HoatDong, item.MatKhau);
             }
         }
@@ -197,7 +206,7 @@ namespace PhanMemGiaoThucAnNhanh
             }
 
             // Định dạng các cột không cần thiế
-        } 
+        }
 
     }
 }

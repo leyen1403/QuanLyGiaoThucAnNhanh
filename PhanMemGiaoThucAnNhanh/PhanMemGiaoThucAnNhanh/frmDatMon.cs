@@ -27,6 +27,7 @@ namespace PhanMemGiaoThucAnNhanh
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized; // Display the form in full screen
             this.MaximizeBox = false;
+            this.pnDanhSachMonAn.Padding = new Padding(10, 10, 10, 80);
 
             this.maKH = maKH;            
             this.Load += FrmDatMon_Load;
@@ -34,6 +35,13 @@ namespace PhanMemGiaoThucAnNhanh
             this.pictureBox1.Click += PictureBox1_Click;
             this.FormClosed += FrmDatMon_FormClosed;
             this.ptbLichSu.Click += PtbLichSu_Click;
+            this.ptbUser.Click += PtbUser_Click;
+        }
+
+        private void PtbUser_Click(object sender, EventArgs e)
+        {
+            frmCapNhatThongTinKhachHang f = new frmCapNhatThongTinKhachHang(this.maKH);
+            f.ShowDialog();
         }
 
         private void PtbLichSu_Click(object sender, EventArgs e)
@@ -147,8 +155,8 @@ namespace PhanMemGiaoThucAnNhanh
             {
                 UC_MonAn item = new UC_MonAn();
                 item.Name = "UC_MonAn" + i;
-                item.Top = i * item.Height;
-                item.Left = 0;
+                item.Top = (i+20) * item.Height;
+                item.Left = 50;
                 item.SoLuong = 0;
 
                 item.MaMon = dsMonAn[i].MaMon;

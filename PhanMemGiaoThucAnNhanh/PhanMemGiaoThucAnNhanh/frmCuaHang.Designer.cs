@@ -31,6 +31,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTTCuaHang = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxLogoThuongHieu = new System.Windows.Forms.PictureBox();
+            this.cbbTrangThaiHoatDong = new System.Windows.Forms.ComboBox();
+            this.txtMatKhauDangNhap = new System.Windows.Forms.TextBox();
+            this.txtHinhAnhThuongHieu = new System.Windows.Forms.TextBox();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtSoDienThoai = new System.Windows.Forms.TextBox();
+            this.txtTenCuaHang = new System.Windows.Forms.TextBox();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -38,15 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCapNhat = new System.Windows.Forms.Button();
-            this.txtTenCuaHang = new System.Windows.Forms.TextBox();
-            this.txtSoDienThoai = new System.Windows.Forms.TextBox();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtHinhAnhThuongHieu = new System.Windows.Forms.TextBox();
-            this.txtMatKhauDangNhap = new System.Windows.Forms.TextBox();
-            this.cbbTrangThaiHoatDong = new System.Windows.Forms.ComboBox();
-            this.pictureBoxLogoThuongHieu = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoThuongHieu)).BeginInit();
@@ -95,6 +95,93 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1164, 501);
             this.panel2.TabIndex = 1;
+            // 
+            // pictureBoxLogoThuongHieu
+            // 
+            this.pictureBoxLogoThuongHieu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxLogoThuongHieu.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxLogoThuongHieu.Name = "pictureBoxLogoThuongHieu";
+            this.pictureBoxLogoThuongHieu.Size = new System.Drawing.Size(499, 501);
+            this.pictureBoxLogoThuongHieu.TabIndex = 4;
+            this.pictureBoxLogoThuongHieu.TabStop = false;
+            // 
+            // cbbTrangThaiHoatDong
+            // 
+            this.cbbTrangThaiHoatDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTrangThaiHoatDong.FormattingEnabled = true;
+            this.cbbTrangThaiHoatDong.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.cbbTrangThaiHoatDong.Location = new System.Drawing.Point(721, 292);
+            this.cbbTrangThaiHoatDong.Name = "cbbTrangThaiHoatDong";
+            this.cbbTrangThaiHoatDong.Size = new System.Drawing.Size(379, 28);
+            this.cbbTrangThaiHoatDong.TabIndex = 3;
+            // 
+            // txtMatKhauDangNhap
+            // 
+            this.txtMatKhauDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatKhauDangNhap.Location = new System.Drawing.Point(721, 247);
+            this.txtMatKhauDangNhap.Multiline = true;
+            this.txtMatKhauDangNhap.Name = "txtMatKhauDangNhap";
+            this.txtMatKhauDangNhap.Size = new System.Drawing.Size(379, 24);
+            this.txtMatKhauDangNhap.TabIndex = 2;
+            // 
+            // txtHinhAnhThuongHieu
+            // 
+            this.txtHinhAnhThuongHieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHinhAnhThuongHieu.Location = new System.Drawing.Point(721, 202);
+            this.txtHinhAnhThuongHieu.Multiline = true;
+            this.txtHinhAnhThuongHieu.Name = "txtHinhAnhThuongHieu";
+            this.txtHinhAnhThuongHieu.Size = new System.Drawing.Size(379, 24);
+            this.txtHinhAnhThuongHieu.TabIndex = 2;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Location = new System.Drawing.Point(721, 112);
+            this.txtDiaChi.Multiline = true;
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(379, 24);
+            this.txtDiaChi.TabIndex = 2;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(721, 157);
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(379, 24);
+            this.txtEmail.TabIndex = 2;
+            // 
+            // txtSoDienThoai
+            // 
+            this.txtSoDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoDienThoai.Location = new System.Drawing.Point(721, 67);
+            this.txtSoDienThoai.Multiline = true;
+            this.txtSoDienThoai.Name = "txtSoDienThoai";
+            this.txtSoDienThoai.Size = new System.Drawing.Size(379, 24);
+            this.txtSoDienThoai.TabIndex = 2;
+            // 
+            // txtTenCuaHang
+            // 
+            this.txtTenCuaHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenCuaHang.Location = new System.Drawing.Point(721, 22);
+            this.txtTenCuaHang.Multiline = true;
+            this.txtTenCuaHang.Name = "txtTenCuaHang";
+            this.txtTenCuaHang.Size = new System.Drawing.Size(379, 24);
+            this.txtTenCuaHang.TabIndex = 2;
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.BackColor = System.Drawing.Color.Red;
+            this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.ForeColor = System.Drawing.Color.White;
+            this.btnCapNhat.Location = new System.Drawing.Point(721, 413);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(379, 55);
+            this.btnCapNhat.TabIndex = 1;
+            this.btnCapNhat.Text = "Cập nhật thông tin";
+            this.btnCapNhat.UseVisualStyleBackColor = false;
             // 
             // label8
             // 
@@ -166,93 +253,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên cửa hàng :";
             // 
-            // btnCapNhat
-            // 
-            this.btnCapNhat.BackColor = System.Drawing.Color.Red;
-            this.btnCapNhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhat.Location = new System.Drawing.Point(721, 413);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(379, 55);
-            this.btnCapNhat.TabIndex = 1;
-            this.btnCapNhat.Text = "Cập nhật thông tin";
-            this.btnCapNhat.UseVisualStyleBackColor = false;
-            // 
-            // txtTenCuaHang
-            // 
-            this.txtTenCuaHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenCuaHang.Location = new System.Drawing.Point(721, 22);
-            this.txtTenCuaHang.Multiline = true;
-            this.txtTenCuaHang.Name = "txtTenCuaHang";
-            this.txtTenCuaHang.Size = new System.Drawing.Size(379, 24);
-            this.txtTenCuaHang.TabIndex = 2;
-            // 
-            // txtSoDienThoai
-            // 
-            this.txtSoDienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoDienThoai.Location = new System.Drawing.Point(721, 67);
-            this.txtSoDienThoai.Multiline = true;
-            this.txtSoDienThoai.Name = "txtSoDienThoai";
-            this.txtSoDienThoai.Size = new System.Drawing.Size(379, 24);
-            this.txtSoDienThoai.TabIndex = 2;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(721, 112);
-            this.txtDiaChi.Multiline = true;
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(379, 24);
-            this.txtDiaChi.TabIndex = 2;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(721, 157);
-            this.txtEmail.Multiline = true;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(379, 24);
-            this.txtEmail.TabIndex = 2;
-            // 
-            // txtHinhAnhThuongHieu
-            // 
-            this.txtHinhAnhThuongHieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHinhAnhThuongHieu.Location = new System.Drawing.Point(721, 202);
-            this.txtHinhAnhThuongHieu.Multiline = true;
-            this.txtHinhAnhThuongHieu.Name = "txtHinhAnhThuongHieu";
-            this.txtHinhAnhThuongHieu.Size = new System.Drawing.Size(379, 24);
-            this.txtHinhAnhThuongHieu.TabIndex = 2;
-            // 
-            // txtMatKhauDangNhap
-            // 
-            this.txtMatKhauDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhauDangNhap.Location = new System.Drawing.Point(721, 247);
-            this.txtMatKhauDangNhap.Multiline = true;
-            this.txtMatKhauDangNhap.Name = "txtMatKhauDangNhap";
-            this.txtMatKhauDangNhap.Size = new System.Drawing.Size(379, 24);
-            this.txtMatKhauDangNhap.TabIndex = 2;
-            // 
-            // cbbTrangThaiHoatDong
-            // 
-            this.cbbTrangThaiHoatDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbTrangThaiHoatDong.FormattingEnabled = true;
-            this.cbbTrangThaiHoatDong.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.cbbTrangThaiHoatDong.Location = new System.Drawing.Point(721, 292);
-            this.cbbTrangThaiHoatDong.Name = "cbbTrangThaiHoatDong";
-            this.cbbTrangThaiHoatDong.Size = new System.Drawing.Size(379, 28);
-            this.cbbTrangThaiHoatDong.TabIndex = 3;
-            // 
-            // pictureBoxLogoThuongHieu
-            // 
-            this.pictureBoxLogoThuongHieu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxLogoThuongHieu.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxLogoThuongHieu.Name = "pictureBoxLogoThuongHieu";
-            this.pictureBoxLogoThuongHieu.Size = new System.Drawing.Size(499, 501);
-            this.pictureBoxLogoThuongHieu.TabIndex = 4;
-            this.pictureBoxLogoThuongHieu.TabStop = false;
-            // 
             // frmCuaHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,7 +261,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmCuaHang";
-            this.Text = "frmCuaHang";
+            this.Text = "Cửa hàng";
+            this.TopMost = true;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

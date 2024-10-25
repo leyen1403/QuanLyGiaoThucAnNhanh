@@ -21,11 +21,11 @@ namespace PhanMemGiaoThucAnNhanh
         public string MaKhachHang {get; set;}
         
         MongoDB_BLL bll = new MongoDB_BLL();
-        public frmCapNhatThongTinKhachHang()
+        public frmCapNhatThongTinKhachHang(string maKhachHang)
         {
             InitializeComponent();
             MaCuaHang = "kfc-store-001";
-            MaKhachHang = "ntquang2k3";
+            MaKhachHang = maKhachHang;
             this.Load += FrmCuaHang_Load;
             btnCapNhat.Click += BtnCapNhat_Click;
         }

@@ -224,7 +224,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmCapNhatThongTinKhachHang";
-            this.Text = "frmCapNhatThongTinKhachHang";
+            this.Text = "Cập nhật thông tin khách hàng";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

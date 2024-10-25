@@ -69,6 +69,7 @@ namespace PhanMemGiaoThucAnNhanh
 
         void loadForm(Form form)
         {
+            this.Text = form.Text;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;

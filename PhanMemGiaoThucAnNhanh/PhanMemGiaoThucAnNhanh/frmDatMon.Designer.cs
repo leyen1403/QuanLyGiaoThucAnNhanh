@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnTitle = new System.Windows.Forms.Panel();
+            this.ptbUser = new System.Windows.Forms.PictureBox();
             this.ptbLichSu = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTim = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnDanhSachMonAn = new System.Windows.Forms.FlowLayoutPanel();
             this.pnTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbLichSu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +52,7 @@
             this.pnTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnTitle.BackColor = System.Drawing.Color.DimGray;
+            this.pnTitle.Controls.Add(this.ptbUser);
             this.pnTitle.Controls.Add(this.ptbLichSu);
             this.pnTitle.Controls.Add(this.pictureBox1);
             this.pnTitle.Controls.Add(this.btnTim);
@@ -65,12 +68,21 @@
             this.pnTitle.Size = new System.Drawing.Size(1164, 78);
             this.pnTitle.TabIndex = 0;
             // 
+            // ptbUser
+            // 
+            this.ptbUser.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_user_40;
+            this.ptbUser.Location = new System.Drawing.Point(750, 13);
+            this.ptbUser.Name = "ptbUser";
+            this.ptbUser.Size = new System.Drawing.Size(45, 49);
+            this.ptbUser.TabIndex = 5;
+            this.ptbUser.TabStop = false;
+            // 
             // ptbLichSu
             // 
             this.ptbLichSu.Image = global::PhanMemGiaoThucAnNhanh.Properties.Resources.icons8_history_48;
             this.ptbLichSu.Location = new System.Drawing.Point(815, 13);
             this.ptbLichSu.Name = "ptbLichSu";
-            this.ptbLichSu.Size = new System.Drawing.Size(52, 48);
+            this.ptbLichSu.Size = new System.Drawing.Size(45, 49);
             this.ptbLichSu.TabIndex = 5;
             this.ptbLichSu.TabStop = false;
             // 
@@ -181,9 +193,10 @@
             this.Controls.Add(this.pnDanhSachMonAn);
             this.Controls.Add(this.pnTitle);
             this.Name = "frmDatMon";
-            this.Text = "frmDatMon";
+            this.Text = "Đặt món";
             this.pnTitle.ResumeLayout(false);
             this.pnTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbLichSu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -204,5 +217,6 @@
         private System.Windows.Forms.Label lblSoMon;
         private System.Windows.Forms.Label lblTongTien;
         private System.Windows.Forms.PictureBox ptbLichSu;
+        private System.Windows.Forms.PictureBox ptbUser;
     }
 }

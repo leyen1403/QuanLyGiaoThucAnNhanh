@@ -32,7 +32,7 @@ namespace PhanMemGiaoThucAnNhanh
                 MessageBox.Show("Các giá trị không được để trống !!!");
                 return;
             }
-            string dangHoatDong = cbbTrangThaiHoatDong.SelectedValue.ToString();
+            bool dangHoatDong = (bool)cbbTrangThaiHoatDong.SelectedValue;
             var cuaHang = new BsonDocument
             {
                 { "cua_hang", new BsonDocument

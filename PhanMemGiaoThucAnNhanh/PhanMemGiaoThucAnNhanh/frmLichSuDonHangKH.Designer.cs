@@ -49,7 +49,7 @@
             this.ClientSize = new System.Drawing.Size(1179, 557);
             this.Controls.Add(this.dtgvLichSu);
             this.Name = "frmLichSuDonHangKH";
-            this.Text = "frmLichSuDonHangKH";
+            this.Text = "Lịch sử đơn hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvLichSu)).EndInit();
             this.ResumeLayout(false);
 

@@ -45,7 +45,9 @@ namespace PhanMemGiaoThucAnNhanh
             {
                 MaDonHang = maDonHang,
                 ThoiGianDat = DateTime.Now.AddHours(7), // Hoặc thời gian hiện tại
+                //ThoiGianDat = ThoiGianRandom(),
                 ThoiGianGiao = DateTime.Now.AddHours(8),
+                //ThoiGianGiao = ThoiGianGiaoRandom(),
                 GiamGia = 0,
                 DiemTichLuySuDung = 0,
                 TongTien = tongTien,
@@ -81,6 +83,30 @@ namespace PhanMemGiaoThucAnNhanh
             {
                 MessageBox.Show("Đặt món thất bại");
             }
+        }
+
+        private DateTime ThoiGianRandom()
+        {
+            Random random = new Random();
+
+            // Đặt ngày bắt đầu và ngày kết thúc của khoảng thời gian mong muốn
+            DateTime startDate = new DateTime(2024, 6, 1, 0, 0, 0); // 00:00:00 ngày 1/6/2024
+            DateTime endDate = new DateTime(2024, 10, 20, 23, 59, 59); // 23:59:59 ngày 20/10/2024
+
+            // Tính tổng số giây giữa startDate và endDate
+            double totalSeconds = (endDate - startDate).TotalSeconds;
+
+            // Tạo số giây ngẫu nhiên từ 0 đến tổng số giây giữa startDate và endDate
+            double randomSeconds = random.NextDouble() * totalSeconds;
+
+            // Cộng giây ngẫu nhiên vào startDate để tạo ra thời gian ngẫu nhiên
+            DateTime randomDateTime = startDate.AddSeconds(randomSeconds);
+            return randomDateTime;
+        }
+        private DateTime ThoiGianGiaoRandom()
+        {
+            // Sử dụng ThoiGianRandom() và cộng thêm 1 giờ
+            return ThoiGianRandom().AddHours(1);
         }
 
         private void FrmDonDatHang_Load(object sender, EventArgs e)

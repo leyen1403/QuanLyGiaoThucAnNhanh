@@ -17,9 +17,9 @@ namespace PhanMemGiaoThucAnNhanh
         public frmLichSuDonHangKH(List<DonHang> dsDonHang, string maKH)
         {
             InitializeComponent();
-            this.dsDonHang = dsDonHang;
+            this.dsDonHang = dsDonHang.OrderByDescending(dh => dh.ThoiGianDat).ToList();
             this.dtgvLichSu.ReadOnly = true;
-            dtgvLichSu.DataSource = dsDonHang;
+            dtgvLichSu.DataSource = this.dsDonHang;
             dtgvLichSu.Columns["MaDonHang"].HeaderText = "Mã đơn hàng";
             dtgvLichSu.Columns["ThoiGianDat"].HeaderText = "Thời gian đặt";
             dtgvLichSu.Columns["ThoiGianGiao"].HeaderText = "Thời gian giao";
