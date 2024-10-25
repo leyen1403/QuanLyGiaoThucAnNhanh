@@ -28,6 +28,11 @@ namespace PhanMemGiaoThucAnNhanh
             dsLoaiMon = bll.LayDanhSachLoaiMon();
             dsMonAn = bll.LayDanhSachMonAn();
             dtgvMonAn.ReadOnly = true;
+            // Add the following code inside the constructor of the frmMonAn class, after the line "dtgvMonAn.RowTemplate.Height = 80;"
+            dtgvMonAn.ScrollBars = ScrollBars.Vertical;
+            dtgvMonAn.RowTemplate.Height = 80;
+            dtgvMonAn.Font = new Font("Arial", 13);
+
             this.Load += FrmMonAn_Load;
             this.dtgvMonAn.SelectionChanged += DtgvMonAn_SelectionChanged;
             this.btnSearch.Click += BtnSearch_Click;

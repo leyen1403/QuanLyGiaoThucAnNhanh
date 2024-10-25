@@ -337,6 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\icons8-user-40.png" />
     <None Include="Resources\signin.jpg" />
     <None Include="Resources\icons8-history-48.png" />
     <None Include="Resources\icons8-report-35.png" />

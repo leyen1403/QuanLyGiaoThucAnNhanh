@@ -134,6 +134,7 @@ namespace UC
             this.Controls.Add(this.lblGiaMonAn);
             this.Controls.Add(this.lblMoTa);
             this.Controls.Add(this.lblTenMonAn);
+            this.Margin = new System.Windows.Forms.Padding(10, 10, 10, 50);
             this.Name = "UC_MonAn";
             this.Size = new System.Drawing.Size(210, 288);
             ((System.ComponentModel.ISupportInitialize)(this.ptbHinhAnh)).EndInit();

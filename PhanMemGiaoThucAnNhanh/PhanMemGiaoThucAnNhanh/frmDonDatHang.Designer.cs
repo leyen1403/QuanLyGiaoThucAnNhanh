@@ -101,7 +101,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "frmDonDatHang";
-            this.Text = "frmDonDatHang";
+            this.Text = "Đơn đặt hàng";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDonDatHang)).EndInit();
             this.ResumeLayout(false);
