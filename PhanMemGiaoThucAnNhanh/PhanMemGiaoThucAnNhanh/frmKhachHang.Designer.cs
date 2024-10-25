@@ -328,6 +328,7 @@
             // 
             // dtgvLichSuGiaoDich
             // 
+            this.dtgvLichSuGiaoDich.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvLichSuGiaoDich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvLichSuGiaoDich.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvLichSuGiaoDich.Location = new System.Drawing.Point(3, 27);
@@ -378,6 +379,7 @@
             // 
             // dtgvDsKhachHang
             // 
+            this.dtgvDsKhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDsKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDsKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvDsKhachHang.Location = new System.Drawing.Point(4, 27);
